@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, Share2, Bookmark, ChevronDown, Sparkles, Users, Clock, X } from "lucide-react";
+import { Share2, Bookmark, ChevronDown, Sparkles, Users, Clock, X } from "lucide-react";
 import heroImg from "@/assets/hero-huatangchun.jpg";
 import { CHARACTERS } from "@/lib/characters";
 import { PhoneMockup } from "@/components/PhoneMockup";

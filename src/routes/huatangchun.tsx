@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, Share2, Bookmark, ChevronDown, Sparkles, Users, Clock, X } from "lucide-react";
+import { Share2, Bookmark, ChevronDown, Sparkles, Users, Clock, X } from "lucide-react";
 import heroImg from "@/assets/hero-huatangchun.jpg";
 import { CHARACTERS } from "@/lib/characters";
 import { PhoneMockup } from "@/components/PhoneMockup";
@@ -84,10 +84,7 @@ function HuatangChun() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 88%, #ffffff 100%)" }} />
 
         {/* Top bar */}
-        <div className="relative z-10 flex items-center justify-between px-5 pt-12">
-          <button onClick={() => navigate({ to: "/" })} className="grid h-9 w-9 place-items-center rounded-full bg-black/25 backdrop-blur-md">
-            <ChevronLeft className="h-5 w-5 text-white" />
-          </button>
+        <div className="relative z-10 flex items-center justify-end px-5 pt-12">
           <div className="flex items-center gap-2">
             <button className="grid h-9 w-9 place-items-center rounded-full bg-black/25 backdrop-blur-md">
               <Bookmark className="h-4 w-4 text-white" />

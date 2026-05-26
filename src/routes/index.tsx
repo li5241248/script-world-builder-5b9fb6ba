@@ -8,17 +8,14 @@ import coverXing from "@/assets/cover-xinghai.jpg";
 import { PhoneMockup } from "@/components/PhoneMockup";
 
 export const Route = createFileRoute("/")({
-  validateSearch: (s: Record<string, unknown>) => ({ entered: s.entered === "1" ? "1" : undefined }),
-  beforeLoad: ({ search }) => {
-    if (!search.entered) {
-      throw redirect({ to: "/novel" });
-    }
+  beforeLoad: () => {
+    throw redirect({ to: "/huatangchun" });
   },
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "盐选互动文游 · 知乎" },
-      { name: "description", content: "知乎盐选 AI 互动文游精选合集，自由代入角色，每个选择都改写故事。" },
+      { title: "画堂春 · 盐选互动文游" },
+      { name: "description", content: "知乎盐选 AI 互动文游《画堂春》，自由代入角色，每个选择都改写故事。" },
     ],
   }),
 });

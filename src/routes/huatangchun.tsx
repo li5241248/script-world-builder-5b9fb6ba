@@ -97,7 +97,7 @@ function HuatangChun() {
 
         {/* Title block — horizontal */}
         <div className="relative z-10 mt-6 px-6">
-          <h1 className="font-brush text-[72px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)] tracking-[0.05em]">
+          <h1 className="font-brush text-[48px] leading-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)] tracking-[0.05em]">
             重生之贵女难求
           </h1>
           <p className="mt-1 text-[13px] tracking-[0.4em] text-white/80">第五章 · 初次交锋</p>

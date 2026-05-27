@@ -9,16 +9,16 @@ export const Route = createFileRoute("/huatangchun")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "画堂春 · 知乎剧本杀文游" },
-      { name: "description", content: "盐选长篇小说《画堂春》互动剧本杀，自由代入任意角色，AI 实时改编剧情。" },
+      { title: "雁回时 · 第五章 初次交锋" },
+      { name: "description", content: "盐选长篇小说《雁回时》互动剧本杀，自由代入任意角色，AI 实时改编剧情。" },
     ],
   }),
 });
 
 const STORY_CHAPTERS = [
-  { title: "第 1 幕：雪夜承宠", body: "雪落长街，温棠提灯独行，与失母的小皇子裴琰擦肩而过，一眼便记住了那双怯生生的眼睛。当夜陛下翻牌至她的寝宫，烛影摇红之间，竟轻声问她：可愿替朕，抚育三皇子？" },
-  { title: "第 2 幕：抚育之诺", body: "翌日圣旨下达，温棠晋封采桑宫主位，奉旨抚育三皇子裴琰。小小的孩子伏在她膝前怯怯唤了一声「母妃」，殿外炭火正暖，她将他拥入怀中——从此宫深似海，她不再是孤身一人。" },
-  { title: "第 3 幕：帝临采桑", body: "雪后初晴，陛下裴容亲临采桑宫。她奉上一盏亲手熬煮的红豆甜汤，热气氤氲间，他眉眼微动，赞了一句「合朕心意」。宫人们交换着了然的眼神——封妃之兆，已在不言之中。" },
+  { title: "第 1 幕：母丧未远，新人登门", body: "庄府的白幡尚未撤尽，周氏便携女庄语山堂而皇之地踏进了大门。一身桃色长裙，红宝石头面，富贵逼人。庄仕洋亲自相迎，命寒雁出来「认一认这位姐姐」——可她身上那股浓重的香粉味，先一步飘进了寒雁的鼻尖。" },
+  { title: "第 2 幕：跪与不跪，皆是交锋", body: "寒雁一句「她身上有香粉的味道」，惹得庄仕洋拍案叫她下跪。庄语山假意求情，反被父亲斥责。寒雁顺势起身，握住对方的手温柔致歉，又「好心」赠她一盒「连丫鬟都用得的香膏」——周氏的脸色，霎时由红转白。" },
+  { title: "第 3 幕：狗洞之外，有人含笑", body: "寒雁借丧期律例三言两语逼退周氏母女，转身换上丫鬟粗布衣裳，带着汲蓝姝红从清秋苑后墙的狗洞钻出府去。她不知道的是，外墙不远处，一个叼着草梗的陌生男子正含笑望着她的背影——「有意思。」" },
 ];
 
 function HuatangChun() {
@@ -98,11 +98,12 @@ function HuatangChun() {
         {/* Title block — horizontal */}
         <div className="relative z-10 mt-6 px-6">
           <h1 className="font-brush text-[72px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)] tracking-[0.05em]">
-            画堂春
+            雁回时
           </h1>
+          <p className="mt-1 text-[13px] tracking-[0.4em] text-white/80">第五章 · 初次交锋</p>
 
           <div className="mt-4 space-y-1 text-[13px] leading-relaxed text-white/85">
-            <p>一卷画堂春，半阙血色词。</p>
+            <p>母丧之日，外室登堂。重生而来的庄寒雁，与那对母女的第一次正面交锋。</p>
           </div>
 
           <div className="mt-4 flex items-center gap-3 text-[11px] text-white/80">
@@ -250,7 +251,7 @@ function HuatangChun() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4" style={{ color: "var(--rouge)" }} />
-                <h3 className="font-brush text-2xl text-neutral-900">画堂春 · 世界观</h3>
+                <h3 className="font-brush text-2xl text-neutral-900">雁回时 · 世界观</h3>
               </div>
               <button
                 onClick={() => setShowWorld(false)}
@@ -263,37 +264,37 @@ function HuatangChun() {
 
             <div className="mt-5 space-y-5 text-[13px] leading-7 text-neutral-700">
               <p className="rounded-xl bg-black/[0.03] px-4 py-3 text-[12px] italic text-neutral-600">
-                「一卷画堂春，半阙血色词。烟雨深处，是谁的故人，又是谁的劫数。」
+                「雁过留声，人过留名。这一回，她记得清清楚楚。」
               </p>
 
               <div>
-                <h4 className="font-display text-[14px] font-medium text-neutral-900">大梁王朝</h4>
+                <h4 className="font-display text-[14px] font-medium text-neutral-900">大宗朝 · 镇国侯府</h4>
                 <p className="mt-1.5">
-                  时值大梁某年，边关有战事，内里有暗潮。赵将军执掌兵权，赫赫战功成为后宫倚仗；朝堂之上，立储未定，皇子年幼却已暗流涌动。表面是太平盛世、龙脉绵延，实则前朝后宫一线牵——一位将军的胜仗、一名妃嫔的"暴毙"、一道翻旧账的圣旨，都能让朝局倾覆。
+                  大宗朝当今圣上最重仁爱孝义，律例森严：丧期三月内不得着艳色，违者罢官流放。京中世家百年清誉系于一线，最忌行差踏错。镇国侯庄府袭爵承业，外有官声体面，内里却早已被外室周氏一双勾魂的眼睛搅得乱了纲常。
                 </p>
               </div>
 
               <div>
-                <h4 className="font-display text-[14px] font-medium text-neutral-900">采桑宫畔</h4>
+                <h4 className="font-display text-[14px] font-medium text-neutral-900">清秋苑里 · 庄寒雁</h4>
                 <p className="mt-1.5">
-                  裴容，大梁帝王，喜怒不形于色，后宫子嗣不丰，膝下仅有四位皇子。他厌恶外戚专权，也疲于美人争宠——他真正缺的，是一处可以做"寻常父亲"的地方。曾经盛宠的周贵妃以子争宠、媚药惑君，落得贬为庶人、暴毙宫外；中宫赵皇后膝下无子，借兄长军功执掌六宫，持铰剪修剪每一根不安分的枝丫。后宫如御园，花儿争奇斗艳，谁更得宠，谁就能多活一日。
+                  庄寒雁，镇国侯庄仕洋之嫡长女。母亲温婉柔顺，从不与人争长短；父亲冷淡，多年在外头养着外室母女而她毫不知情。前世，她信了继母的笑、信了「好姐姐」的眼泪，眼看着母亲被算计而亡、弟弟被夺走、自己也走到了那个凄惨结局。再睁眼，竟回到了母丧未远、周氏母女初登庄府的那一天。
                 </p>
               </div>
 
               <div>
-                <h4 className="font-display text-[14px] font-medium text-neutral-900">温棠其人</h4>
+                <h4 className="font-display text-[14px] font-medium text-neutral-900">第五章 · 初次交锋</h4>
                 <p className="mt-1.5">
-                  温棠，太仓知州之女，母亲出身望江楼厨娘。入宫十年，无宠无依，亲生子裴瑜被抱去坤宁宫养大，六岁便不肯认她。她不会争宠，不擅算计，只随大流站队，以求自保。她唯一会做的，是母亲教的红豆甜汤、枣花糕、糖画与毽子——是寻常人家的暖。这份"蠢"，在尔虞我诈的深宫中，反而成了独一无二的东西。
+                  这一日，周氏盛装登门，庄语山娇声唤她「妹妹」。前世的寒雁会怯怯地笑着应下，今生的她，却把每一句话都化作钝刀——香粉、丧期、律例、丫鬟用的香膏，一句一句，剜在周氏母女最痛的地方。父亲庄仕洋的脸色变了又变，周氏第一次明白：这个嫡女，与从前不一样了。
                 </p>
               </div>
 
               <div>
                 <h4 className="font-display text-[14px] font-medium text-neutral-900">你的故事</h4>
                 <p className="mt-1.5">
-                  在这则故事里，你可以是任何人——是温棠，以一颗慈心在虎狼之地误打误撞活出生路；是裴琰，九岁被生母当作争宠工具，亲眼看着她吐血而亡，以为自己再不会哭，直到那块温热的枣花糕、那碗熬到深夜的汤药、那片烤得暖甜的橘瓣；也可以是裴瑜，聪明早慧，被皇后养大，踩着生母讨好养母，最后输给一个"不配"的女人；甚至是裴容，一位在权臣与美色之间疲惫的君王，某个雪夜推开窗，看见有人回头朝他笑。
+                  在这则故事里，你可以是任何人——是带着前世记忆归来的庄寒雁，以一双慧眼一张利口在虎狼之府里步步反扑；是装柔示弱、却被识破伪装的周氏；是骄矜娇气、第一次撞上铁板的庄语山；是只在意官声仕途的庄仕洋；也可以是那个叼着草梗、在外墙边含笑看戏的陌生人。
                 </p>
                 <p className="mt-3">
-                  每一次选择，都会改写画堂之下那段关于"娘"与"家"的故事——独一无二的，你的画堂春。
+                  每一次选择，都会改写这场「初次交锋」的胜负——独一无二的，你的雁回时。
                 </p>
               </div>
             </div>

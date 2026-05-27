@@ -10,7 +10,7 @@ export const Route = createFileRoute("/huatangchun")({
   head: () => ({
     meta: [
       { title: "雁回时 · 第五章 初次交锋" },
-      { name: "description", content: "盐选长篇小说《雁回时》互动剧本杀，自由代入任意角色，AI 实时改编剧情。" },
+      { name: "description", content: "长篇故事《雁回时》互动剧本杀，自由代入任意角色，AI 实时改编剧情。" },
     ],
   }),
 });
@@ -111,7 +111,7 @@ function HuatangChun() {
             <span className="h-3 w-px bg-white/30" />
             <span className="flex items-center gap-1"><Clock className="h-3 w-3" />约 90 分钟</span>
             <span className="h-3 w-px bg-white/30" />
-            <span>知乎盐选 · 改编</span>
+            <span>原著改编</span>
           </div>
         </div>
 

@@ -96,7 +96,7 @@ function HuatangChun() {
         </div>
 
         {/* Title block — horizontal */}
-        <div className="relative z-10 mt-6 px-6">
+        <div className="relative z-10 -mt-2 px-3">
           <h1 className="font-brush text-[72px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)] tracking-[0.05em]">
             雁回时
           </h1>

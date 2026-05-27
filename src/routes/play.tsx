@@ -143,7 +143,7 @@ function Play() {
             {currentNode?.act_title || "加载中…"}
           </div>
           <div className="font-brush text-[18px] tracking-[0.2em]">
-            {currentNode?.scene_name || "画堂春"}
+            {currentNode?.scene_name || "雁回时"}
           </div>
         </div>
         <div className="flex items-center gap-1.5">

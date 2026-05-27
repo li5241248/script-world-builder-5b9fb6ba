@@ -138,7 +138,7 @@ function Play() {
         >
           <ChevronLeft size={18} />
         </button>
-        <div className="pointer-events-none absolute left-[46%] top-10 -translate-x-1/2 text-center">
+        <div className="pointer-events-none absolute left-1/2 top-12 -translate-x-1/2 text-center">
           <div className="text-[11px] tracking-[0.3em] text-white/80">
             {currentNode?.act_title || "加载中…"}
           </div>

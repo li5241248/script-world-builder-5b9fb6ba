@@ -1,9 +1,8 @@
-import wentang from "@/assets/char-wentang.jpg";
-import peirong from "@/assets/char-peirong.jpg";
-import peiyan from "@/assets/char-peiyan.jpg";
-import peiyu from "@/assets/char-peiyu.jpg";
-import mama from "@/assets/char-mama.jpg";
-import empress from "@/assets/char-empress.jpg";
+import hanyanImg from "@/assets/char-hanyan.jpg";
+import zhouyiImg from "@/assets/char-zhouyi.jpg";
+import zhuangsyImg from "@/assets/char-zhuangsy.jpg";
+import yushanImg from "@/assets/char-yushan.jpg";
+import mysteryImg from "@/assets/char-mystery.jpg";
 
 export type Relation = { id: string; label: string };
 
@@ -28,7 +27,7 @@ export type Character = {
 
 export const CHARACTERS: Character[] = [
   {
-    id: "hanyan", name: "庄寒雁", role: "女主 · 侯门嫡女", gender: "女", age: 13, tag: "重生", img: wentang, played: 12483,
+    id: "hanyan", name: "庄寒雁", role: "女主 · 侯门嫡女", gender: "女", age: 13, tag: "重生", img: hanyanImg, played: 12483,
     desc: "庄府嫡长女，母亲新丧。一朝重生回少年时，誓要看清府中虎狼，为母亲讨一个公道。",
     motto: "「重要不等于必要，这个道理，她总有一天会明白。」",
     identity: "镇国侯庄府嫡长女，前世惨死，今生重生归来",
@@ -40,11 +39,10 @@ export const CHARACTERS: Character[] = [
       { id: "zhouyi", label: "继母" },
       { id: "zhuangsy", label: "父女" },
       { id: "yushan", label: "假姐妹" },
-      { id: "jilan", label: "心腹" },
     ],
   },
   {
-    id: "zhouyi", name: "周氏", role: "庄府继室", gender: "女", age: 32, tag: "千娇百媚", img: empress, played: 9821,
+    id: "zhouyi", name: "周氏", role: "庄府继室", gender: "女", age: 32, tag: "千娇百媚", img: zhouyiImg, played: 9821,
     desc: "庄仕洋外室出身，母亲一去便登堂入室。柳眉细眼，笑里藏刀，最善借男人的疼宠杀人于无形。",
     motto: "「妾身也是心疼雁姐儿，这孩子就是心善。」",
     identity: "庄仕洋多年外室，今奉旨扶正",
@@ -59,7 +57,7 @@ export const CHARACTERS: Character[] = [
     ],
   },
   {
-    id: "zhuangsy", name: "庄仕洋", role: "镇国侯", gender: "男", age: 40, tag: "庄府家主", img: peirong, played: 4216,
+    id: "zhuangsy", name: "庄仕洋", role: "镇国侯", gender: "男", age: 40, tag: "庄府家主", img: zhuangsyImg, played: 4216,
     desc: "袭爵承业，最在意官声体面。妻子尸骨未寒，便急着把外室母女接进府中。",
     motto: "「这里没你说话的地步。」",
     identity: "镇国侯，庄府家主，朝中三品",
@@ -74,7 +72,7 @@ export const CHARACTERS: Character[] = [
     ],
   },
   {
-    id: "yushan", name: "庄语山", role: "周氏长女", gender: "女", age: 14, tag: "假千金", img: mama, played: 3580,
+    id: "yushan", name: "庄语山", role: "周氏长女", gender: "女", age: 14, tag: "假千金", img: yushanImg, played: 3580,
     desc: "周氏所出，自小养在外院。一进府便要做这庄府名正言顺的大小姐，谁知一开口便撞上了寒雁的刀。",
     motto: "「总有一天，这府里千金的位置，会是我庄语山的。」",
     identity: "周氏长女，新入庄府",
@@ -89,20 +87,7 @@ export const CHARACTERS: Character[] = [
     ],
   },
   {
-    id: "jilan", name: "汲蓝 & 姝红", role: "清秋苑双婢", gender: "女", age: 15, tag: "心腹", img: empress, played: 2914,
-    desc: "汲蓝爽利藏不住话，姝红寡言极有分寸。一动一静，是寒雁在这虎狼之府里仅剩的两只手。",
-    motto: "「小姐，那个周夫人，看着就不是什么好人。」",
-    identity: "庄寒雁贴身丫鬟，清秋苑双婢",
-    personality: "汲蓝心直口快，姝红冷静持重",
-    skill: "通风报信，护主周全",
-    secret: "姝红的来历，远比一个普通丫鬟要复杂",
-    story: "她们一个跳脱、一个沉静，从小陪着寒雁长大。前世她们都没能护住自家小姐，今生再被带在身边，便决心连命也要替她看着。寒雁要钻狗洞出府，汲蓝高兴得几乎跳起来，姝红只是皱了皱眉，把银子收得更紧——这一次，她们要陪着小姐，走一条与从前完全不同的路。",
-    relations: [
-      { id: "hanyan", label: "主仆" },
-    ],
-  },
-  {
-    id: "moshen", name: "墙外之人", role: "神秘男子", gender: "男", age: 22, tag: "局外人", img: peiyu, played: 1207,
+    id: "moshen", name: "墙外之人", role: "神秘男子", gender: "男", age: 22, tag: "局外人", img: mysteryImg, played: 1207,
     desc: "庄府外墙边一个含着草梗的陌生身影，看见有人钻狗洞，竟笑出了声——「有意思。」",
     motto: "「庄府上的丫头真奇怪，放着好好的大门不走，偏爱钻狗洞。」",
     identity: "身份不明，常在京中游走",

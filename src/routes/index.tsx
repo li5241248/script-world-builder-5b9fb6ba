@@ -14,8 +14,8 @@ export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "画堂春 · 盐选互动文游" },
-      { name: "description", content: "知乎盐选 AI 互动文游《画堂春》，自由代入角色，每个选择都改写故事。" },
+      { title: "画堂春 · 互动文游" },
+      { name: "description", content: "AI 互动文游《画堂春》，自由代入角色，每个选择都改写故事。" },
     ],
   }),
 });
@@ -76,8 +76,8 @@ function GameHub() {
               <ChevronLeft className="h-5 w-5 text-neutral-700" />
             </button>
             <div>
-              <div className="text-[10px] tracking-[0.3em] text-neutral-500">知乎 · 盐言故事</div>
-              <h1 className="font-brush text-2xl text-neutral-900">盐选 · 互动文游</h1>
+              <div className="text-[10px] tracking-[0.3em] text-neutral-500">互动故事</div>
+              <h1 className="font-brush text-2xl text-neutral-900">互动文游</h1>
             </div>
           </div>
           <button className="grid h-9 w-9 place-items-center rounded-full bg-black/[0.05]" aria-label="通知">
@@ -202,7 +202,7 @@ function GameHub() {
             <span className="text-[12px] font-medium text-neutral-900">什么是 AI 互动文游？</span>
           </div>
           <p className="mt-2 text-[12px] leading-6 text-neutral-600">
-            盐选互动文游基于知乎盐选长篇故事改编，由 AI 实时生成剧情走向。你可以自由代入任意角色，每一次选择都将塑造一个独属于你的结局。
+            互动文游基于长篇故事改编，由 AI 实时生成剧情走向。你可以自由代入任意角色，每一次选择都将塑造一个独属于你的结局。
           </p>
         </div>
       </section>

@@ -9,8 +9,8 @@ export const Route = createFileRoute("/huatangchun")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "雁回时 · 第五章 初次交锋" },
-      { name: "description", content: "长篇故事《雁回时》互动剧本杀，自由代入任意角色，AI 实时改编剧情。" },
+      { title: "重生之贵女难求 · 第五章 初次交锋" },
+      { name: "description", content: "长篇故事《重生之贵女难求》互动剧本杀，自由代入任意角色，AI 实时改编剧情。" },
     ],
   }),
 });
@@ -98,7 +98,7 @@ function HuatangChun() {
         {/* Title block — horizontal */}
         <div className="relative z-10 mt-6 px-6">
           <h1 className="font-brush text-[72px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)] tracking-[0.05em]">
-            雁回时
+            重生之贵女难求
           </h1>
           <p className="mt-1 text-[13px] tracking-[0.4em] text-white/80">第五章 · 初次交锋</p>
 
@@ -251,7 +251,7 @@ function HuatangChun() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4" style={{ color: "var(--rouge)" }} />
-                <h3 className="font-brush text-2xl text-neutral-900">雁回时 · 世界观</h3>
+                <h3 className="font-brush text-2xl text-neutral-900">重生之贵女难求 · 世界观</h3>
               </div>
               <button
                 onClick={() => setShowWorld(false)}
@@ -294,7 +294,7 @@ function HuatangChun() {
                   在这则故事里，你可以是任何人——是带着前世记忆归来的庄寒雁，以一双慧眼一张利口在虎狼之府里步步反扑；是装柔示弱、却被识破伪装的周氏；是骄矜娇气、第一次撞上铁板的庄语山；是只在意官声仕途的庄仕洋；也可以是那个叼着草梗、在外墙边含笑看戏的陌生人。
                 </p>
                 <p className="mt-3">
-                  每一次选择，都会改写这场「初次交锋」的胜负——独一无二的，你的雁回时。
+                  每一次选择，都会改写这场「初次交锋」的胜负——独一无二的，你的重生之贵女难求。
                 </p>
               </div>
             </div>

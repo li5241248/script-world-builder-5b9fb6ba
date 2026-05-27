@@ -35,8 +35,8 @@ export const Route = createFileRoute("/play")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "游戏中 · 雁回时" },
-      { name: "description", content: "实时对话 · 雁回时" },
+      { title: "游戏中 · 画堂春" },
+      { name: "description", content: "实时对话 · 画堂春" },
     ],
   }),
 });
@@ -229,7 +229,7 @@ function Play() {
               开启沉浸体验
             </div>
             <p className="text-[12px] leading-relaxed text-white/70 mb-5">
-              建议开启声音，配合环境音效与角色配音，<br />让你更深入这场雁回时的故事。
+              建议开启声音，配合环境音效与角色配音，<br />让你更深入这场画堂春的故事。
             </p>
             <div className="flex gap-2">
               <button

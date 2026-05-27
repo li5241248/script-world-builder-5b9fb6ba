@@ -80,7 +80,7 @@ function HuatangChun() {
     <div className="relative h-full overflow-y-auto pb-32 text-foreground no-scrollbar">
       {/* HERO */}
       <section className="relative h-[68vh] min-h-[600px] w-full overflow-hidden">
-        <img src={heroImg} alt="雁回时世界" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={heroImg} alt="画堂春世界" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 88%, #ffffff 100%)" }} />
 
         {/* Top bar */}
@@ -96,7 +96,7 @@ function HuatangChun() {
         </div>
 
         {/* Title block — horizontal */}
-        <div className="relative z-10 -mt-2 px-3">
+        <div className="relative z-10 mt-6 px-6">
           <h1 className="font-brush text-[72px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)] tracking-[0.05em]">
             雁回时
           </h1>
@@ -218,7 +218,7 @@ function HuatangChun() {
             <span className="text-[12px] font-medium text-neutral-900">AI 动态剧情</span>
           </div>
           <p className="mt-2 text-[12px] leading-6 text-neutral-600">
-            你的每一个选择，都将由 AI 实时改写，与他人的故事彼此交错——同一卷《雁回时》，没有两场相同的结局。
+            你的每一个选择，都将由 AI 实时改写，与他人的故事彼此交错——同一卷《画堂春》，没有两场相同的结局。
           </p>
         </div>
       </section>

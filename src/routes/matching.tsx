@@ -8,7 +8,7 @@ export const Route = createFileRoute("/matching")({
   component: MatchingPage,
   head: () => ({
     meta: [
-      { title: "匹配中 · 雁回时" },
+      { title: "匹配中 · 画堂春" },
       { name: "description", content: "正在为你寻找入梦的旅人…" },
     ],
   }),
@@ -58,7 +58,7 @@ function Matching() {
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-8">
         {/* Brush title - rendered as white via CSS mask */}
         <div
-          aria-label="雁回时"
+          aria-label="画堂春"
           role="img"
           className="h-[260px] w-[200px]"
           style={{

@@ -1,5 +1,5 @@
 /**
- * 画堂春 - 游戏 API 客户端
+ * 雁回时 - 游戏 API 客户端
  * 对接后端 FastAPI + WebSocket
  */
 

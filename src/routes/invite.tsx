@@ -7,8 +7,8 @@ export const Route = createFileRoute("/invite")({
   component: InvitePage,
   head: () => ({
     meta: [
-      { title: "邀请队友 · 画堂春" },
-      { name: "description", content: "邀请 3-6 位玩家共入画堂春。" },
+      { title: "邀请队友 · 雁回时" },
+      { name: "description", content: "邀请 3-6 位玩家共入雁回时。" },
     ],
   }),
 });

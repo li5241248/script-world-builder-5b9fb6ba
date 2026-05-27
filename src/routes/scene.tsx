@@ -10,7 +10,7 @@ export const Route = createFileRoute("/scene")({
   component: ScenePage,
   head: () => ({
     meta: [
-      { title: "第一幕 · 画堂春" },
+      { title: "第一幕 · 雁回时" },
       { name: "description", content: "入梦画堂，开启你的角色对话。" },
     ],
   }),

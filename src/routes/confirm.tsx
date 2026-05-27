@@ -8,7 +8,7 @@ export const Route = createFileRoute("/confirm")({
   component: ConfirmPage,
   head: () => ({
     meta: [
-      { title: "确认信息 · 画堂春" },
+      { title: "确认信息 · 雁回时" },
       { name: "description", content: "确认队友与剧本，准备开始游戏。" },
     ],
   }),
@@ -33,11 +33,11 @@ function Confirm() {
       {/* Script card */}
       <div className="mt-4 flex gap-3 rounded-2xl border border-black/10 bg-neutral-50 p-3">
         <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl">
-          <img src={heroImg} alt="画堂春" className="h-full w-full object-cover" />
+          <img src={heroImg} alt="雁回时" className="h-full w-full object-cover" />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <span className="font-brush text-[18px] text-neutral-900">画堂春</span>
+            <span className="font-brush text-[18px] text-neutral-900">雁回时</span>
             <span
               className="rounded-md px-1.5 py-0.5 text-[9px] text-white"
               style={{ background: "var(--gradient-rouge)" }}

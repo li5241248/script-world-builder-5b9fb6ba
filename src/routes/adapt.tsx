@@ -7,7 +7,7 @@ import heroImg from "@/assets/hero-huatangchun.jpg";
 export const Route = createFileRoute("/adapt")({
   component: AdaptPage,
   head: () => ({
-    meta: [{ title: "改编工作台 · 画堂春" }],
+    meta: [{ title: "改编工作台 · 雁回时" }],
   }),
 });
 
@@ -17,7 +17,7 @@ const STEPS = [
   { label: "构建世界观与时间线", detail: "大梁开元年间 · 采桑宫" },
   { label: "生成可代入角色卡", detail: "6 位可玩角色档案" },
   { label: "铺设分支剧情与结局", detail: "AI 实时改编中" },
-  { label: "完成互动文游打包", detail: "《画堂春》已就绪" },
+  { label: "完成互动文游打包", detail: "《雁回时》已就绪" },
 ];
 
 function AdaptPage() {
@@ -53,7 +53,7 @@ function AdaptPage() {
         {/* Hero cover with shimmer */}
         <section className="px-5">
           <div className="relative overflow-hidden rounded-3xl">
-            <img src={heroImg} alt="画堂春" className="h-[200px] w-full object-cover" />
+            <img src={heroImg} alt="雁回时" className="h-[200px] w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0b14] via-[#0d0b14]/30 to-transparent" />
             {!done && (
               <div className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_2.4s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -63,7 +63,7 @@ function AdaptPage() {
                 <Sparkles className="h-3.5 w-3.5" />
                 <span className="text-[10px] tracking-[0.3em]">知乎 · 盐言 AI</span>
               </div>
-              <h1 className="font-brush text-3xl text-white drop-shadow">画堂春 · 改编中</h1>
+              <h1 className="font-brush text-3xl text-white drop-shadow">雁回时 · 改编中</h1>
             </div>
           </div>
         </section>

@@ -7,7 +7,7 @@ import sceneHuatang from "@/assets/scene-huatang.jpg";
 
 export const Route = createFileRoute("/adapt-preview")({
   component: AdaptPreviewPage,
-  head: () => ({ meta: [{ title: "改编预览 · 画堂春" }] }),
+  head: () => ({ meta: [{ title: "改编预览 · 雁回时" }] }),
 });
 
 type Tab = "chapters" | "characters" | "scenes";
@@ -18,7 +18,7 @@ const INITIAL_CHAPTERS = [
   { title: "废妃药引", detail: "周贵妃饮下那盏汤，留下九岁的裴琰。" },
   { title: "改记名分", detail: "裴琰被记于温棠名下，半盏药里的橘瓣甜。" },
   { title: "凤印翻案", detail: "赵将军溺亡，旧案翻出，皇后凤印松动。" },
-  { title: "画堂春深", deta: "温棠册后，裴琰登基前夜的最后一碗汤。", },
+  { title: "雁回时深", deta: "温棠册后，裴琰登基前夜的最后一碗汤。", },
 ].map((c, i) => ({ id: `c${i + 1}`, title: c.title, detail: (c as { detail?: string; deta?: string }).detail ?? (c as { deta: string }).deta }));
 
 const INITIAL_SCENES = [
@@ -64,7 +64,7 @@ function AdaptPreviewPage() {
 
         {/* Hint */}
         <div className="mx-5 mt-4 rounded-xl border border-white/5 bg-white/[0.04] px-3 py-2.5 text-[11px] text-white/60 leading-relaxed">
-          AI 已为《画堂春》拆出章节、人物与场景。你可以逐项编辑、重生成图，再确认进入文游。
+          AI 已为《雁回时》拆出章节、人物与场景。你可以逐项编辑、重生成图，再确认进入文游。
         </div>
 
         {/* Tabs */}

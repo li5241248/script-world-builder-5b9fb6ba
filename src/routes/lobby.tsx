@@ -20,7 +20,7 @@ export const Route = createFileRoute("/lobby")({
   }),
 });
 
-const ORIGINAL_SCRIPT = { id: "origin", title: "原著剧本", desc: "忠于盐选原作，完整呈现", premium: false };
+const ORIGINAL_SCRIPT = { id: "origin", title: "原著剧本", desc: "忠于原作，完整呈现", premium: false };
 
 const TAGS = [
   { id: "sweet", label: "甜宠" },

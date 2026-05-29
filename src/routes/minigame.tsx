@@ -970,16 +970,47 @@ function DeductionPanel({ collected, onClose, onWin }: {
         {collected.size === 0 ? (
           <div className="text-[12px]" style={{ color: `${GOLD}88` }}>尚无线索，先去寻访各处罢。</div>
         ) : (
-          <div className="grid grid-cols-3 gap-2">
+          <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
             {[...collected].map((id) => {
               const c = CLUES[id];
               const on = picked.has(id);
               return (
-                <button key={id} onClick={() => togglePick(id)}
-                  className="rounded-lg p-2 text-center active:scale-95"
-                  style={{ background: on ? `${GOLD}33` : "#1a1410", border: `1px solid ${on ? GOLD : `${GOLD}44`}` }}>
-                  <div className="text-2xl">{c.icon}</div>
-                  <div className="mt-1 truncate text-[10px]" style={{ color: GOLD }}>{c.name}</div>
+                <button
+                  key={id}
+                  onClick={() => togglePick(id)}
+                  className="relative shrink-0 text-left active:scale-[0.98]"
+                  style={{
+                    width: 180,
+                    borderRadius: 10,
+                    padding: 10,
+                    background: "linear-gradient(180deg,#1a1208 0%,#0d0805 100%)",
+                    border: `1px solid ${on ? GOLD : `${GOLD}44`}`,
+                    boxShadow: on
+                      ? `0 0 0 1px ${GOLD}55, 0 0 14px ${GOLD}44`
+                      : "inset 0 0 0 1px rgba(0,0,0,0.4)",
+                  }}
+                >
+                  <div className="flex gap-2.5">
+                    <div
+                      className="flex h-12 w-12 shrink-0 items-center justify-center text-2xl"
+                      style={{ background: "#2a1f15", border: `1px solid ${GOLD}55`, borderRadius: 4 }}
+                    >{c.icon}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-1">
+                        <div className="truncate text-[13px]" style={{ color: GOLD }}>{c.name}</div>
+                        <span
+                          className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full"
+                          style={{
+                            background: on ? GOLD : "transparent",
+                            border: `1.5px solid ${GOLD}`,
+                          }}
+                        >
+                          {on && <Check size={10} strokeWidth={3} color="#1a1208" />}
+                        </span>
+                      </div>
+                      <div className="mt-1 text-[10.5px] leading-snug line-clamp-3" style={{ color: `${GOLD}aa` }}>{c.short}</div>
+                    </div>
+                  </div>
                 </button>
               );
             })}
@@ -988,19 +1019,15 @@ function DeductionPanel({ collected, onClose, onWin }: {
       </Section>
 
       {hint && (
-        <div className="mt-3 rounded-lg px-3 py-2 text-[12px]" style={{ background: "#3a1f15", border: `1px solid ${GOLD}66`, color: "#f5d6a8" }}>
+        <div className="mt-3 rounded-lg px-3 py-2 text-[12px]" style={{ background: "#2a1610", border: `1px solid ${GOLD}66`, color: "#f5d6a8" }}>
           {hint}
         </div>
       )}
 
-      <button
-        onClick={submit}
-        disabled={!canSubmit}
-        className="mt-4 w-full rounded-full py-3 text-[14px] font-medium transition disabled:opacity-40"
-        style={{ background: GOLD, color: "#1a1410" }}
-      >
-        提交推理
-      </button>
+      <div className="mt-5">
+        <GoldButton onClick={submit} disabled={!canSubmit}>提交推理</GoldButton>
+      </div>
+
     </Drawer>
   );
 }

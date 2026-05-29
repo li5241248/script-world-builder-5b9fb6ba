@@ -245,29 +245,55 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <div class="overlay-screen show" id="screenStory">
 <div class="s-area">
 
-<div class="s-icon">⚔️</div>
-<div class="s-title">王府御敌</div>
-<div class="s-sub">—— 双剑合璧 · 共守家园 ——</div>
-
-<div class="story-box">
-<h3>📜 缘起</h3>
-<p>
-深夜子时，玄清王府被<span class="hl">神秘刺客组织</span>围困。
-府外火光冲天，数十名训练有素的刺客正层层渗透。
-</p><br>
-<p>
-<span class="nh">庄寒雁</span>手持梅花刺守在前殿，
-<span class="nf">傅云夕</span>在后堂布阵策应——二人虽相隔两地，
-却凭多年并肩的<span class="hl">心照不宣</span>遥相呼应。
-</p><br>
-<p>
-刺客一波强过一波，<span class="hl">技能有限，机会不多</span>。
-唯有两人<strong style="color:var(--t4)">同频选择、默契配合</strong>，
-以<strong style="color:var(--t4)">合璧之力</strong>方能击退强敌！
-</p>
+<div class="wf-header">
+  <div class="wf-swords"><span class="sw1">⚔</span><span class="sw2">⚔</span></div>
+  <h1 class="wf-title">王府御敌</h1>
+  <div class="wf-subtitle">双剑合璧 · 共守家园</div>
 </div>
 
-<button class="btn-action" id="btnToRules">了解战法 ▶</button>
+<div class="wf-scroll">
+  <div class="wf-wave">
+    <span class="wf-wave-label">波次</span>
+    <div class="wf-wave-badge">1/5</div>
+    <div class="wf-wave-dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <h3><span class="seal"></span>缘起</h3>
+  <p>
+    深夜子时，玄清王府被刺客团团围困，杀机四伏。<br>
+    <span class="nh">庄寒雁</span>守前殿，以智谋布局，阻敌破阵；<br>
+    <span class="nf">傅云夕</span>布后堂，以剑法御敌，护卫中枢。<br>
+    二人隔空配合，心意相通，<span class="hl">双剑合璧</span>，方能共守家园，揭开隐藏在迷雾中的身世之谜！
+  </p>
+</div>
+
+<div class="wf-warn">◆ 敌袭预警 ◆</div>
+
+<div class="wf-map">
+  <span class="wf-enemy" style="top:18%;left:8%;">👤</span>
+  <span class="wf-enemy" style="top:72%;left:6%;">👤</span>
+  <span class="wf-enemy" style="top:22%;right:8%;">👤</span>
+  <span class="wf-enemy" style="top:70%;right:10%;">👤</span>
+  <span class="wf-enemy" style="bottom:6%;left:46%;">👤</span>
+  <div class="wf-hall left">
+    <div class="wf-portrait">🌸</div>
+    <div class="wf-tag">前殿</div>
+    <div class="wf-name">庄寒雁</div>
+    <div class="wf-sword">⚔</div>
+  </div>
+  <div class="wf-hall right">
+    <div class="wf-portrait">🗡</div>
+    <div class="wf-tag">后堂</div>
+    <div class="wf-name">傅云夕</div>
+    <div class="wf-sword">⚔</div>
+  </div>
+</div>
+
+<button class="wf-cta" id="btnToRules">了解战法 ▶</button>
+
+<div class="wf-foot">
+  刺客一波强过一波，技能有限，机会不多。<br>
+  唯有两人同频选择、默契配合，以合璧之力方能击退强敌！
+</div>
 
 </div>
 </div>

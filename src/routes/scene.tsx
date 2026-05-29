@@ -186,6 +186,8 @@ export function Scene() {
     <div className="relative h-full overflow-hidden bg-neutral-900 text-white">
       {/* full-bleed scene background */}
       <img src={sceneBg} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      {/* 背景蒙层 */}
+      <div className="absolute inset-0 bg-black/20" />
       {/* soft top + bottom vignette only — keep image clear */}
       <div
         className="absolute inset-0"

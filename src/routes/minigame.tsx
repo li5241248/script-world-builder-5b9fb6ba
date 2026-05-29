@@ -118,13 +118,13 @@ const CLUES: Record<string, Clue> = {
   letter_mother: { id: "letter_mother", name: "娘亲遗信", icon: "📜", category: "书信", short: "母亲临终所留半残书信", full: "信纸已泛黄，落款被血迹遮蔽，依稀可辨「乔」字一角，似与外人通信。" },
   portrait_clue: { id: "portrait_clue", name: "画像疑点", icon: "🖼️", category: "证物", short: "幼时画像中容貌略异", full: "画中女童眉宇与庄仕洋夫妇皆不相像，反倒与传闻中东侯王少年面容有七分神似。" },
   // 芙蓉园
-  prescription: { id: "prescription", name: "安胎药方", icon: "📋", category: "文书", short: "出自王氏的旧药方", full: "药方上注明日期早于翰焰出生九月有余——药本是给王氏服用，却从未真正煎过。" },
+  prescription: { id: "prescription", name: "安胎药方", icon: "📋", category: "文书", short: "出自王氏的旧药方", full: "药方上注明日期早于寒雁出生九月有余——药本是给王氏服用，却从未真正煎过。" },
   pillow_clue: { id: "pillow_clue", name: "假孕枕头", icon: "🛏️", category: "证物", short: "中空塞布的孕枕", full: "枕中以软布与药包伪装腹隆，足见当年怀孕之事是一场精心安排。" },
   // 珙桐苑
   letter_zhou: { id: "letter_zhou", name: "周氏密信", icon: "📜", category: "书信", short: "周氏与外人密谋之信", full: "信中议及「掉换婴孩」「灭口接生婆」等语，字迹与庄府账房一致。" },
   poison_bottle: { id: "poison_bottle", name: "毒药瓶", icon: "💊", category: "证物", short: "残留鹤顶红的小瓷瓶", full: "瓶口磨损，曾多次开启，与陈妈妈所述「夫人忽病暴卒」时辰吻合。" },
   // 玄清王府
-  medical_record: { id: "medical_record", name: "吴太医医案", icon: "📖", category: "文书", short: "记载东侯王旧伤的医案", full: "案中详记东侯王二十年前胸前剑伤一道——而翰焰幼时亦曾梦呓提及「胸前长疤的爹爹」。" },
+  medical_record: { id: "medical_record", name: "吴太医医案", icon: "📖", category: "文书", short: "记载东侯王旧伤的医案", full: "案中详记东侯王二十年前胸前剑伤一道——而寒雁幼时亦曾梦呓提及「胸前长疤的爹爹」。" },
   // 顺昌武馆
   tangmen_token: { id: "tangmen_token", name: "唐门令牌", icon: "🗡️", category: "信物", short: "刻有「乔」字的唐门暗令", full: "令牌乃唐门嫡系所持，背面阴刻「乔」字小印，正是当年唐小乔的随身信物。" },
   // 城外破屋
@@ -132,16 +132,16 @@ const CLUES: Record<string, Clue> = {
   candle_clue: { id: "candle_clue", name: "烧残信纸", icon: "🕯️", category: "证物", short: "几片未燃尽的字纸", full: "依稀可辨「东侯」「孩儿」「托付」字样，似是当年托孤之信。" },
 
   // NPC 口供
-  clue_mother_love: { id: "clue_mother_love", name: "母怀深情", icon: "🕊️", category: "口供", short: "陈妈妈：王氏待翰焰视如己出", full: "陈妈妈说，王氏自始至终待翰焰极好，然临终竟低声唤她「焰儿，对不起娘亲，你不是……」" },
-  clue_father_cold: { id: "clue_father_cold", name: "父薄如纸", icon: "❄️", category: "口供", short: "陈妈妈：庄仕洋从不亲近翰焰", full: "庄仕洋表面慈父，私下从不抱翰焰，每见之必避——陈妈妈疑其早知翰焰非己出。" },
+  clue_mother_love: { id: "clue_mother_love", name: "母怀深情", icon: "🕊️", category: "口供", short: "陈妈妈：王氏待寒雁视如己出", full: "陈妈妈说，王氏自始至终待寒雁极好，然临终竟低声唤她「雁儿，对不起娘亲，你不是……」" },
+  clue_father_cold: { id: "clue_father_cold", name: "父薄如纸", icon: "❄️", category: "口供", short: "陈妈妈：庄仕洋从不亲近寒雁", full: "庄仕洋表面慈父，私下从不抱寒雁，每见之必避——陈妈妈疑其早知寒雁非己出。" },
   clue_abi_info: { id: "clue_abi_info", name: "破屋秘闻", icon: "🏚️", category: "口供", short: "陈妈妈：城外破屋是接生之地", full: "当年城外破屋中曾住一名年轻女子，由一位贵人秘密接生，事后下落不明。" },
   clue_fake_pregnancy: { id: "clue_fake_pregnancy", name: "假孕惊闻", icon: "🤫", category: "口供", short: "娇梦：王氏从未真孕", full: "娇梦低声说，当年王氏「有孕」期间，从不召太医诊脉，腹围每月却恰好递增——分明是装的。" },
-  clue_not_zhuang: { id: "clue_not_zhuang", name: "非庄府血", icon: "🩸", category: "口供", short: "娇梦：翰焰非庄府血脉", full: "娇梦言之凿凿：「府中老人都晓得，小姐不是庄家的血。」" },
-  clue_truth_birth: { id: "clue_truth_birth", name: "身世真相", icon: "🌑", category: "口供", short: "媚姨娘：翰焰乃顶替之婴", full: "媚姨娘在狱中泣道：「当年是我亲手将她从破屋抱回，换下王氏怀中早已夭折的孩儿。」" },
+  clue_not_zhuang: { id: "clue_not_zhuang", name: "非庄府血", icon: "🩸", category: "口供", short: "娇梦：寒雁非庄府血脉", full: "娇梦言之凿凿：「府中老人都晓得，小姐不是庄家的血。」" },
+  clue_truth_birth: { id: "clue_truth_birth", name: "身世真相", icon: "🌑", category: "口供", short: "媚姨娘：寒雁乃顶替之婴", full: "媚姨娘在狱中泣道：「当年是我亲手将她从破屋抱回，换下王氏怀中早已夭折的孩儿。」" },
   clue_donghou_father: { id: "clue_donghou_father", name: "东侯托孤", icon: "👑", category: "口供", short: "媚姨娘 & 杨琦：东侯王是生父", full: "东侯王被害前夕，将襁褓中的女儿托付亲信，由唐小乔诞下，藏于庄府以避祸。" },
-  clue_look_alike: { id: "clue_look_alike", name: "容貌相肖", icon: "👤", category: "口供", short: "吴太医：翰焰极似东侯王", full: "吴太医道：「我曾为东侯王诊治多年，小姐眉眼，与他年少时一般无二。」" },
+  clue_look_alike: { id: "clue_look_alike", name: "容貌相肖", icon: "👤", category: "口供", short: "吴太医：寒雁极似东侯王", full: "吴太医道：「我曾为东侯王诊治多年，小姐眉眼，与他年少时一般无二。」" },
   clue_massacre: { id: "clue_massacre", name: "东侯灭门", icon: "🔥", category: "口供", short: "吴太医：东侯一门遭灭", full: "二十年前，东侯王府一夜火起，满门皆丧，唯独不见幼女尸首。" },
-  clue_taihou_role: { id: "clue_taihou_role", name: "太后授意", icon: "🐉", category: "口供", short: "吴太医：太后早知一切", full: "太后命人封口，并暗中保留翰焰性命，似有更深谋划。" },
+  clue_taihou_role: { id: "clue_taihou_role", name: "太后授意", icon: "🐉", category: "口供", short: "吴太医：太后早知一切", full: "太后命人封口，并暗中保留寒雁性命，似有更深谋划。" },
   clue_tangmen: { id: "clue_tangmen", name: "唐门旧事", icon: "🗡️", category: "口供", short: "杨琦：唐门旧主姓乔", full: "唐门嫡女唐小乔，二十年前神秘失踪，江湖传言与东侯王有染。" },
   clue_donghou: { id: "clue_donghou", name: "东侯遗孤", icon: "🌒", category: "口供", short: "杨琦：东侯王留有一女", full: "「东侯王临终前确有一女，由唐小乔所诞，托付亲信带走。」" },
   clue_donghou_hero: { id: "clue_donghou_hero", name: "东侯忠烈", icon: "🏵️", category: "口供", short: "杨琦：东侯并非乱党", full: "东侯王生前忠君爱民，遭奸臣陷害「谋逆」之名，实为冤案。" },
@@ -164,7 +164,7 @@ const NPCS: Record<NpcId, Npc> = {
   chenmama: {
     id: "chenmama", name: "陈妈妈", title: "清秋苑老仆", avatar: "👵", portrait: matronPortrait, sceneId: "qingqiu",
     dialogues: [
-      { q: "夫人临终可有遗言？", a: "夫人最后一句，是抱着小姐喃喃道「焰儿，对不起娘亲，你不是……」便去了。", clueId: "clue_mother_love" },
+      { q: "夫人临终可有遗言？", a: "夫人最后一句，是抱着小姐喃喃道「雁儿，对不起娘亲，你不是……」便去了。", clueId: "clue_mother_love" },
       { q: "老爷待小姐如何？", a: "老爷表面慈父，私下却从不抱小姐，每见必避，怕是早知什么。", clueId: "clue_father_cold" },
       { q: "可知城外那间破屋？", a: "那破屋里头当年住过一位年轻女子，由贵人秘密接生，事毕便不见了。", clueId: "clue_abi_info" },
     ],
@@ -1349,7 +1349,7 @@ function VictoryView({ onExit }: { onExit: () => void }) {
         <div className="mt-3 font-brush text-[36px] tracking-[0.3em]" style={{ color: GOLD, textShadow: `0 0 24px ${GOLD}aa` }}>真 相 大 白</div>
         <div className="mx-auto mt-4 h-px w-32" style={{ background: `${GOLD}88` }} />
         <p className="mt-5 max-w-[320px] text-[13px] leading-relaxed" style={{ color: "#f5e6c8" }}>
-          庄翰焰之真名，乃东侯王与唐门嫡女唐小乔所诞遗孤。<br/>
+          庄寒雁之真名，乃东侯王与唐门嫡女唐小乔所诞遗孤。<br/>
           二十年前东侯王府遭奸臣构陷，一夜满门尽丧；<br/>
           唐小乔避祸城外破屋，诞下女儿即托亲信，由媚姨娘抱入庄府，
           以代王氏夭折之婴。<br/>

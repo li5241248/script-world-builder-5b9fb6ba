@@ -828,15 +828,6 @@ function DialogueView({ npc, usedIdx, collected, onPick, onClose }: {
         })}
       </div>
 
-      {lastClueGained && (
-        <div
-          key={lastClueGained}
-          className="absolute right-4 top-24 z-20 flex items-center gap-2 rounded-lg px-3 py-2 text-[12px]"
-          style={{ background: `${GOLD}22`, border: `1px solid ${GOLD}`, color: GOLD, animation: "slideInRight 0.4s ease-out" }}
-        >
-          <Sparkles size={14} /> 获得线索：{CLUES[lastClueGained].name}
-        </div>
-      )}
       <style>{`@keyframes slideInRight { from{transform:translateX(20px);opacity:0} to{transform:translateX(0);opacity:1} }`}</style>
     </div>
   );

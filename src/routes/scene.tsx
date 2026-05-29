@@ -375,6 +375,9 @@ export function Scene() {
 
       {/* 剧情回溯 */}
       {recapOpen && <RecapPanel onClose={() => setRecapOpen(false)} />}
+
+      {/* 玩家数值 */}
+      {statsOpen && <StatsPanel onClose={() => setStatsOpen(false)} /> }
     </div>
   );
 }

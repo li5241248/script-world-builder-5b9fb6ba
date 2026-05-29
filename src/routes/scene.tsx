@@ -217,11 +217,11 @@ export function Scene() {
         </div>
         <div className="flex items-center gap-1.5">
           <button
-            onClick={() => setRecapOpen(true)}
-            aria-label="剧情回溯"
+            onClick={() => setStatsOpen(true)}
+            aria-label="玩家数值"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur active:scale-95"
           >
-            <History size={16} />
+            <Gauge size={16} />
           </button>
           <button className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur active:scale-95">
             <MoreHorizontal size={18} />

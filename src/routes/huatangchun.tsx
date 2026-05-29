@@ -203,6 +203,18 @@ function HuatangChun() {
                 {open && (
                   <div className="animate-fade-up px-4 pb-4">
                     <p className="text-[13px] leading-7 text-neutral-600">{ch.body}</p>
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        onClick={() => {
+                          if (i === 4) navigate({ to: "/lobby" });
+                        }}
+                        disabled={i !== 4}
+                        className="rounded-full px-5 py-2 text-[12px] font-medium text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                        style={{ background: "var(--gradient-rouge)" }}
+                      >
+                        {i === 4 ? "进入此幕" : "敬请期待"}
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

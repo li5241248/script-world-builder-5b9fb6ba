@@ -343,6 +343,71 @@ function Game() {
           {toast}
         </div>
       )}
+
+      {showIntro && <IntroView onStart={() => setShowIntro(false)} />}
+    </div>
+  );
+}
+
+function IntroView({ onStart }: { onStart: () => void }) {
+  return (
+    <div className="absolute inset-0 z-[70] flex items-center justify-center bg-black px-4 py-6" style={{ animation: "fadeIn 0.4s ease-out" }}>
+      <div className="w-full max-w-[360px]">
+        <OrnateFrame padding={26}>
+          <div className="text-center">
+            <div className="mx-auto mb-4" style={{ width: 64, height: 64, filter: "drop-shadow(0 4px 10px rgba(201,169,110,0.45))" }}>
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="parch" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#e8d4a0" />
+                    <stop offset="100%" stopColor="#a98a52" />
+                  </linearGradient>
+                </defs>
+                <rect x="14" y="14" width="36" height="36" rx="2" fill="url(#parch)" stroke="#5a3a18" strokeWidth="1" />
+                <path d="M14 14 q-4 4 0 8 v28 q-4 -4 0 -8 z" fill="#8a6028" stroke="#3a2410" strokeWidth="0.8" />
+                <path d="M50 14 q4 4 0 8 v28 q4 -4 0 -8 z" fill="#8a6028" stroke="#3a2410" strokeWidth="0.8" />
+                <line x1="20" y1="24" x2="44" y2="24" stroke="#5a3a18" strokeWidth="0.8" />
+                <line x1="20" y1="30" x2="44" y2="30" stroke="#5a3a18" strokeWidth="0.8" />
+                <line x1="20" y1="36" x2="40" y2="36" stroke="#5a3a18" strokeWidth="0.8" />
+                <line x1="20" y1="42" x2="44" y2="42" stroke="#5a3a18" strokeWidth="0.8" />
+              </svg>
+            </div>
+
+            <div
+              className="font-brush text-[30px] tracking-[0.18em]"
+              style={{
+                background: "linear-gradient(180deg,#fbe5a8 0%,#d4a560 60%,#8a5a20 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.6))",
+              }}
+            >任务已触发</div>
+
+            <div className="mt-2 flex items-center justify-center gap-3 text-[13px]" style={{ color: `${GOLD}99` }}>
+              <span className="h-px w-6" style={{ background: `${GOLD}66` }} />
+              <span className="tracking-[0.2em]">揭开身世之谜</span>
+              <span className="h-px w-6" style={{ background: `${GOLD}66` }} />
+            </div>
+
+            <div className="mt-5 text-left text-[13.5px] leading-[2]" style={{ color: "#e8d4a8" }}>
+              <p>你（庄寒雁）近日接连发现怪异之处：</p>
+              <ul className="mt-3 space-y-1.5">
+                <li>· 母亲庄夫人（媚姨娘）对你态度冷淡，甚至刻意疏远；</li>
+                <li>· 父亲庄仕洋虽慈爱，却总在你问及身世时神色闪躲；</li>
+                <li>· 府中老仆偶然提及「侯爷」二字，又匆匆噤声……</li>
+              </ul>
+              <p className="mt-4" style={{ color: "#f5d896" }}>你心中疑窦丛生——我究竟是谁的孩子？</p>
+              <p className="mt-4">现在，任务<span style={{ color: GOLD }}>【揭开身世之谜】</span>已触发！</p>
+              <p className="mt-1" style={{ color: `${GOLD}cc` }}>调查场景、对话人物、收集线索，找出真相！</p>
+            </div>
+
+            <div className="mt-6">
+              <GoldButton onClick={onStart}>开 始 解 谜</GoldButton>
+            </div>
+          </div>
+        </OrnateFrame>
+      </div>
+      <style>{`@keyframes fadeIn { from{opacity:0} to{opacity:1} }`}</style>
     </div>
   );
 }

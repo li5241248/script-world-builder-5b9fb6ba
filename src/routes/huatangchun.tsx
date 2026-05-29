@@ -231,7 +231,7 @@ function HuatangChun() {
             <span className="text-[12px] font-medium text-neutral-900">AI 动态剧情</span>
           </div>
           <p className="mt-2 text-[12px] leading-6 text-neutral-600">
-            你的每一个选择，都将由 AI 实时改写，与他人的故事彼此交错——同一卷《画堂春》，没有两场相同的结局。
+            你的每一个选择，都将由 AI 实时改写，与他人的故事彼此交错——同一卷《重生之贵女难求》，没有两场相同的结局。
           </p>
         </div>
       </section>

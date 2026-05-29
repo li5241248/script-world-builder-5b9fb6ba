@@ -101,7 +101,7 @@ function HuatangChun() {
             重生之<br/>贵女难求
           </h1>
           <div className="mt-2 space-y-1 text-[13px] leading-relaxed text-white/85">
-            <p>侯门嫡女庄寒雁被继母与庶姐设计在大婚夜毒杀，重生回十二岁，一边步步为营复仇清算。</p>
+            <p>侯门嫡女庄寒雁被继母与庶姐设计在大婚夜毒杀，<br/>重生回十二岁，一边步步为营复仇清算。</p>
           </div>
 
           <div className="mt-4 flex items-center gap-3 text-[11px] text-white/80">

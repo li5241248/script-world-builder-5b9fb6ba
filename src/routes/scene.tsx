@@ -36,19 +36,18 @@ const INITIAL: Msg[] = [
 ];
 
 const ACTORS: Record<string, string> = {
-  peirong: "@玄夜听雪",
-  peiyan: "@少年执灯人",
-  peiyu: "@玉折",
-  empress: "@凤栖梧",
-  mama: "@老茶馆",
-  wentang: "@沐雨",
+  zhuangsy: "@玄夜听雪",
+  moshen: "@少年执灯人",
+  yushan: "@玉折",
+  zhouyi: "@凤栖梧",
+  hanyan: "@沐雨",
 };
 
 // 区分 AI Agent 与真人玩家
 const IS_HUMAN: Record<string, boolean> = {
-  wentang: true,
-  peirong: true,
-  peiyan: true,
+  hanyan: true,
+  zhuangsy: true,
+  moshen: true,
   // 其余角色默认 AI
 };
 

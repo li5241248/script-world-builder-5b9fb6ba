@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { ChevronLeft, Map as MapIcon, Paperclip, Puzzle, X, Check, Share2, Sparkles } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 

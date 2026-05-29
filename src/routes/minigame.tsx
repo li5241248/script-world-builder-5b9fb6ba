@@ -759,31 +759,122 @@ function CluePanel({ collected, onExpand, onClose }: {
   );
 }
 
+/* ============ Ornate UI primitives ============ */
+
+function OrnateFrame({ children, className, padding = 18 }: { children: React.ReactNode; className?: string; padding?: number }) {
+  return (
+    <div
+      className={className}
+      style={{
+        position: "relative",
+        background:
+          "radial-gradient(120% 80% at 50% 0%, #221913 0%, #110b07 60%, #080503 100%)",
+        border: `1px solid ${GOLD}`,
+        borderRadius: 14,
+        boxShadow: `0 24px 60px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(0,0,0,0.6)`,
+      }}
+    >
+      {/* inner double border */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 6,
+          border: `1px solid ${GOLD}66`,
+          borderRadius: 10,
+          pointerEvents: "none",
+        }}
+      />
+      {/* corner ornaments */}
+      {[
+        { t: 2, l: 2 }, { t: 2, r: 2 }, { b: 2, l: 2 }, { b: 2, r: 2 },
+      ].map((p, i) => (
+        <span
+          key={i}
+          style={{
+            position: "absolute",
+            top: p.t, left: p.l, right: p.r, bottom: p.b,
+            width: 14, height: 14,
+            background: GOLD,
+            transform: "rotate(45deg)",
+            opacity: 0.85,
+            boxShadow: `inset 0 0 0 1px #2a1a10`,
+          } as React.CSSProperties}
+        />
+      ))}
+      <div style={{ position: "relative", padding }}>{children}</div>
+    </div>
+  );
+}
+
+function GoldButton({
+  children, onClick, disabled, className,
+}: { children: React.ReactNode; onClick?: () => void; disabled?: boolean; className?: string }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`relative w-full py-3 text-[15px] font-medium tracking-[0.18em] transition active:scale-[0.98] disabled:opacity-40 ${className ?? ""}`}
+      style={{
+        background:
+          "linear-gradient(180deg,#f5dca0 0%,#dcb472 35%,#a87a36 75%,#7a521e 100%)",
+        color: "#3a2410",
+        borderRadius: 8,
+        border: "1px solid #5a3a18",
+        boxShadow:
+          "inset 0 1px 0 rgba(255,240,200,0.7), inset 0 0 0 1px rgba(255,220,150,0.35), 0 4px 14px rgba(0,0,0,0.5)",
+      }}
+    >
+      <span
+        style={{
+          position: "absolute", inset: 4,
+          border: "1px solid rgba(90,55,20,0.55)",
+          borderRadius: 5, pointerEvents: "none",
+        }}
+      />
+      <span className="relative">{children}</span>
+    </button>
+  );
+}
+
 /* ============ Discovery & Detail Modals ============ */
 
 function ClueDiscoveryModal({ clue, onConfirm }: { clue: Clue; onConfirm: () => void }) {
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-      <div
-        className="mx-6 w-full max-w-[320px] rounded-2xl p-6 text-center"
-        style={{
-          background: "linear-gradient(180deg,#2a1f15 0%,#1a1208 100%)",
-          border: `1.5px solid ${GOLD}`,
-          boxShadow: `0 0 40px ${GOLD}55`,
-          animation: "popIn 0.35s cubic-bezier(.2,1.4,.5,1)",
-        }}
-      >
-        <div className="text-6xl" style={{ animation: "scaleSettle 0.6s ease-out" }}>{clue.icon}</div>
-        <div className="mt-3 inline-block rounded-full px-2.5 py-0.5 text-[10px]" style={{ background: GOLD, color: "#1a1410" }}>{clue.category}</div>
-        <div className="mt-2 font-brush text-[22px]" style={{ color: GOLD }}>{clue.name}</div>
-        <div className="mt-3 text-[12.5px] leading-relaxed" style={{ color: "#f5e6c8" }}>{clue.full}</div>
-        <button
-          onClick={onConfirm}
-          className="mt-5 w-full rounded-full py-2.5 text-[14px] font-medium"
-          style={{ background: GOLD, color: "#1a1410" }}
-        >
-          收入线索 ✓
-        </button>
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm px-5">
+      <div className="w-full max-w-[340px]" style={{ animation: "popIn 0.35s cubic-bezier(.2,1.4,.5,1)" }}>
+        <OrnateFrame padding={22}>
+          <div className="text-center">
+            <div className="text-[68px] leading-none" style={{ animation: "scaleSettle 0.6s ease-out", filter: "drop-shadow(0 4px 12px rgba(201,169,110,0.5))" }}>{clue.icon}</div>
+            <div className="mt-4 inline-flex items-center gap-2">
+              <span style={{ color: `${GOLD}88` }}>—</span>
+              <span
+                className="px-3 py-1 text-[11px] tracking-[0.3em]"
+                style={{
+                  background: "linear-gradient(180deg,#d9b270 0%,#a07636 100%)",
+                  color: "#2a1a08",
+                  borderRadius: 4,
+                  border: "1px solid #5a3a18",
+                  boxShadow: "inset 0 1px 0 rgba(255,235,180,0.6)",
+                }}
+              >{clue.category}</span>
+              <span style={{ color: `${GOLD}88` }}>—</span>
+            </div>
+            <div
+              className="mt-3 font-brush text-[28px] tracking-[0.08em]"
+              style={{
+                background: "linear-gradient(180deg,#fbe5a8 0%,#d4a560 60%,#8a5a20 100%)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.6))",
+              }}
+            >{clue.name}</div>
+            <div className="mx-auto my-3 h-px w-2/3" style={{ background: `linear-gradient(90deg, transparent, ${GOLD}66, transparent)` }} />
+            <div className="text-[13px] leading-[1.9]" style={{ color: "#e8d4a8" }}>{clue.full}</div>
+            <div className="mt-5">
+              <GoldButton onClick={onConfirm}>收入线索 ✓</GoldButton>
+            </div>
+          </div>
+        </OrnateFrame>
       </div>
       <style>{`
         @keyframes popIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
@@ -795,21 +886,21 @@ function ClueDiscoveryModal({ clue, onConfirm }: { clue: Clue; onConfirm: () => 
 
 function ClueDetailModal({ clue, onClose }: { clue: Clue; onClose: () => void }) {
   return (
-    <div className="absolute inset-0 z-[55] flex items-center justify-center bg-black/70 backdrop-blur-sm" onClick={onClose}>
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="mx-6 w-full max-w-[320px] rounded-2xl p-5"
-        style={{ background: "linear-gradient(180deg,#2a1f15 0%,#1a1208 100%)", border: `1.5px solid ${GOLD}` }}
-      >
-        <div className="flex items-start gap-3">
-          <span className="text-4xl">{clue.icon}</span>
-          <div className="flex-1">
-            <div className="inline-block rounded-full px-2 py-0.5 text-[10px]" style={{ background: GOLD, color: "#1a1410" }}>{clue.category}</div>
-            <div className="mt-1 font-brush text-[18px]" style={{ color: GOLD }}>{clue.name}</div>
+    <div className="absolute inset-0 z-[55] flex items-center justify-center bg-black/75 backdrop-blur-sm px-5" onClick={onClose}>
+      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-[340px]">
+        <OrnateFrame padding={20}>
+          <button onClick={onClose} className="absolute right-3 top-3 z-10" style={{ color: GOLD }}><X size={18} /></button>
+          <div className="text-center">
+            <div className="text-5xl">{clue.icon}</div>
+            <div className="mt-3 inline-block px-3 py-1 text-[11px] tracking-[0.3em]" style={{
+              background: "linear-gradient(180deg,#d9b270 0%,#a07636 100%)",
+              color: "#2a1a08", borderRadius: 4, border: "1px solid #5a3a18",
+            }}>{clue.category}</div>
+            <div className="mt-2 font-brush text-[22px]" style={{ color: GOLD }}>{clue.name}</div>
+            <div className="mx-auto my-3 h-px w-2/3" style={{ background: `linear-gradient(90deg, transparent, ${GOLD}66, transparent)` }} />
+            <div className="text-[13px] leading-[1.9] text-left" style={{ color: "#e8d4a8" }}>{clue.full}</div>
           </div>
-          <button onClick={onClose} className="text-white/60"><X size={18} /></button>
-        </div>
-        <div className="mt-3 text-[13px] leading-relaxed" style={{ color: "#f5e6c8" }}>{clue.full}</div>
+        </OrnateFrame>
       </div>
     </div>
   );
@@ -879,16 +970,47 @@ function DeductionPanel({ collected, onClose, onWin }: {
         {collected.size === 0 ? (
           <div className="text-[12px]" style={{ color: `${GOLD}88` }}>尚无线索，先去寻访各处罢。</div>
         ) : (
-          <div className="grid grid-cols-3 gap-2">
+          <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
             {[...collected].map((id) => {
               const c = CLUES[id];
               const on = picked.has(id);
               return (
-                <button key={id} onClick={() => togglePick(id)}
-                  className="rounded-lg p-2 text-center active:scale-95"
-                  style={{ background: on ? `${GOLD}33` : "#1a1410", border: `1px solid ${on ? GOLD : `${GOLD}44`}` }}>
-                  <div className="text-2xl">{c.icon}</div>
-                  <div className="mt-1 truncate text-[10px]" style={{ color: GOLD }}>{c.name}</div>
+                <button
+                  key={id}
+                  onClick={() => togglePick(id)}
+                  className="relative shrink-0 text-left active:scale-[0.98]"
+                  style={{
+                    width: 180,
+                    borderRadius: 10,
+                    padding: 10,
+                    background: "linear-gradient(180deg,#1a1208 0%,#0d0805 100%)",
+                    border: `1px solid ${on ? GOLD : `${GOLD}44`}`,
+                    boxShadow: on
+                      ? `0 0 0 1px ${GOLD}55, 0 0 14px ${GOLD}44`
+                      : "inset 0 0 0 1px rgba(0,0,0,0.4)",
+                  }}
+                >
+                  <div className="flex gap-2.5">
+                    <div
+                      className="flex h-12 w-12 shrink-0 items-center justify-center text-2xl"
+                      style={{ background: "#2a1f15", border: `1px solid ${GOLD}55`, borderRadius: 4 }}
+                    >{c.icon}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-1">
+                        <div className="truncate text-[13px]" style={{ color: GOLD }}>{c.name}</div>
+                        <span
+                          className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full"
+                          style={{
+                            background: on ? GOLD : "transparent",
+                            border: `1.5px solid ${GOLD}`,
+                          }}
+                        >
+                          {on && <Check size={10} strokeWidth={3} color="#1a1208" />}
+                        </span>
+                      </div>
+                      <div className="mt-1 text-[10.5px] leading-snug line-clamp-3" style={{ color: `${GOLD}aa` }}>{c.short}</div>
+                    </div>
+                  </div>
                 </button>
               );
             })}
@@ -897,67 +1019,92 @@ function DeductionPanel({ collected, onClose, onWin }: {
       </Section>
 
       {hint && (
-        <div className="mt-3 rounded-lg px-3 py-2 text-[12px]" style={{ background: "#3a1f15", border: `1px solid ${GOLD}66`, color: "#f5d6a8" }}>
+        <div className="mt-3 rounded-lg px-3 py-2 text-[12px]" style={{ background: "#2a1610", border: `1px solid ${GOLD}66`, color: "#f5d6a8" }}>
           {hint}
         </div>
       )}
 
-      <button
-        onClick={submit}
-        disabled={!canSubmit}
-        className="mt-4 w-full rounded-full py-3 text-[14px] font-medium transition disabled:opacity-40"
-        style={{ background: GOLD, color: "#1a1410" }}
-      >
-        提交推理
-      </button>
+      <div className="mt-5">
+        <GoldButton onClick={submit} disabled={!canSubmit}>提交推理</GoldButton>
+      </div>
+
     </Drawer>
   );
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-4">
-      <div className="mb-2 text-[12px] tracking-[0.2em]" style={{ color: GOLD }}>· {title} ·</div>
-      <div className="space-y-1.5">{children}</div>
+    <div className="mb-5">
+      <div className="mb-3 flex items-center gap-2 text-[13px]" style={{ color: GOLD }}>
+        <span style={{ transform: "rotate(45deg)", display: "inline-block", width: 7, height: 7, border: `1px solid ${GOLD}` }} />
+        <span className="tracking-[0.15em]">{title}</span>
+        <span className="flex-1 h-px" style={{ background: `linear-gradient(90deg, ${GOLD}55, transparent)` }} />
+      </div>
+      <div className="space-y-2">{children}</div>
     </div>
   );
 }
 
 function Radio({ checked, label, onClick }: { checked: boolean; label: string; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left active:scale-[0.98]"
-      style={{ background: "#1a1410", border: `1px solid ${checked ? GOLD : `${GOLD}33`}` }}>
-      <span className="flex h-4 w-4 items-center justify-center rounded-full" style={{ border: `1.5px solid ${GOLD}` }}>
-        {checked && <span className="h-2 w-2 rounded-full" style={{ background: GOLD }} />}
+    <button
+      onClick={onClick}
+      className="relative flex w-full items-center gap-3 px-4 py-2.5 text-left transition active:scale-[0.99]"
+      style={{
+        background: checked
+          ? "linear-gradient(180deg,#f0d18a 0%,#c9a05c 55%,#8e6628 100%)"
+          : "linear-gradient(180deg,#1a1208 0%,#0d0805 100%)",
+        border: `1px solid ${checked ? "#5a3a18" : `${GOLD}55`}`,
+        borderRadius: 999,
+        boxShadow: checked
+          ? "inset 0 1px 0 rgba(255,235,180,0.65), 0 2px 8px rgba(0,0,0,0.4)"
+          : "inset 0 0 0 1px rgba(0,0,0,0.4)",
+      }}
+    >
+      <span
+        className="flex h-4 w-4 items-center justify-center rounded-full"
+        style={{
+          border: `1.5px solid ${checked ? "#3a2410" : GOLD}`,
+          background: checked ? "#1a1208" : "transparent",
+        }}
+      >
+        {checked && <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#f0d896" }} />}
       </span>
-      <span className="text-[13px]" style={{ color: checked ? GOLD : "#f5e6c8" }}>{label}</span>
+      <span className="text-[14px]" style={{ color: checked ? "#2a1a08" : "#e8d4a8" }}>{label}</span>
     </button>
   );
 }
 
-/* ============ Drawer ============ */
+/* ============ Drawer (ornate centered modal) ============ */
 
 function Drawer({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
   return (
-    <div className="absolute inset-0 z-40 flex flex-col bg-black/60 backdrop-blur-sm" onClick={onClose}>
-      <div className="flex-1" />
+    <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/75 backdrop-blur-sm px-4 py-6" onClick={onClose}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className="max-h-[78%] overflow-y-auto rounded-t-3xl px-5 pb-8 pt-4"
-        style={{
-          background: "linear-gradient(180deg,#1f1610 0%,#0d0908 100%)",
-          borderTop: `1.5px solid ${GOLD}`,
-          animation: "slideUp 0.3s ease-out",
-        }}
+        className="w-full max-w-[360px]"
+        style={{ animation: "popIn 0.28s ease-out" }}
       >
-        <div className="mx-auto mb-3 h-1 w-10 rounded-full" style={{ background: `${GOLD}66` }} />
-        <div className="mb-4 flex items-center justify-between">
-          <div className="font-brush text-[18px] tracking-[0.2em]" style={{ color: GOLD }}>{title}</div>
-          <button onClick={onClose} className="text-white/60"><X size={18} /></button>
-        </div>
-        {children}
+        <OrnateFrame padding={0}>
+          <div className="relative">
+            <div className="flex items-center justify-between px-5 pt-5 pb-3">
+              <div
+                className="font-brush text-[22px] tracking-[0.12em]"
+                style={{
+                  background: "linear-gradient(180deg,#fbe5a8 0%,#d4a560 60%,#8a5a20 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >{title}</div>
+              <button onClick={onClose} style={{ color: GOLD }}><X size={20} /></button>
+            </div>
+            <div className="mx-5 h-px" style={{ background: `linear-gradient(90deg, transparent, ${GOLD}66, transparent)` }} />
+            <div className="max-h-[68vh] overflow-y-auto px-5 pb-6 pt-4">
+              {children}
+            </div>
+          </div>
+        </OrnateFrame>
       </div>
-      <style>{`@keyframes slideUp { from{transform:translateY(40%);opacity:0} to{transform:translateY(0);opacity:1} }`}</style>
     </div>
   );
 }

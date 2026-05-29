@@ -360,85 +360,190 @@ function SceneView({
   onDeduce: () => void;
 }) {
   return (
-    <div className="relative h-full w-full overflow-hidden" style={{ background: scene.gradient }}>
-      {scene.backgroundImage && (
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${scene.backgroundImage})` }}
-        />
-      )}
-      <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(7,5,4,0.28) 0%, rgba(7,5,4,0.4) 28%, rgba(7,5,4,0.58) 100%)" }} />
-      <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 8%, rgba(0,0,0,0.62) 100%)" }} />
-      {!scene.backgroundImage && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
-          <span className="text-[200px]" style={{ color: GOLD }}>{scene.icon}</span>
-        </div>
-      )}
+    <div
+      className="relative h-full w-full overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse at 30% 0%, #2a1a10 0%, #140c08 55%, #070503 100%)",
+      }}
+    >
+      {/* parchment / ink-splatter atmosphere */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-screen"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 12% 18%, rgba(201,169,110,0.18), transparent 35%), radial-gradient(circle at 88% 82%, rgba(201,169,110,0.12), transparent 40%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")",
+        }}
+      />
 
       {/* header */}
-      <div className="relative z-10 flex items-center justify-between px-4 pt-12 pb-3">
-        <button onClick={onBack} className="flex h-9 w-9 items-center justify-center rounded-full bg-black/40 backdrop-blur active:scale-95" style={{ border: `1px solid ${GOLD}55` }}>
+      <div className="relative z-10 flex items-center justify-between px-4 pt-10 pb-2">
+        <button
+          onClick={onBack}
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-black/40 backdrop-blur active:scale-95"
+          style={{ border: `1px solid ${GOLD}55` }}
+        >
           <ChevronLeft size={18} style={{ color: GOLD }} />
         </button>
         <div className="text-center">
-          <div className="text-[10px] tracking-[0.35em]" style={{ color: `${GOLD}aa` }}>探 案 录</div>
-          <div className="font-brush text-[20px] tracking-[0.25em]" style={{ color: GOLD }}>{scene.name}</div>
-        </div>
-        <div className="rounded-full bg-black/40 px-3 py-1 text-[11px] backdrop-blur" style={{ border: `1px solid ${GOLD}55`, color: GOLD }}>
-          线索 {collected.size}/{TOTAL_CLUES}
-        </div>
-      </div>
-
-      {/* hotspots */}
-      <div className="relative z-10 mx-auto mt-4 h-[55%] w-[88%] rounded-3xl border bg-black/18 backdrop-blur-[1px]" style={{ borderColor: `${GOLD}33` }}>
-        {scene.hotspots.map((h) => {
-          const done = collected.has(h.clueId);
-          return (
-            <button
-              key={h.id}
-              onClick={() => onHotspot(h.clueId)}
-              className="absolute flex flex-col items-center"
-              style={{ left: h.x, top: h.y, transform: "translate(-50%,-50%)" }}
-            >
-              <span
-                className="flex h-12 w-12 items-center justify-center rounded-full"
-                style={{
-                  background: done ? `${GOLD}33` : `${GOLD}1a`,
-                  border: `1.5px solid ${GOLD}`,
-                  boxShadow: done ? "none" : `0 0 0 0 ${GOLD}99`,
-                  animation: done ? undefined : "huntPulse 2s ease-in-out infinite",
-                }}
-              >
-                {done ? <Check size={20} style={{ color: GOLD }} /> : <span className="text-xl">🔍</span>}
-              </span>
-              <span className="mt-1 rounded-sm bg-black/60 px-1.5 py-0.5 text-[10px]" style={{ color: GOLD }}>{h.label}</span>
-            </button>
-          );
-        })}
-        {scene.hotspots.length === 0 && !scene.npcId && (
-          <div className="flex h-full items-center justify-center text-[12px]" style={{ color: `${GOLD}88` }}>此处空无一物</div>
-        )}
-        {scene.npcId && (
-          <button
-            onClick={() => onNpc(scene.npcId as NpcId)}
-            className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full px-3 py-2"
-            style={{ background: `${GOLD}22`, border: `1px solid ${GOLD}` }}
+          <div className="text-[10px] tracking-[0.45em]" style={{ color: `${GOLD}99` }}>
+            ─ 探 案 录 ─
+          </div>
+          <div
+            className="font-brush text-[24px] tracking-[0.3em]"
+            style={{
+              color: GOLD,
+              textShadow: `0 1px 0 #00000099, 0 0 18px ${GOLD}55`,
+            }}
           >
-            <span className="flex h-8 w-8 overflow-hidden rounded-full bg-black/50" style={{ border: `1px solid ${GOLD}66` }}>
-              <img src={NPCS[scene.npcId as NpcId].portrait ?? ""} alt={NPCS[scene.npcId as NpcId].name} className="h-full w-full object-cover" loading="lazy" />
-            </span>
-            <span className="text-[12px]" style={{ color: GOLD }}>与 {NPCS[scene.npcId as NpcId].name} 对话</span>
-          </button>
-        )}
+            {scene.name}
+          </div>
+        </div>
+        <div
+          className="rounded-full bg-black/40 px-2.5 py-1 text-[11px] backdrop-blur"
+          style={{ border: `1px solid ${GOLD}55`, color: GOLD }}
+        >
+          {collected.size}/{TOTAL_CLUES}
+        </div>
       </div>
 
-      {/* bottom action bar */}
-      <div className="absolute bottom-6 left-0 right-0 z-10 flex justify-center">
-        <div className="flex items-center gap-2 rounded-full bg-black/60 px-2 py-2 backdrop-blur-xl" style={{ border: `1px solid ${GOLD}55` }}>
-          <ActionBtn icon={<MapIcon size={16} />} label="地图" onClick={onMap} />
-          <ActionBtn icon={<Paperclip size={16} />} label="线索" onClick={onClues} badge={collected.size} />
-          <ActionBtn icon={<Puzzle size={16} />} label="推理" onClick={onDeduce} />
+      {/* ornate framed scene */}
+      <div className="relative z-10 mx-auto mt-3 h-[58%] w-[90%]">
+        {/* outer gilded frame */}
+        <div
+          className="relative h-full w-full p-[10px]"
+          style={{
+            background:
+              "linear-gradient(135deg,#3a2a18 0%,#6b4f2a 25%,#c9a96e 50%,#6b4f2a 75%,#2a1d10 100%)",
+            borderRadius: 14,
+            boxShadow:
+              "0 0 0 1px #2a1d10, 0 10px 40px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,220,160,0.25)",
+          }}
+        >
+          {/* inner thin border */}
+          <div
+            className="relative h-full w-full overflow-hidden"
+            style={{
+              borderRadius: 6,
+              border: `1px solid ${GOLD}aa`,
+              boxShadow: `inset 0 0 0 1px #000, inset 0 0 60px rgba(0,0,0,0.6)`,
+              background: scene.gradient,
+            }}
+          >
+            {scene.backgroundImage && (
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${scene.backgroundImage})` }}
+              />
+            )}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.6) 100%)",
+              }}
+            />
+            {!scene.backgroundImage && (
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
+                <span className="text-[160px]" style={{ color: GOLD }}>
+                  {scene.icon}
+                </span>
+              </div>
+            )}
+
+            {/* corner ornaments */}
+            {(["tl", "tr", "bl", "br"] as const).map((c) => (
+              <span
+                key={c}
+                className="pointer-events-none absolute h-4 w-4"
+                style={{
+                  top: c.startsWith("t") ? 4 : undefined,
+                  bottom: c.startsWith("b") ? 4 : undefined,
+                  left: c.endsWith("l") ? 4 : undefined,
+                  right: c.endsWith("r") ? 4 : undefined,
+                  borderTop: c.startsWith("t") ? `1.5px solid ${GOLD}` : undefined,
+                  borderBottom: c.startsWith("b") ? `1.5px solid ${GOLD}` : undefined,
+                  borderLeft: c.endsWith("l") ? `1.5px solid ${GOLD}` : undefined,
+                  borderRight: c.endsWith("r") ? `1.5px solid ${GOLD}` : undefined,
+                }}
+              />
+            ))}
+
+            {/* hotspots */}
+            {scene.hotspots.map((h) => {
+              const done = collected.has(h.clueId);
+              return (
+                <button
+                  key={h.id}
+                  onClick={() => onHotspot(h.clueId)}
+                  className="absolute flex flex-col items-center"
+                  style={{ left: h.x, top: h.y, transform: "translate(-50%,-50%)" }}
+                >
+                  <span
+                    className="flex h-11 w-11 items-center justify-center rounded-full"
+                    style={{
+                      background: done ? `${GOLD}33` : `${GOLD}1a`,
+                      border: `1.5px solid ${GOLD}`,
+                      boxShadow: done ? "none" : `0 0 0 0 ${GOLD}99`,
+                      animation: done ? undefined : "huntPulse 2s ease-in-out infinite",
+                    }}
+                  >
+                    {done ? <Check size={18} style={{ color: GOLD }} /> : <span className="text-lg">🔍</span>}
+                  </span>
+                  <span
+                    className="mt-1 rounded-sm bg-black/70 px-1.5 py-0.5 text-[10px]"
+                    style={{ color: GOLD }}
+                  >
+                    {h.label}
+                  </span>
+                </button>
+              );
+            })}
+
+            {scene.hotspots.length === 0 && !scene.npcId && (
+              <div className="flex h-full items-center justify-center text-[12px]" style={{ color: `${GOLD}88` }}>
+                此处空无一物
+              </div>
+            )}
+
+            {scene.npcId && (
+              <button
+                onClick={() => onNpc(scene.npcId as NpcId)}
+                className="absolute bottom-3 right-3 flex items-center gap-2 rounded-full px-3 py-1.5"
+                style={{ background: "rgba(20,12,6,0.85)", border: `1px solid ${GOLD}` }}
+              >
+                <span
+                  className="flex h-7 w-7 overflow-hidden rounded-full bg-black/50"
+                  style={{ border: `1px solid ${GOLD}66` }}
+                >
+                  <img
+                    src={NPCS[scene.npcId as NpcId].portrait ?? ""}
+                    alt={NPCS[scene.npcId as NpcId].name}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </span>
+                <span className="text-[12px]" style={{ color: GOLD }}>
+                  与 {NPCS[scene.npcId as NpcId].name} 对话
+                </span>
+              </button>
+            )}
+          </div>
         </div>
+      </div>
+
+      {/* bottom medallion action bar */}
+      <div className="absolute bottom-5 left-0 right-0 z-10 flex justify-center gap-4 px-6">
+        <MedallionBtn icon={<MapIcon size={18} />} label="舆图" onClick={onMap} />
+        <MedallionBtn icon={<Paperclip size={18} />} label="线索" onClick={onClues} badge={collected.size} />
+        <MedallionBtn icon={<Puzzle size={18} />} label="推理" onClick={onDeduce} />
       </div>
 
       <style>{`
@@ -451,13 +556,38 @@ function SceneView({
   );
 }
 
-function ActionBtn({ icon, label, onClick, badge }: { icon: React.ReactNode; label: string; onClick: () => void; badge?: number }) {
+function MedallionBtn({
+  icon, label, onClick, badge,
+}: { icon: React.ReactNode; label: string; onClick: () => void; badge?: number }) {
   return (
-    <button onClick={onClick} className="relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] active:scale-95" style={{ color: GOLD }}>
-      {icon}<span>{label}</span>
-      {typeof badge === "number" && badge > 0 && (
-        <span className="ml-1 rounded-full px-1.5 text-[10px]" style={{ background: GOLD, color: "#1a1a1a" }}>{badge}</span>
-      )}
+    <button onClick={onClick} className="relative flex flex-col items-center active:scale-95">
+      <span
+        className="flex h-14 w-14 items-center justify-center rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at 30% 25%, #f3d98a 0%, #c9a96e 45%, #6b4f2a 100%)",
+          border: "1.5px solid #3a2a18",
+          boxShadow:
+            "0 4px 12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,0,0,0.35)",
+          color: "#2a1d10",
+        }}
+      >
+        {icon}
+        {typeof badge === "number" && badge > 0 && (
+          <span
+            className="absolute -right-1 -top-1 rounded-full px-1.5 text-[10px]"
+            style={{ background: "#2a1d10", color: GOLD, border: `1px solid ${GOLD}` }}
+          >
+            {badge}
+          </span>
+        )}
+      </span>
+      <span
+        className="mt-1 font-brush text-[12px] tracking-[0.2em]"
+        style={{ color: GOLD, textShadow: "0 1px 0 #000" }}
+      >
+        {label}
+      </span>
     </button>
   );
 }

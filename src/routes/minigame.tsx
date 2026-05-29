@@ -606,11 +606,46 @@ function SceneView({
         </div>
       </div>
 
-      {/* bottom medallion action bar */}
-      <div className="absolute bottom-5 left-0 right-0 z-10 flex justify-center gap-4 px-6">
-        <MedallionBtn icon={<MapIcon size={18} />} label="舆图" onClick={onMap} />
-        <MedallionBtn icon={<Paperclip size={18} />} label="线索" onClick={onClues} badge={collected.size} />
-        <MedallionBtn icon={<Puzzle size={18} />} label="推理" onClick={onDeduce} />
+      {/* bottom ornate action bar */}
+      <div className="absolute bottom-4 left-3 right-3 z-10">
+        <div
+          className="relative px-5 pb-3 pt-4"
+          style={{
+            background:
+              "linear-gradient(180deg, #1a140c 0%, #0d0905 100%)",
+            border: `1px solid ${GOLD}`,
+            boxShadow: `0 0 0 1px #000 inset, 0 -1px 14px ${GOLD}55, 0 8px 24px rgba(0,0,0,0.7)`,
+          }}
+        >
+          {/* glowing top hairline */}
+          <div
+            className="pointer-events-none absolute -top-[2px] left-6 right-6 h-[1px]"
+            style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`, boxShadow: `0 0 8px ${GOLD}` }}
+          />
+          {/* inner gold frame */}
+          <div
+            className="pointer-events-none absolute inset-1.5"
+            style={{ border: `1px solid ${GOLD}66` }}
+          />
+          {/* corner flourishes */}
+          <CornerFlourish className="absolute -left-0.5 -top-0.5" />
+          <CornerFlourish className="absolute -right-0.5 -top-0.5 scale-x-[-1]" />
+          <CornerFlourish className="absolute -left-0.5 -bottom-0.5 scale-y-[-1]" />
+          <CornerFlourish className="absolute -right-0.5 -bottom-0.5 scale-x-[-1] scale-y-[-1]" />
+          {/* bottom center ornament */}
+          <svg className="pointer-events-none absolute -bottom-[6px] left-1/2 -translate-x-1/2" width="44" height="10" viewBox="0 0 44 10" fill="none">
+            <path d="M2 5 L18 5 M26 5 L42 5" stroke={GOLD} strokeWidth="0.6" />
+            <path d="M22 1 L25 5 L22 9 L19 5 Z" stroke={GOLD} strokeWidth="0.7" fill="#0d0905" />
+          </svg>
+
+          <div className="relative flex items-center justify-between">
+            <OrnateMedallion icon={<MapIcon size={22} />} label="舆图" onClick={onMap} />
+            <Divider />
+            <OrnateMedallion icon={<Paperclip size={22} />} label="线索" onClick={onClues} badge={collected.size} />
+            <Divider />
+            <OrnateMedallion icon={<Puzzle size={22} />} label="推理" onClick={onDeduce} />
+          </div>
+        </div>
       </div>
 
       <style>{`
@@ -623,35 +658,63 @@ function SceneView({
   );
 }
 
-function MedallionBtn({
+function CornerFlourish({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`pointer-events-none ${className}`} width="34" height="22" viewBox="0 0 34 22" fill="none">
+      <path
+        d="M1 21 C1 12, 6 4, 16 2 C22 1, 28 4, 33 8"
+        stroke={GOLD}
+        strokeWidth="0.7"
+        fill="none"
+        opacity="0.85"
+      />
+      <path d="M4 18 C6 14, 10 11, 14 11" stroke={GOLD} strokeWidth="0.5" fill="none" opacity="0.6" />
+      <circle cx="16" cy="6" r="0.9" fill={GOLD} />
+    </svg>
+  );
+}
+
+function Divider() {
+  return (
+    <svg className="pointer-events-none mx-1 shrink-0" width="22" height="10" viewBox="0 0 22 10" fill="none">
+      <path d="M1 5 L8 5 M14 5 L21 5" stroke={`${GOLD}99`} strokeWidth="0.6" />
+      <path d="M11 1.5 L13 5 L11 8.5 L9 5 Z" stroke={GOLD} strokeWidth="0.7" fill="transparent" />
+    </svg>
+  );
+}
+
+function OrnateMedallion({
   icon, label, onClick, badge,
 }: { icon: React.ReactNode; label: string; onClick: () => void; badge?: number }) {
   return (
     <button onClick={onClick} className="relative flex flex-col items-center active:scale-95">
       <span
-        className="flex h-14 w-14 items-center justify-center rounded-full"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full"
         style={{
-          background:
-            "radial-gradient(circle at 30% 25%, #f3d98a 0%, #c9a96e 45%, #6b4f2a 100%)",
-          border: "1.5px solid #3a2a18",
-          boxShadow:
-            "0 4px 12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,0,0,0.35)",
-          color: "#2a1d10",
+          background: "radial-gradient(circle at 50% 50%, #1a120a 0%, #0a0604 100%)",
+          border: `1.5px solid ${GOLD}`,
+          boxShadow: `0 0 14px ${GOLD}66, inset 0 0 8px ${GOLD}33, inset 0 0 0 3px #0a0604, inset 0 0 0 4px ${GOLD}55`,
+          color: GOLD,
         }}
       >
         {icon}
         {typeof badge === "number" && badge > 0 && (
           <span
-            className="absolute -right-1 -top-1 rounded-full px-1.5 text-[10px]"
-            style={{ background: "#2a1d10", color: GOLD, border: `1px solid ${GOLD}` }}
+            className="absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full px-1 text-[10px] font-bold"
+            style={{
+              background: "radial-gradient(circle at 30% 30%, #f3d98a, #b8862e)",
+              color: "#1a120a",
+              border: "1px solid #6b4f2a",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.6)",
+            }}
           >
             {badge}
           </span>
         )}
       </span>
       <span
-        className="mt-1 font-brush text-[12px] tracking-[0.2em]"
-        style={{ color: GOLD, textShadow: "0 1px 0 #000" }}
+        className="mt-1.5 font-brush text-[12px] tracking-[0.3em]"
+        style={{ color: GOLD, textShadow: `0 0 6px ${GOLD}66, 0 1px 0 #000` }}
       >
         {label}
       </span>

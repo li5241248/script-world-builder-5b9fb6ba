@@ -30,7 +30,7 @@ const INITIAL: Msg[] = [
     kind: "narration",
     text: "入宫十年，温棠早已习惯了被遗忘的滋味。今夜，窗外雪落无声，采桑宫偏殿里，她独自坐着，手边摆着一碟枣花糕——这是她唯一拿得出手的东西。",
   },
-  { kind: "dialog", charId: "zhouyi2", text: "贵人，仇公公来了，说……说陛下今夜要翻您的牌子。" },
+  { kind: "dialog", charId: "zhouyi", text: "贵人，仇公公来了，说……说陛下今夜要翻您的牌子。" },
   { kind: "dialog", charId: "zhuangsy", text: "朕问你，想不想抚育三皇子琰儿？" },
   { kind: "prompt", text: "听到这个消息，你心里……" },
 ];

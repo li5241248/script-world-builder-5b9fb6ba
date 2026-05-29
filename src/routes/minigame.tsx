@@ -604,40 +604,91 @@ function DialogueView({ npc, usedIdx, collected, onPick, onClose }: {
   const [lastAnswer, setLastAnswer] = useState<string | null>(null);
   const [lastClueGained, setLastClueGained] = useState<string | null>(null);
 
+  const sceneBg = (npc as Npc & { sceneBg?: string }).sceneBg;
+
   return (
-    <div className="relative h-full w-full" style={{ background: "linear-gradient(160deg,#1a1410 0%,#0d0908 100%)" }}>
-      <div className="relative z-10 flex items-center justify-between px-4 pt-12 pb-3">
-        <button onClick={onClose} className="flex h-9 w-9 items-center justify-center rounded-full bg-black/50" style={{ border: `1px solid ${GOLD}55` }}>
-          <ChevronLeft size={18} style={{ color: GOLD }} />
+    <div className="relative h-full w-full overflow-hidden" style={{ background: "radial-gradient(120% 80% at 50% 0%, #1f1610 0%, #0d0805 60%, #050302 100%)" }}>
+      {/* faint scene backdrop */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage: sceneBg ? `url(${sceneBg})` : undefined,
+          backgroundSize: "cover", backgroundPosition: "center",
+          filter: "blur(2px) saturate(0.6)",
+        }}
+      />
+      <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.75))" }} />
+
+      {/* Header */}
+      <div className="relative z-10 flex items-center px-4 pt-10 pb-2">
+        <button onClick={onClose} className="flex h-10 w-10 items-center justify-center" style={{ color: GOLD }}>
+          <ChevronLeft size={26} strokeWidth={2.2} />
         </button>
-        <div className="font-brush text-[16px] tracking-[0.25em]" style={{ color: GOLD }}>对 话</div>
-        <div className="w-9" />
+        <div className="flex flex-1 items-center justify-center gap-3">
+          <Flourish flip />
+          <div
+            className="font-brush text-[22px] tracking-[0.3em]"
+            style={{
+              background: "linear-gradient(180deg,#fbe5a8 0%,#d4a560 60%,#8a5a20 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >对话</div>
+          <Flourish />
+        </div>
+        <div className="w-10" />
       </div>
 
-      <div className="relative z-10 px-5">
-        <div className="flex items-center gap-3">
-          <div className="h-16 w-16 overflow-hidden rounded-full bg-black" style={{ border: `2px solid ${GOLD}`, boxShadow: `0 0 20px ${GOLD}55` }}>
-            <img src={npc.portrait ?? ""} alt={npc.name} className="h-full w-full object-cover" loading="lazy" />
-          </div>
-          <div>
-            <div className="text-[10px] tracking-[0.3em]" style={{ color: `${GOLD}aa` }}>{npc.title}</div>
-            <div className="font-brush text-[22px]" style={{ color: GOLD }}>{npc.name}</div>
-          </div>
+      {/* Portrait + name */}
+      <div className="relative z-10 flex items-center gap-4 px-6 pt-2">
+        <div className="relative h-[92px] w-[92px] shrink-0">
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: "radial-gradient(circle, #2a1f15 0%, #0d0805 75%)",
+              border: `2px solid ${GOLD}`,
+              boxShadow: `0 0 24px ${GOLD}55, inset 0 0 0 4px rgba(0,0,0,0.6), inset 0 0 0 5px ${GOLD}66`,
+            }}
+          />
+          <img
+            src={npc.portrait ?? ""} alt={npc.name}
+            className="absolute inset-[6px] rounded-full object-cover"
+            style={{ width: "calc(100% - 12px)", height: "calc(100% - 12px)" }}
+            loading="lazy"
+          />
         </div>
+        <div className="min-w-0 flex-1">
+          <div
+            className="font-brush text-[28px] tracking-[0.12em]"
+            style={{
+              background: "linear-gradient(180deg,#fbe5a8 0%,#d4a560 60%,#8a5a20 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >{npc.name}</div>
+          <div className="mt-1 text-[12px] tracking-[0.1em]" style={{ color: `${GOLD}aa` }}>{npc.title}</div>
+        </div>
+      </div>
 
+      {/* Dialogue box */}
+      <div className="relative z-10 mt-5 px-5">
         <div
-          className="mt-5 min-h-[120px] rounded-xl px-4 py-4 text-[14px] leading-relaxed text-amber-50/90"
+          className="relative min-h-[110px] px-5 py-4 text-[13.5px] leading-[1.9]"
           style={{
-            background: "linear-gradient(180deg,#2a1f15 0%,#1a1208 100%)",
-            border: `1px solid ${GOLD}55`,
-            boxShadow: `inset 0 0 30px rgba(0,0,0,0.5)`,
+            background: "linear-gradient(180deg, rgba(40,28,16,0.55) 0%, rgba(15,10,6,0.55) 100%)",
+            border: `1px solid ${GOLD}88`,
+            borderRadius: 10,
+            color: "#e8d4a8",
+            boxShadow: "inset 0 0 24px rgba(0,0,0,0.5)",
           }}
         >
+          <span aria-hidden style={{ position: "absolute", inset: 4, border: `1px solid ${GOLD}33`, borderRadius: 7, pointerEvents: "none" }} />
           {lastAnswer ?? "（请择一相问）"}
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-0 right-0 z-10 space-y-2 px-5">
+      {/* Question pills */}
+      <div className="absolute bottom-8 left-0 right-0 z-10 space-y-3 px-5">
         {npc.dialogues.map((d, i) => {
           const used = usedIdx.has(i);
           return (
@@ -649,13 +700,20 @@ function DialogueView({ npc, usedIdx, collected, onPick, onClose }: {
                 onPick(i, d.clueId);
               }}
               disabled={used}
-              className="w-full rounded-lg px-4 py-2.5 text-left text-[13px] active:scale-[0.98]"
+              className="relative w-full overflow-hidden text-center text-[14px] tracking-[0.08em] transition active:scale-[0.99] disabled:opacity-50"
               style={{
-                background: used ? "#1a1410" : "#2a1f15",
-                border: `1px solid ${used ? `${GOLD}33` : `${GOLD}99`}`,
-                color: used ? `${GOLD}66` : "#f5e6c8",
+                padding: "12px 44px",
+                background: used
+                  ? "linear-gradient(180deg, rgba(30,20,10,0.85) 0%, rgba(15,10,6,0.85) 100%)"
+                  : "linear-gradient(180deg, rgba(45,30,15,0.9) 0%, rgba(20,12,6,0.9) 100%)",
+                border: `1px solid ${used ? `${GOLD}44` : GOLD}`,
+                borderRadius: 4,
+                color: used ? `${GOLD}88` : "#f0d896",
+                boxShadow: used ? "none" : `inset 0 0 0 1px ${GOLD}33, 0 2px 10px rgba(0,0,0,0.5)`,
               }}
             >
+              <PillOrnament side="left" color={GOLD} dim={used} />
+              <PillOrnament side="right" color={GOLD} dim={used} />
               {used ? "已问 · " : ""}{d.q}
             </button>
           );
@@ -675,6 +733,38 @@ function DialogueView({ npc, usedIdx, collected, onPick, onClose }: {
     </div>
   );
 }
+
+function Flourish({ flip }: { flip?: boolean }) {
+  return (
+    <svg width="56" height="14" viewBox="0 0 56 14" fill="none" style={{ transform: flip ? "scaleX(-1)" : undefined, opacity: 0.85 }}>
+      <path d="M2 7 Q14 1 26 7 T54 7" stroke={GOLD} strokeWidth="1" fill="none" strokeLinecap="round" />
+      <circle cx="14" cy="5" r="1.2" fill={GOLD} />
+      <circle cx="40" cy="9" r="1.2" fill={GOLD} />
+      <path d="M48 4 Q52 7 48 10" stroke={GOLD} strokeWidth="1" fill="none" />
+    </svg>
+  );
+}
+
+function PillOrnament({ side, color, dim }: { side: "left" | "right"; color: string; dim?: boolean }) {
+  return (
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        top: "50%",
+        [side]: 8,
+        transform: "translateY(-50%)",
+        opacity: dim ? 0.4 : 0.9,
+      } as React.CSSProperties}
+    >
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M11 2 L18 11 L11 20 L4 11 Z" stroke={color} strokeWidth="1" fill="none" />
+        <circle cx="11" cy="11" r="2.2" fill={color} opacity="0.7" />
+      </svg>
+    </span>
+  );
+}
+
 
 /* ============ Map ============ */
 

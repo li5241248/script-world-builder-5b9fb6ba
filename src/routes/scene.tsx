@@ -290,7 +290,7 @@ export function Scene() {
       {/* 小游戏入口（悬浮在输入栏上方,透明背景） */}
       <button
         onClick={() => navigate({ to: "/minigame" })}
-        className="absolute bottom-28 left-3 z-20 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
+        className="absolute bottom-20 left-3 z-20 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
       >
         <Sparkles size={11} />
         <span>小游戏</span>

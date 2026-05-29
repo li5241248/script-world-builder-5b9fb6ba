@@ -150,6 +150,93 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 .wt-sub{font-size:13px;color:#bbb;display:block;margin-top:5px;}
 
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.3);}50%{box-shadow:0 0 0 14px rgba(201,169,110,0);}}
+
+/* ===== 王府御敌·古风首屏重设计 ===== */
+#screenStory{background:
+  radial-gradient(ellipse at 50% 25%, rgba(80,40,25,0.55) 0%, rgba(10,8,14,0.96) 60%),
+  linear-gradient(180deg,#0b0810 0%,#15100c 50%,#0a0810 100%);
+  padding:14px 12px 24px;}
+#screenStory .s-area{max-width:420px;}
+#screenStory .s-icon,#screenStory > .s-area > .s-title,#screenStory > .s-area > .s-sub{display:none;}
+
+.wf-header{position:relative;text-align:center;margin-bottom:14px;}
+.wf-swords{font-size:30px;color:#d9b46a;text-shadow:0 0 14px rgba(217,180,106,0.7);display:inline-block;height:34px;line-height:34px;}
+.wf-swords .sw1,.wf-swords .sw2{display:inline-block;}
+.wf-swords .sw1{transform:rotate(-30deg) translateX(8px);}
+.wf-swords .sw2{transform:rotate(30deg) translateX(-8px);}
+.wf-title{font-family:'STKaiti','KaiTi','Noto Serif SC',serif;font-size:44px;font-weight:900;letter-spacing:6px;
+  background:linear-gradient(180deg,#f5e0a8 0%,#d9b46a 45%,#7a5a26 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 2px 8px rgba(0,0,0,0.7);margin:0 0 6px;line-height:1.1;}
+.wf-subtitle{display:inline-flex;align-items:center;gap:10px;color:#c9a96e;font-size:12px;letter-spacing:5px;}
+.wf-subtitle::before,.wf-subtitle::after{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);}
+
+.wf-scroll{position:relative;margin:16px 0 20px;background:
+  linear-gradient(180deg,#1d1612 0%,#241a13 50%,#1a130f 100%);
+  border:1px solid rgba(201,169,110,0.35);border-radius:6px;padding:16px 22px 18px;
+  box-shadow:inset 0 0 30px rgba(0,0,0,0.6), 0 6px 20px rgba(0,0,0,0.5);}
+.wf-scroll::before,.wf-scroll::after{content:"";position:absolute;top:-8px;bottom:-8px;width:10px;
+  background:linear-gradient(180deg,#7a5a26,#d9b46a 50%,#5a4422);border-radius:3px;box-shadow:0 0 8px rgba(0,0,0,0.6);}
+.wf-scroll::before{left:-10px;} .wf-scroll::after{right:-10px;}
+.wf-scroll h3{display:flex;align-items:center;gap:8px;color:#d9b46a;font-size:14px;letter-spacing:3px;margin-bottom:10px;}
+.wf-scroll h3 .seal{display:inline-block;width:14px;height:14px;background:#8a2a22;border:1px solid #d9b46a;}
+.wf-scroll p{font-size:13.5px;color:#cfc2a8;line-height:2;text-align:justify;margin:0;}
+.wf-scroll .nh{color:#e84a8f;font-weight:bold;}
+.wf-scroll .nf{color:#4a90d9;font-weight:bold;}
+.wf-scroll .hl{color:#f5e0a8;}
+
+.wf-wave{position:absolute;top:-4px;right:-4px;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.wf-wave-label{color:#c9a96e;font-size:10px;letter-spacing:3px;writing-mode:vertical-rl;margin-bottom:2px;}
+.wf-wave-badge{width:52px;height:52px;border-radius:50%;
+  background:radial-gradient(circle,#2a1f15 0%,#0d0a08 100%);
+  border:1.5px solid #c9a96e;display:flex;align-items:center;justify-content:center;
+  color:#f5e0a8;font-size:18px;font-weight:bold;font-family:'STKaiti',serif;
+  box-shadow:inset 0 0 10px rgba(201,169,110,0.3),0 0 8px rgba(201,169,110,0.25);}
+.wf-wave-dots{display:flex;gap:4px;}
+.wf-wave-dots i{width:5px;height:5px;border-radius:50%;background:#3a2e22;}
+.wf-wave-dots i.on{background:#d9b46a;box-shadow:0 0 4px #d9b46a;}
+
+.wf-warn{text-align:center;color:#c44;font-size:14px;letter-spacing:4px;margin:10px 0 12px;
+  display:flex;align-items:center;justify-content:center;gap:10px;font-weight:bold;}
+.wf-warn::before,.wf-warn::after{content:"";width:40px;height:1px;background:linear-gradient(90deg,transparent,#c44,transparent);}
+
+.wf-map{position:relative;height:180px;border-radius:8px;overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(196,68,68,0.3) 0%, transparent 22%),
+    radial-gradient(circle at 82% 72%, rgba(196,68,68,0.25) 0%, transparent 22%),
+    radial-gradient(circle at 12% 78%, rgba(196,68,68,0.22) 0%, transparent 20%),
+    radial-gradient(circle at 88% 22%, rgba(196,68,68,0.22) 0%, transparent 20%),
+    radial-gradient(ellipse at 50% 50%, rgba(60,40,30,0.7) 0%, rgba(10,6,4,0.96) 70%);
+  border:1px solid rgba(201,169,110,0.25);}
+.wf-map::before{content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,169,110,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,169,110,0.07) 1px,transparent 1px);
+  background-size:30px 30px;}
+.wf-hall{position:absolute;width:90px;display:flex;flex-direction:column;align-items:center;gap:4px;top:50%;transform:translateY(-50%);z-index:2;}
+.wf-hall.left{left:10%;} .wf-hall.right{right:10%;}
+.wf-portrait{width:54px;height:54px;border-radius:50%;border:2px solid;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  background:radial-gradient(circle,#2a1f18 0%,#0d0a08 100%);}
+.wf-hall.left .wf-portrait{border-color:#e84a8f;color:#e84a8f;box-shadow:0 0 14px rgba(232,74,143,0.5);}
+.wf-hall.right .wf-portrait{border-color:#4a90d9;color:#4a90d9;box-shadow:0 0 14px rgba(74,144,217,0.5);}
+.wf-tag{padding:1px 10px;border-radius:2px;font-size:11px;letter-spacing:2px;border:1px solid;background:rgba(0,0,0,0.55);}
+.wf-hall.left .wf-tag{color:#e84a8f;border-color:rgba(232,74,143,0.6);}
+.wf-hall.right .wf-tag{color:#4a90d9;border-color:rgba(74,144,217,0.6);}
+.wf-name{font-size:11px;color:#cfc2a8;letter-spacing:1px;}
+.wf-sword{font-size:11px;color:#8a7e66;}
+.wf-enemy{position:absolute;font-size:13px;color:#c44;text-shadow:0 0 6px #c44;animation:wfpulse 2s infinite;z-index:1;}
+@keyframes wfpulse{0%,100%{opacity:0.55;}50%{opacity:1;}}
+
+.wf-cta{margin:20px auto 6px;display:block;width:80%;padding:14px 0;
+  background:linear-gradient(180deg,#3a2a18 0%,#1a120a 100%);
+  border:1.5px solid #c9a96e;border-radius:4px;color:#f5e0a8;
+  font-family:'STKaiti','KaiTi',serif;font-size:18px;letter-spacing:8px;font-weight:bold;
+  box-shadow:inset 0 0 12px rgba(201,169,110,0.2),0 4px 14px rgba(0,0,0,0.5);
+  cursor:pointer;transition:transform 0.15s;}
+.wf-cta:active{transform:scale(0.97);}
+.wf-foot{text-align:center;color:#8a7e66;font-size:11px;line-height:1.9;margin-top:14px;letter-spacing:1px;}
+
 </style>
 </head>
 <body>
@@ -158,29 +245,55 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <div class="overlay-screen show" id="screenStory">
 <div class="s-area">
 
-<div class="s-icon">⚔️</div>
-<div class="s-title">王府御敌</div>
-<div class="s-sub">—— 双剑合璧 · 共守家园 ——</div>
-
-<div class="story-box">
-<h3>📜 缘起</h3>
-<p>
-深夜子时，玄清王府被<span class="hl">神秘刺客组织</span>围困。
-府外火光冲天，数十名训练有素的刺客正层层渗透。
-</p><br>
-<p>
-<span class="nh">庄寒雁</span>手持梅花刺守在前殿，
-<span class="nf">傅云夕</span>在后堂布阵策应——二人虽相隔两地，
-却凭多年并肩的<span class="hl">心照不宣</span>遥相呼应。
-</p><br>
-<p>
-刺客一波强过一波，<span class="hl">技能有限，机会不多</span>。
-唯有两人<strong style="color:var(--t4)">同频选择、默契配合</strong>，
-以<strong style="color:var(--t4)">合璧之力</strong>方能击退强敌！
-</p>
+<div class="wf-header">
+  <div class="wf-swords"><span class="sw1">⚔</span><span class="sw2">⚔</span></div>
+  <h1 class="wf-title">王府御敌</h1>
+  <div class="wf-subtitle">双剑合璧 · 共守家园</div>
 </div>
 
-<button class="btn-action" id="btnToRules">了解战法 ▶</button>
+<div class="wf-scroll">
+  <div class="wf-wave">
+    <span class="wf-wave-label">波次</span>
+    <div class="wf-wave-badge">1/5</div>
+    <div class="wf-wave-dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <h3><span class="seal"></span>缘起</h3>
+  <p>
+    深夜子时，玄清王府被刺客团团围困，杀机四伏。<br>
+    <span class="nh">庄寒雁</span>守前殿，以智谋布局，阻敌破阵；<br>
+    <span class="nf">傅云夕</span>布后堂，以剑法御敌，护卫中枢。<br>
+    二人隔空配合，心意相通，<span class="hl">双剑合璧</span>，方能共守家园，揭开隐藏在迷雾中的身世之谜！
+  </p>
+</div>
+
+<div class="wf-warn">◆ 敌袭预警 ◆</div>
+
+<div class="wf-map">
+  <span class="wf-enemy" style="top:18%;left:8%;">👤</span>
+  <span class="wf-enemy" style="top:72%;left:6%;">👤</span>
+  <span class="wf-enemy" style="top:22%;right:8%;">👤</span>
+  <span class="wf-enemy" style="top:70%;right:10%;">👤</span>
+  <span class="wf-enemy" style="bottom:6%;left:46%;">👤</span>
+  <div class="wf-hall left">
+    <div class="wf-portrait">🌸</div>
+    <div class="wf-tag">前殿</div>
+    <div class="wf-name">庄寒雁</div>
+    <div class="wf-sword">⚔</div>
+  </div>
+  <div class="wf-hall right">
+    <div class="wf-portrait">🗡</div>
+    <div class="wf-tag">后堂</div>
+    <div class="wf-name">傅云夕</div>
+    <div class="wf-sword">⚔</div>
+  </div>
+</div>
+
+<button class="wf-cta" id="btnToRules">了解战法 ▶</button>
+
+<div class="wf-foot">
+  刺客一波强过一波，技能有限，机会不多。<br>
+  唯有两人同频选择、默契配合，以合璧之力方能击退强敌！
+</div>
 
 </div>
 </div>

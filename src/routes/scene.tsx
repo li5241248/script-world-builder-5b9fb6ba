@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, MoreHorizontal, Send, Sparkles, Mic, BookOpen, Feather, Lightbulb, Volume2, Asterisk, Clock, X, UserPlus, Check, ScrollText, Eye, EyeOff, Lock, History } from "lucide-react";
+import { ChevronLeft, MoreHorizontal, Send, Sparkles, Mic, BookOpen, Feather, Lightbulb, Volume2, Asterisk, Clock, X, UserPlus, Check, ScrollText, Eye, EyeOff, Lock, History, Gauge, Heart, Eye as EyeIcon, MessageCircle, Swords, Brain, Crown } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import sceneBg from "@/assets/scene-cijitang.png";
 import actorAvatar from "@/assets/actor-avatar.png";
@@ -69,6 +69,7 @@ export function Scene() {
   const [secretOpen, setSecretOpen] = useState(true);
   const [secretRevealed, setSecretRevealed] = useState(false);
   const [recapOpen, setRecapOpen] = useState(false);
+  const [statsOpen, setStatsOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -216,11 +217,11 @@ export function Scene() {
         </div>
         <div className="flex items-center gap-1.5">
           <button
-            onClick={() => setRecapOpen(true)}
-            aria-label="剧情回溯"
+            onClick={() => setStatsOpen(true)}
+            aria-label="玩家数值"
             className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur active:scale-95"
           >
-            <History size={16} />
+            <Gauge size={16} />
           </button>
           <button className="flex h-9 w-9 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur active:scale-95">
             <MoreHorizontal size={18} />
@@ -374,6 +375,9 @@ export function Scene() {
 
       {/* 剧情回溯 */}
       {recapOpen && <RecapPanel onClose={() => setRecapOpen(false)} />}
+
+      {/* 玩家数值 */}
+      {statsOpen && <StatsPanel onClose={() => setStatsOpen(false)} /> }
     </div>
   );
 }
@@ -715,6 +719,128 @@ function RecapPanel({ onClose }: { onClose: () => void }) {
               <div className="text-[12px] italic text-white/55">未来剧情待你书写……</div>
             </li>
           </ol>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── 玩家数值面板 ──
+const AFFINITY: { id: string; value: number }[] = [
+  { id: "zhouyi", value: 120 },
+  { id: "zhuangsy", value: 360 },
+  { id: "yushan", value: 80 },
+  { id: "moshen", value: 540 },
+];
+
+const SKILLS: { key: string; label: string; value: number; icon: typeof EyeIcon }[] = [
+  { key: "observe", label: "观察力", value: 78, icon: EyeIcon },
+  { key: "speech", label: "口才", value: 65, icon: MessageCircle },
+  { key: "force", label: "武力", value: 32, icon: Swords },
+  { key: "wits", label: "智谋", value: 84, icon: Brain },
+  { key: "prestige", label: "威望", value: 47, icon: Crown },
+];
+
+function StatsPanel({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="absolute inset-0 z-30 animate-fade-in">
+      <button
+        onClick={onClose}
+        aria-label="关闭"
+        className="absolute inset-0 bg-black/55 backdrop-blur-sm"
+      />
+      <div className="absolute inset-x-0 bottom-0 max-h-[82%] overflow-hidden rounded-t-3xl border-t border-amber-200/20 bg-gradient-to-b from-[#2a1a14] to-[#1a0e14] shadow-[0_-12px_40px_rgba(0,0,0,0.5)] animate-slide-in-up">
+        <div className="flex items-center justify-between px-5 pt-5 pb-3">
+          <div className="flex items-center gap-2">
+            <Gauge size={16} className="text-amber-200" />
+            <div>
+              <div className="text-[10px] tracking-[0.35em] text-amber-200/80">玩 家 数 值</div>
+              <div className="font-brush text-[18px] tracking-[0.15em] text-white">庄 寒 雁</div>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white/80 active:scale-95"
+          >
+            <X size={15} />
+          </button>
+        </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-200/20 to-transparent" />
+
+        <div className="max-h-[68vh] overflow-y-auto px-5 py-5 space-y-6">
+          {/* 好感度 */}
+          <section>
+            <div className="mb-3 flex items-center gap-2">
+              <Heart size={13} className="text-rose-300" />
+              <div className="text-[11px] tracking-[0.3em] text-amber-100/85">好 感 度</div>
+              <div className="ml-auto text-[10px] text-white/45">0 ~ 1000</div>
+            </div>
+            <div className="space-y-2.5">
+              {AFFINITY.map((a) => {
+                const ch = getCharacter(a.id);
+                const pct = Math.min(100, (a.value / 1000) * 100);
+                return (
+                  <div key={a.id} className="flex items-center gap-3">
+                    <img
+                      src={ch?.img}
+                      alt={ch?.name}
+                      className="h-9 w-9 flex-shrink-0 rounded-full object-cover ring-1 ring-amber-200/25"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="mb-1 flex items-baseline justify-between">
+                        <div className="text-[13px] text-white/90">{ch?.name ?? a.id}</div>
+                        <div className="font-mono text-[11px] text-amber-200/90">
+                          {a.value}<span className="text-white/40"> / 1000</span>
+                        </div>
+                      </div>
+                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/8">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-rose-400 to-amber-300"
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* 技能点 */}
+          <section>
+            <div className="mb-3 flex items-center gap-2">
+              <Sparkles size={13} className="text-amber-200" />
+              <div className="text-[11px] tracking-[0.3em] text-amber-100/85">技 能 点</div>
+              <div className="ml-auto text-[10px] text-white/45">0 ~ 100</div>
+            </div>
+            <div className="grid grid-cols-1 gap-2.5">
+              {SKILLS.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <div
+                    key={s.key}
+                    className="flex items-center gap-3 rounded-xl border border-amber-200/15 bg-white/[0.04] px-3 py-2.5"
+                  >
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-200/10 text-amber-200">
+                      <Icon size={14} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="mb-1 flex items-baseline justify-between">
+                        <div className="text-[13px] text-white/90">{s.label}</div>
+                        <div className="font-mono text-[11px] text-amber-200/90">{s.value}</div>
+                      </div>
+                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/8">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-amber-300 to-rose-300"
+                          style={{ width: `${s.value}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         </div>
       </div>
     </div>

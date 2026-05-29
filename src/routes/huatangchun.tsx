@@ -27,7 +27,7 @@ const STORY_CHAPTERS = [
 function HuatangChun() {
   const navigate = useNavigate();
   const [active, setActive] = useState(1);
-  const [openChapter, setOpenChapter] = useState(0);
+  const [openChapter, setOpenChapter] = useState(4);
   const [showWorld, setShowWorld] = useState(false);
   const cardRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const trackRef = useRef<HTMLDivElement | null>(null);

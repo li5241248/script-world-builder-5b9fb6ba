@@ -53,11 +53,11 @@ const IS_HUMAN: Record<string, boolean> = {
 
 function ActorTag({ human }: { human: boolean }) {
   return human ? (
-    <span className="mt-1 inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-500/15 px-1.5 py-[1px] text-[8px] leading-none tracking-wider text-emerald-100 backdrop-blur-md">
+    <span className="mt-1 inline-flex items-center justify-center rounded-full bg-emerald-500 px-2 py-[2px] text-[9px] font-medium leading-none text-white shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
       真人
     </span>
   ) : (
-    <span className="mt-1 inline-flex items-center justify-center rounded-full border border-sky-300/40 bg-sky-500/15 px-1.5 py-[1px] text-[8px] leading-none tracking-wider text-sky-100 backdrop-blur-md">
+    <span className="mt-1 inline-flex items-center justify-center rounded-full bg-sky-500/90 px-2 py-[2px] text-[9px] font-medium leading-none text-white shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
       AI
     </span>
   );

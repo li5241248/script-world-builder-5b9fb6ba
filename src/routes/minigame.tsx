@@ -1007,48 +1007,77 @@ function DeductionPanel({ collected, onClose, onWin }: {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-4">
-      <div className="mb-2 text-[12px] tracking-[0.2em]" style={{ color: GOLD }}>· {title} ·</div>
-      <div className="space-y-1.5">{children}</div>
+    <div className="mb-5">
+      <div className="mb-3 flex items-center gap-2 text-[13px]" style={{ color: GOLD }}>
+        <span style={{ transform: "rotate(45deg)", display: "inline-block", width: 7, height: 7, border: `1px solid ${GOLD}` }} />
+        <span className="tracking-[0.15em]">{title}</span>
+        <span className="flex-1 h-px" style={{ background: `linear-gradient(90deg, ${GOLD}55, transparent)` }} />
+      </div>
+      <div className="space-y-2">{children}</div>
     </div>
   );
 }
 
 function Radio({ checked, label, onClick }: { checked: boolean; label: string; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left active:scale-[0.98]"
-      style={{ background: "#1a1410", border: `1px solid ${checked ? GOLD : `${GOLD}33`}` }}>
-      <span className="flex h-4 w-4 items-center justify-center rounded-full" style={{ border: `1.5px solid ${GOLD}` }}>
-        {checked && <span className="h-2 w-2 rounded-full" style={{ background: GOLD }} />}
+    <button
+      onClick={onClick}
+      className="relative flex w-full items-center gap-3 px-4 py-2.5 text-left transition active:scale-[0.99]"
+      style={{
+        background: checked
+          ? "linear-gradient(180deg,#f0d18a 0%,#c9a05c 55%,#8e6628 100%)"
+          : "linear-gradient(180deg,#1a1208 0%,#0d0805 100%)",
+        border: `1px solid ${checked ? "#5a3a18" : `${GOLD}55`}`,
+        borderRadius: 999,
+        boxShadow: checked
+          ? "inset 0 1px 0 rgba(255,235,180,0.65), 0 2px 8px rgba(0,0,0,0.4)"
+          : "inset 0 0 0 1px rgba(0,0,0,0.4)",
+      }}
+    >
+      <span
+        className="flex h-4 w-4 items-center justify-center rounded-full"
+        style={{
+          border: `1.5px solid ${checked ? "#3a2410" : GOLD}`,
+          background: checked ? "#1a1208" : "transparent",
+        }}
+      >
+        {checked && <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#f0d896" }} />}
       </span>
-      <span className="text-[13px]" style={{ color: checked ? GOLD : "#f5e6c8" }}>{label}</span>
+      <span className="text-[14px]" style={{ color: checked ? "#2a1a08" : "#e8d4a8" }}>{label}</span>
     </button>
   );
 }
 
-/* ============ Drawer ============ */
+/* ============ Drawer (ornate centered modal) ============ */
 
 function Drawer({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
   return (
-    <div className="absolute inset-0 z-40 flex flex-col bg-black/60 backdrop-blur-sm" onClick={onClose}>
-      <div className="flex-1" />
+    <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/75 backdrop-blur-sm px-4 py-6" onClick={onClose}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className="max-h-[78%] overflow-y-auto rounded-t-3xl px-5 pb-8 pt-4"
-        style={{
-          background: "linear-gradient(180deg,#1f1610 0%,#0d0908 100%)",
-          borderTop: `1.5px solid ${GOLD}`,
-          animation: "slideUp 0.3s ease-out",
-        }}
+        className="w-full max-w-[360px]"
+        style={{ animation: "popIn 0.28s ease-out" }}
       >
-        <div className="mx-auto mb-3 h-1 w-10 rounded-full" style={{ background: `${GOLD}66` }} />
-        <div className="mb-4 flex items-center justify-between">
-          <div className="font-brush text-[18px] tracking-[0.2em]" style={{ color: GOLD }}>{title}</div>
-          <button onClick={onClose} className="text-white/60"><X size={18} /></button>
-        </div>
-        {children}
+        <OrnateFrame padding={0}>
+          <div className="relative">
+            <div className="flex items-center justify-between px-5 pt-5 pb-3">
+              <div
+                className="font-brush text-[22px] tracking-[0.12em]"
+                style={{
+                  background: "linear-gradient(180deg,#fbe5a8 0%,#d4a560 60%,#8a5a20 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >{title}</div>
+              <button onClick={onClose} style={{ color: GOLD }}><X size={20} /></button>
+            </div>
+            <div className="mx-5 h-px" style={{ background: `linear-gradient(90deg, transparent, ${GOLD}66, transparent)` }} />
+            <div className="max-h-[68vh] overflow-y-auto px-5 pb-6 pt-4">
+              {children}
+            </div>
+          </div>
+        </OrnateFrame>
       </div>
-      <style>{`@keyframes slideUp { from{transform:translateY(40%);opacity:0} to{transform:translateY(0);opacity:1} }`}</style>
     </div>
   );
 }

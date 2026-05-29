@@ -115,21 +115,22 @@ type Clue = {
 
 const CLUES: Record<string, Clue> = {
   // 清秋苑
-  letter_mother: { id: "letter_mother", name: "娘亲遗信", icon: "📜", category: "书信", short: "母亲临终所留半残书信", full: "信纸已泛黄，落款被血迹遮蔽，依稀可辨「乔」字一角，似与外人通信。" },
-  portrait_clue: { id: "portrait_clue", name: "画像疑点", icon: "🖼️", category: "证物", short: "幼时画像中容貌略异", full: "画中女童眉宇与庄仕洋夫妇皆不相像，反倒与传闻中东侯王少年面容有七分神似。" },
+  letter_mother: { id: "letter_mother", name: "娘亲遗信", icon: "📜", category: "书信", short: "娘亲临终所留的半残遗信", full: "泛黄信纸，字迹娟秀匆忙：「雁儿，娘对不起你。你不是娘亲生的，但娘待你胜过亲生。你的生母叫小乔，她把你托付给我……」信纸末尾被撕去。" },
+  portrait_clue: { id: "portrait_clue", name: "画像疑点", icon: "🖼️", category: "证物", short: "清秋苑王氏画像与寒雁不像", full: "清秋苑挂着娘亲王氏的画像。寒雁的眉眼与画中王氏完全不同。陈妈妈说，从来没人说过寒雁像王氏。" },
   // 芙蓉园
-  prescription: { id: "prescription", name: "安胎药方", icon: "📋", category: "文书", short: "出自王氏的旧药方", full: "药方上注明日期早于寒雁出生九月有余——药本是给王氏服用，却从未真正煎过。" },
-  pillow_clue: { id: "pillow_clue", name: "假孕枕头", icon: "🛏️", category: "证物", short: "中空塞布的孕枕", full: "枕中以软布与药包伪装腹隆，足见当年怀孕之事是一场精心安排。" },
+  prescription: { id: "prescription", name: "安胎药方", icon: "📋", category: "证物", short: "媚姨娘房中并非安胎之方", full: "芙蓉园找到的药方残页，上面根本不是安胎药，而是寻常补气血之方。证实媚姨娘假怀孕。" },
+  pillow_clue: { id: "pillow_clue", name: "假孕枕头", icon: "🛏️", category: "证物", short: "媚姨娘床榻下的假孕枕", full: "媚姨娘床榻下发现的小圆枕，正是她假扮怀孕的道具。为争宠不惜欺骗庄仕洋。" },
   // 珙桐苑
-  letter_zhou: { id: "letter_zhou", name: "周氏密信", icon: "📜", category: "书信", short: "周氏与外人密谋之信", full: "信中议及「掉换婴孩」「灭口接生婆」等语，字迹与庄府账房一致。" },
-  poison_bottle: { id: "poison_bottle", name: "毒药瓶", icon: "💊", category: "证物", short: "残留鹤顶红的小瓷瓶", full: "瓶口磨损，曾多次开启，与陈妈妈所述「夫人忽病暴卒」时辰吻合。" },
+  letter_zhou: { id: "letter_zhou", name: "周氏密信", icon: "📜", category: "书信", short: "周氏与大周氏往来的书信残片", full: "周氏与大周氏往来书信残片，提到「那孩子不是庄家的种，留着终究是祸患」。她们早知寒雁非庄仕洋亲生。" },
+  poison_bottle: { id: "poison_bottle", name: "毒药瓶", icon: "💊", category: "证物", short: "瓶底有宫中御用标记的毒瓶", full: "珙桐苑找到的药瓶，残留当年周氏想害寒雁的毒药。瓶底有宫中御用标记，暗示此药来自宫中。" },
   // 玄清王府
-  medical_record: { id: "medical_record", name: "吴太医医案", icon: "📖", category: "文书", short: "记载东侯王旧伤的医案", full: "案中详记东侯王二十年前胸前剑伤一道——而寒雁幼时亦曾梦呓提及「胸前长疤的爹爹」。" },
+  medical_record: { id: "medical_record", name: "吴太医医案", icon: "📖", category: "文书", short: "唐小乔诊脉确认有孕的医案", full: "吴太医医案记载：多年前曾为东侯王妃唐小乔诊脉，确认有孕。日期与寒雁出生时间吻合。" },
   // 顺昌武馆
-  tangmen_token: { id: "tangmen_token", name: "唐门令牌", icon: "🗡️", category: "信物", short: "刻有「乔」字的唐门暗令", full: "令牌乃唐门嫡系所持，背面阴刻「乔」字小印，正是当年唐小乔的随身信物。" },
+  tangmen_token: { id: "tangmen_token", name: "唐门令牌", icon: "🗡️", category: "信物", short: "正面刻「唐」字的青铜令牌", full: "青铜令牌，正面刻「唐」字。唐门弟子信物。杨琦说这是东侯王府遗物，由唐小乔带入王府。" },
   // 城外破屋
-  silk_handkerchief: { id: "silk_handkerchief", name: "绣乔字锦帕", icon: "🧣", category: "信物", short: "绣有「乔」字的旧锦帕", full: "帕角绣「乔」字一枚，针法精致，与唐门令牌字形一致，乃唐小乔旧物。" },
-  candle_clue: { id: "candle_clue", name: "烧残信纸", icon: "🕯️", category: "证物", short: "几片未燃尽的字纸", full: "依稀可辨「东侯」「孩儿」「托付」字样，似是当年托孤之信。" },
+  silk_handkerchief: { id: "silk_handkerchief", name: "绣「乔」字锦帕", icon: "🧣", category: "信物", short: "角落绣「乔」字的精致锦帕", full: "精致锦帕，角落绣「乔」字。唐小乔随身之物。阿碧冒被拔舌风险也要保住它——证明寒雁身世的唯一物证。" },
+  candle_clue: { id: "candle_clue", name: "烧残的信纸", icon: "🕯️", category: "文书", short: "灯台下烧残的信纸碎片", full: "灯台下烧残的信纸碎片，依稀可辨「东侯」、「托付」、「太后」等字眼。阿碧临终前烧毁大部分证据。" },
+
 
   // NPC 口供
   clue_mother_love: { id: "clue_mother_love", name: "母怀深情", icon: "🕊️", category: "口供", short: "陈妈妈：王氏待寒雁视如己出", full: "陈妈妈说，王氏自始至终待寒雁极好，然临终竟低声唤她「雁儿，对不起娘亲，你不是……」" },

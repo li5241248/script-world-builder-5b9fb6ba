@@ -44,6 +44,26 @@ const ACTORS: Record<string, string> = {
   wentang: "@沐雨",
 };
 
+// 区分 AI Agent 与真人玩家
+const IS_HUMAN: Record<string, boolean> = {
+  wentang: true,
+  peirong: true,
+  peiyan: true,
+  // 其余角色默认 AI
+};
+
+function ActorTag({ human }: { human: boolean }) {
+  return human ? (
+    <span className="mt-1 inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-500/15 px-1.5 py-[1px] text-[8px] leading-none tracking-wider text-emerald-100 backdrop-blur-md">
+      真人
+    </span>
+  ) : (
+    <span className="mt-1 inline-flex items-center justify-center rounded-full border border-sky-300/40 bg-sky-500/15 px-1.5 py-[1px] text-[8px] leading-none tracking-wider text-sky-100 backdrop-blur-md">
+      AI
+    </span>
+  );
+}
+
 export function Scene() {
   const navigate = useNavigate();
   const [messages, setMessages] = useState<Msg[]>(INITIAL);
@@ -387,11 +407,14 @@ function Bubble({ m, picked, onPickHint, onAvatarClick }: { m: Msg; picked?: boo
             </div>
           )}
         </div>
-        <img
-          src={me.img}
-          alt={me.name}
-          className="h-9 w-9 flex-shrink-0 rounded-full object-cover"
-        />
+        <div className="flex flex-col items-center">
+          <img
+            src={me.img}
+            alt={me.name}
+            className="h-9 w-9 flex-shrink-0 rounded-full object-cover"
+          />
+          <ActorTag human={IS_HUMAN[me.id] ?? false} />
+        </div>
       </div>
     );
   }
@@ -494,13 +517,16 @@ function Bubble({ m, picked, onPickHint, onAvatarClick }: { m: Msg; picked?: boo
 
   const c = getCharacter(m.charId) ?? CHARACTERS[0];
   const avatarBtn = (
-    <button
-      onClick={() => onAvatarClick?.(c.id)}
-      className="h-9 w-9 flex-shrink-0 overflow-hidden rounded-full active:scale-95"
-      aria-label={`查看 ${c.name}`}
-    >
-      <img src={c.img} alt={c.name} className="h-full w-full object-cover" />
-    </button>
+    <div className="flex flex-col items-center">
+      <button
+        onClick={() => onAvatarClick?.(c.id)}
+        className="h-9 w-9 flex-shrink-0 overflow-hidden rounded-full active:scale-95"
+        aria-label={`查看 ${c.name}`}
+      >
+        <img src={c.img} alt={c.name} className="h-full w-full object-cover" />
+      </button>
+      <ActorTag human={IS_HUMAN[c.id] ?? false} />
+    </div>
   );
 
   if (m.kind === "action") {

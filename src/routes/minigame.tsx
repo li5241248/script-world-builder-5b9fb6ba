@@ -2,6 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { ChevronLeft, Map as MapIcon, Paperclip, Puzzle, X, Check, Share2, Sparkles } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
+import malePortrait from "@/assets/minigame-character-male.png";
+import femalePortrait from "@/assets/minigame-character-female.png";
+import matronPortrait from "@/assets/minigame-character-matron.png";
+
 
 export const Route = createFileRoute("/minigame")({
   component: MinigamePage,
@@ -137,13 +141,14 @@ type Npc = {
   name: string;
   title: string;
   avatar: string;
+  portrait?: string;
   sceneId: SceneId;
   dialogues: { q: string; a: string; clueId: string }[];
 };
 
 const NPCS: Record<NpcId, Npc> = {
   chenmama: {
-    id: "chenmama", name: "陈妈妈", title: "清秋苑老仆", avatar: "👵", sceneId: "qingqiu",
+    id: "chenmama", name: "陈妈妈", title: "清秋苑老仆", avatar: "👵", portrait: matronPortrait, sceneId: "qingqiu",
     dialogues: [
       { q: "夫人临终可有遗言？", a: "夫人最后一句，是抱着小姐喃喃道「焰儿，对不起娘亲，你不是……」便去了。", clueId: "clue_mother_love" },
       { q: "老爷待小姐如何？", a: "老爷表面慈父，私下却从不抱小姐，每见必避，怕是早知什么。", clueId: "clue_father_cold" },
@@ -151,7 +156,7 @@ const NPCS: Record<NpcId, Npc> = {
     ],
   },
   jiaomeng: {
-    id: "jiaomeng", name: "娇梦", title: "芙蓉园侍婢", avatar: "👩", sceneId: "furong",
+    id: "jiaomeng", name: "娇梦", title: "芙蓉园侍婢", avatar: "👩", portrait: femalePortrait, sceneId: "furong",
     dialogues: [
       { q: "夫人当年怀孕可有蹊跷？", a: "夫人「有孕」时从不召太医诊脉，腹围每月却递增——分明是装的。", clueId: "clue_fake_pregnancy" },
       { q: "府中可有别样传闻？", a: "（压低声）老人都晓得，小姐根本不是庄家的血。", clueId: "clue_not_zhuang" },
@@ -159,7 +164,7 @@ const NPCS: Record<NpcId, Npc> = {
     ],
   },
   meiyiniang: {
-    id: "meiyiniang", name: "媚姨娘", title: "天牢罪人", avatar: "🥀", sceneId: "tianlao",
+    id: "meiyiniang", name: "媚姨娘", title: "天牢罪人", avatar: "🥀", portrait: matronPortrait, sceneId: "tianlao",
     dialogues: [
       { q: "你究竟做了什么？", a: "当年是我亲手将你从破屋抱回，换下王氏怀中早已夭折的孩儿。", clueId: "clue_truth_birth" },
       { q: "我的生父是谁？", a: "东侯王。他临终之夜，把襁褓中的你托给亲信，由唐小乔诞下，藏于庄府避祸。", clueId: "clue_donghou_father" },
@@ -167,7 +172,7 @@ const NPCS: Record<NpcId, Npc> = {
     ],
   },
   wutaiyi: {
-    id: "wutaiyi", name: "吴太医", title: "玄清王府御医", avatar: "👴", sceneId: "xuanqing",
+    id: "wutaiyi", name: "吴太医", title: "玄清王府御医", avatar: "👴", portrait: malePortrait, sceneId: "xuanqing",
     dialogues: [
       { q: "您可识得东侯王？", a: "我曾为东侯王诊治多年，姑娘眉眼，与他年少时一般无二。", clueId: "clue_look_alike" },
       { q: "东侯王一门何以灭绝？", a: "二十年前一夜火起，满门皆丧，唯不见幼女尸首。", clueId: "clue_massacre" },
@@ -175,7 +180,7 @@ const NPCS: Record<NpcId, Npc> = {
     ],
   },
   yangqi: {
-    id: "yangqi", name: "杨琦", title: "顺昌武馆教头", avatar: "🧔", sceneId: "shunchang",
+    id: "yangqi", name: "杨琦", title: "顺昌武馆教头", avatar: "🧔", portrait: malePortrait, sceneId: "shunchang",
     dialogues: [
       { q: "唐门旧主何人？", a: "唐门嫡女唐小乔，二十年前神秘失踪，传言与东侯王有染。", clueId: "clue_tangmen" },
       { q: "东侯可曾留有后人？", a: "确有一女，由唐小乔所诞，托付亲信带走。", clueId: "clue_donghou" },
@@ -402,7 +407,9 @@ function SceneView({
             className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full px-3 py-2"
             style={{ background: `${GOLD}22`, border: `1px solid ${GOLD}` }}
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-lg">{NPCS[scene.npcId as NpcId].avatar}</span>
+            <span className="flex h-8 w-8 overflow-hidden rounded-full bg-black/50" style={{ border: `1px solid ${GOLD}66` }}>
+              <img src={NPCS[scene.npcId as NpcId].portrait ?? ""} alt={NPCS[scene.npcId as NpcId].name} className="h-full w-full object-cover" loading="lazy" />
+            </span>
             <span className="text-[12px]" style={{ color: GOLD }}>与 {NPCS[scene.npcId as NpcId].name} 对话</span>
           </button>
         )}
@@ -462,8 +469,8 @@ function DialogueView({ npc, usedIdx, collected, onPick, onClose }: {
 
       <div className="relative z-10 px-5">
         <div className="flex items-center gap-3">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black text-3xl" style={{ border: `2px solid ${GOLD}`, boxShadow: `0 0 20px ${GOLD}55` }}>
-            {npc.avatar}
+          <div className="h-16 w-16 overflow-hidden rounded-full bg-black" style={{ border: `2px solid ${GOLD}`, boxShadow: `0 0 20px ${GOLD}55` }}>
+            <img src={npc.portrait ?? ""} alt={npc.name} className="h-full w-full object-cover" loading="lazy" />
           </div>
           <div>
             <div className="text-[10px] tracking-[0.3em]" style={{ color: `${GOLD}aa` }}>{npc.title}</div>

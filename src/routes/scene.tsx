@@ -265,50 +265,7 @@ export function Scene() {
         </div>
       </div>
 
-      {/* 秘密任务 - 浮在聊天框上方 */}
-      {secretOpen ? (
-        <div className="pointer-events-none absolute bottom-[110px] left-0 right-0 z-20 flex justify-center px-4 animate-fade-up">
-          <div className="pointer-events-auto relative w-full max-w-[340px] overflow-hidden rounded-2xl border border-white/15 bg-black/45 px-3.5 py-2.5 shadow-[0_8px_28px_-10px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(circle at 15% 0%, rgba(255,255,255,0.08), transparent 60%), radial-gradient(circle at 100% 100%, rgba(255,255,255,0.05), transparent 55%)",
-              }}
-            />
-            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
-            <div className="relative flex items-start gap-2.5">
-              <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md border border-white/15 bg-white/10 backdrop-blur-sm">
-                <ScrollText size={13} className="text-amber-200/90" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="mb-1 flex items-center gap-1.5">
-                  <span className="text-[9px] tracking-[0.35em] text-amber-200/85">秘 密 任 务</span>
-                  <span className="rounded-sm bg-white/10 px-1 py-px text-[8px] tracking-wider text-white/70">仅你可见</span>
-                </div>
-                <p className="text-[12.5px] leading-snug text-white/95">
-                  本幕中，让 <span className="font-medium text-amber-200">裴琰</span> 主动喊你一次"<span className="font-medium text-amber-200">母妃</span>"。
-                </p>
-              </div>
-              <button
-                onClick={() => setSecretOpen(false)}
-                aria-label="收起"
-                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-white/55 hover:text-white/90 active:scale-95"
-              >
-                <EyeOff size={13} />
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <button
-          onClick={() => setSecretOpen(true)}
-          className="absolute bottom-[96px] left-4 z-20 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/50 px-3 py-1 text-[11px] text-amber-200/90 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)] backdrop-blur-xl active:scale-95 animate-fade-in"
-        >
-          <Eye size={11} />
-          <span>秘密任务</span>
-        </button>
-      )}
+      {/* 秘密任务已移除 */}
 
 
       <div
@@ -332,6 +289,15 @@ export function Scene() {
 
       {/* input bar */}
       <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-black/55 px-3 pb-6 pt-3 backdrop-blur-xl">
+        <div className="mb-2 flex items-center">
+          <button
+            onClick={() => navigate({ to: "/minigame" })}
+            className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
+          >
+            <Sparkles size={11} />
+            <span>小游戏</span>
+          </button>
+        </div>
         <div className="flex items-center gap-2 w-full min-w-0">
           {/* voice input button (replaces 说/动作 toggle) */}
           <button

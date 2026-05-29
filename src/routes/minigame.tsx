@@ -10,6 +10,8 @@ import scene2 from "@/assets/minigame-scene-2.png";
 import scene3 from "@/assets/minigame-scene-3.png";
 import scene4 from "@/assets/minigame-scene-4.png";
 import scene5 from "@/assets/minigame-scene-5.png";
+import sceneShunchang from "@/assets/minigame-scene-shunchang.jpg";
+import sceneApobi from "@/assets/minigame-scene-apobi.png";
 
 export const Route = createFileRoute("/minigame")({
   component: MinigamePage,
@@ -85,12 +87,14 @@ const SCENES: Scene[] = [
   {
     id: "shunchang", name: "顺昌武馆", icon: "⚔️",
     gradient: "linear-gradient(135deg,#2a2a1a 0%,#1a2a2a 100%)",
+    backgroundImage: sceneShunchang,
     npcId: "yangqi",
     hotspots: [{ id: "h1", clueId: "tangmen_token", x: "50%", y: "55%", label: "兵架" }],
   },
   {
     id: "apobi", name: "城外破屋", icon: "🏚️",
     gradient: "linear-gradient(135deg,#1a1a1a 0%,#2a2a1a 100%)",
+    backgroundImage: sceneApobi,
     hotspots: [
       { id: "h1", clueId: "silk_handkerchief", x: "32%", y: "50%", label: "残箱" },
       { id: "h2", clueId: "candle_clue", x: "70%", y: "48%", label: "烛台" },

@@ -219,6 +219,7 @@ function MinigamePage() {
 
 function Game() {
   const navigate = useNavigate();
+  const [showIntro, setShowIntro] = useState(true);
   const [view, setView] = useState<View>({ kind: "scene", sceneId: "qingqiu" });
   const [collected, setCollected] = useState<Set<string>>(new Set());
   const [visited, setVisited] = useState<Set<SceneId>>(new Set(["qingqiu"]));
@@ -229,6 +230,7 @@ function Game() {
   const [expandedClueId, setExpandedClueId] = useState<string | null>(null);
   const [npcDialogueUsed, setNpcDialogueUsed] = useState<Record<string, Set<number>>>({});
   const [toast, setToast] = useState<string | null>(null);
+
 
   const collectClue = (id: string) => {
     if (collected.has(id)) {

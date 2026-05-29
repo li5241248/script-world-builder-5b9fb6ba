@@ -361,12 +361,19 @@ function SceneView({
 }) {
   return (
     <div className="relative h-full w-full overflow-hidden" style={{ background: scene.gradient }}>
-      {/* decorative vignette */}
-      <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.65) 100%)" }} />
-      {/* faux ink calligraphy backdrop */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
-        <span className="text-[200px]" style={{ color: GOLD }}>{scene.icon}</span>
-      </div>
+      {scene.backgroundImage && (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${scene.backgroundImage})` }}
+        />
+      )}
+      <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(7,5,4,0.28) 0%, rgba(7,5,4,0.4) 28%, rgba(7,5,4,0.58) 100%)" }} />
+      <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 8%, rgba(0,0,0,0.62) 100%)" }} />
+      {!scene.backgroundImage && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
+          <span className="text-[200px]" style={{ color: GOLD }}>{scene.icon}</span>
+        </div>
+      )}
 
       {/* header */}
       <div className="relative z-10 flex items-center justify-between px-4 pt-12 pb-3">
@@ -383,7 +390,7 @@ function SceneView({
       </div>
 
       {/* hotspots */}
-      <div className="relative z-10 mx-auto mt-4 h-[55%] w-[88%] rounded-3xl border bg-black/30 backdrop-blur-sm" style={{ borderColor: `${GOLD}33` }}>
+      <div className="relative z-10 mx-auto mt-4 h-[55%] w-[88%] rounded-3xl border bg-black/18 backdrop-blur-[1px]" style={{ borderColor: `${GOLD}33` }}>
         {scene.hotspots.map((h) => {
           const done = collected.has(h.clueId);
           return (

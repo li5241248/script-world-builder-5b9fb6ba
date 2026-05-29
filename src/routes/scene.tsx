@@ -122,6 +122,11 @@ export function Scene() {
       navigate({ to: "/ending" });
       return;
     }
+    if (text === "小游戏" || text === "小游戏。") {
+      setInput("");
+      navigate({ to: "/minigame" });
+      return;
+    }
     if (text === "真人扮演") {
       setInput("");
       setMessages((prev) => [

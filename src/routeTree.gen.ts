@@ -14,6 +14,7 @@ import { Route as ReportRouteImport } from './routes/report'
 import { Route as PlayEndingRouteImport } from './routes/play-ending'
 import { Route as PlayRouteImport } from './routes/play'
 import { Route as NovelRouteImport } from './routes/novel'
+import { Route as MinigameRouteImport } from './routes/minigame'
 import { Route as MatchingRouteImport } from './routes/matching'
 import { Route as LobbyRouteImport } from './routes/lobby'
 import { Route as InviteRouteImport } from './routes/invite'
@@ -48,6 +49,11 @@ const PlayRoute = PlayRouteImport.update({
 const NovelRoute = NovelRouteImport.update({
   id: '/novel',
   path: '/novel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinigameRoute = MinigameRouteImport.update({
+  id: '/minigame',
+  path: '/minigame',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MatchingRoute = MatchingRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
+  '/minigame': typeof MinigameRoute
   '/novel': typeof NovelRoute
   '/play': typeof PlayRoute
   '/play-ending': typeof PlayEndingRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByTo {
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
+  '/minigame': typeof MinigameRoute
   '/novel': typeof NovelRoute
   '/play': typeof PlayRoute
   '/play-ending': typeof PlayEndingRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
+  '/minigame': typeof MinigameRoute
   '/novel': typeof NovelRoute
   '/play': typeof PlayRoute
   '/play-ending': typeof PlayEndingRoute
@@ -165,6 +174,7 @@ export interface FileRouteTypes {
     | '/invite'
     | '/lobby'
     | '/matching'
+    | '/minigame'
     | '/novel'
     | '/play'
     | '/play-ending'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/invite'
     | '/lobby'
     | '/matching'
+    | '/minigame'
     | '/novel'
     | '/play'
     | '/play-ending'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/invite'
     | '/lobby'
     | '/matching'
+    | '/minigame'
     | '/novel'
     | '/play'
     | '/play-ending'
@@ -217,6 +229,7 @@ export interface RootRouteChildren {
   InviteRoute: typeof InviteRoute
   LobbyRoute: typeof LobbyRoute
   MatchingRoute: typeof MatchingRoute
+  MinigameRoute: typeof MinigameRoute
   NovelRoute: typeof NovelRoute
   PlayRoute: typeof PlayRoute
   PlayEndingRoute: typeof PlayEndingRoute
@@ -260,6 +273,13 @@ declare module '@tanstack/react-router' {
       path: '/novel'
       fullPath: '/novel'
       preLoaderRoute: typeof NovelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/minigame': {
+      id: '/minigame'
+      path: '/minigame'
+      fullPath: '/minigame'
+      preLoaderRoute: typeof MinigameRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/matching': {
@@ -345,6 +365,7 @@ const rootRouteChildren: RootRouteChildren = {
   InviteRoute: InviteRoute,
   LobbyRoute: LobbyRoute,
   MatchingRoute: MatchingRoute,
+  MinigameRoute: MinigameRoute,
   NovelRoute: NovelRoute,
   PlayRoute: PlayRoute,
   PlayEndingRoute: PlayEndingRoute,

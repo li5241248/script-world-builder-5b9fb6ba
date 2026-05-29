@@ -262,7 +262,7 @@ function Lobby() {
             <ModeCard
               icon={<User className="h-5 w-5" />}
               title="单人沉浸"
-              desc="独享一卷画堂春，AI 演绎众生"
+              desc="独享一卷剧本，AI 演绎众生"
               active={mode === "solo"}
               onClick={() => setMode("solo")}
             />

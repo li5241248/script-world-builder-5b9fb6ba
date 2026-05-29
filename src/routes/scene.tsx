@@ -193,7 +193,7 @@ export function Scene() {
       {/* full-bleed scene background */}
       <img src={sceneBg} alt="" className="absolute inset-0 h-full w-full object-cover" />
       {/* 背景蒙层 */}
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/30" />
       {/* soft top + bottom vignette only — keep image clear */}
       <div
         className="absolute inset-0"

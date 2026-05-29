@@ -288,13 +288,23 @@ export function Scene() {
       </div>
 
       {/* 小游戏入口（悬浮在输入栏上方,透明背景） */}
-      <button
-        onClick={() => navigate({ to: "/minigame" })}
-        className="absolute bottom-20 left-3 z-20 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
-      >
-        <Sparkles size={11} />
-        <span>小游戏</span>
-      </button>
+      <div className="absolute bottom-20 left-3 z-20 flex items-center gap-2">
+        <button
+          onClick={() => navigate({ to: "/minigame" })}
+          className="flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
+        >
+          <Sparkles size={11} />
+          <span>小游戏</span>
+        </button>
+        <button
+          onClick={() => navigate({ to: "/minigame2" })}
+          className="flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
+        >
+          <Sparkles size={11} />
+          <span>小游戏2</span>
+        </button>
+      </div>
+
 
       {/* input bar */}
       <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-black/55 px-3 pb-6 pt-3 backdrop-blur-xl">

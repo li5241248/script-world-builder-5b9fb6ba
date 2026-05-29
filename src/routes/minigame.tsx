@@ -5,7 +5,11 @@ import { PhoneMockup } from "@/components/PhoneMockup";
 import malePortrait from "@/assets/minigame-character-male.png";
 import femalePortrait from "@/assets/minigame-character-female.png";
 import matronPortrait from "@/assets/minigame-character-matron.png";
-
+import scene1 from "@/assets/minigame-scene-1.png";
+import scene2 from "@/assets/minigame-scene-2.png";
+import scene3 from "@/assets/minigame-scene-3.png";
+import scene4 from "@/assets/minigame-scene-4.png";
+import scene5 from "@/assets/minigame-scene-5.png";
 
 export const Route = createFileRoute("/minigame")({
   component: MinigamePage,
@@ -29,6 +33,7 @@ type Scene = {
   name: string;
   icon: string;
   gradient: string;
+  backgroundImage?: string;
   hotspots: { id: string; clueId: string; x: string; y: string; label: string }[];
   npcId?: string;
 };
@@ -37,6 +42,7 @@ const SCENES: Scene[] = [
   {
     id: "qingqiu", name: "清秋苑", icon: "🍂",
     gradient: "linear-gradient(135deg,#2a1a1a 0%,#1a2a1a 100%)",
+    backgroundImage: scene1,
     npcId: "chenmama",
     hotspots: [
       { id: "h1", clueId: "letter_mother", x: "22%", y: "38%", label: "妆奁" },
@@ -46,6 +52,7 @@ const SCENES: Scene[] = [
   {
     id: "furong", name: "芙蓉园", icon: "🌺",
     gradient: "linear-gradient(135deg,#2a1a2a 0%,#1a2a1a 100%)",
+    backgroundImage: scene2,
     npcId: "jiaomeng",
     hotspots: [
       { id: "h1", clueId: "prescription", x: "30%", y: "60%", label: "药案" },
@@ -55,6 +62,7 @@ const SCENES: Scene[] = [
   {
     id: "gongtong", name: "珙桐苑", icon: "🌳",
     gradient: "linear-gradient(135deg,#1a1a2a 0%,#2a1a1a 100%)",
+    backgroundImage: scene3,
     hotspots: [
       { id: "h1", clueId: "letter_zhou", x: "26%", y: "44%", label: "暗格" },
       { id: "h2", clueId: "poison_bottle", x: "72%", y: "62%", label: "妆台" },
@@ -63,12 +71,14 @@ const SCENES: Scene[] = [
   {
     id: "tianlao", name: "天牢", icon: "⛓️",
     gradient: "linear-gradient(135deg,#0a0a0a 0%,#151515 100%)",
+    backgroundImage: scene4,
     npcId: "meiyiniang",
     hotspots: [],
   },
   {
     id: "xuanqing", name: "玄清王府", icon: "🏯",
     gradient: "linear-gradient(135deg,#1a1a2e 0%,#0a1a3a 100%)",
+    backgroundImage: scene5,
     npcId: "wutaiyi",
     hotspots: [{ id: "h1", clueId: "medical_record", x: "50%", y: "50%", label: "医案" }],
   },
@@ -351,12 +361,19 @@ function SceneView({
 }) {
   return (
     <div className="relative h-full w-full overflow-hidden" style={{ background: scene.gradient }}>
-      {/* decorative vignette */}
-      <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.65) 100%)" }} />
-      {/* faux ink calligraphy backdrop */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
-        <span className="text-[200px]" style={{ color: GOLD }}>{scene.icon}</span>
-      </div>
+      {scene.backgroundImage && (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${scene.backgroundImage})` }}
+        />
+      )}
+      <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(7,5,4,0.28) 0%, rgba(7,5,4,0.4) 28%, rgba(7,5,4,0.58) 100%)" }} />
+      <div className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 8%, rgba(0,0,0,0.62) 100%)" }} />
+      {!scene.backgroundImage && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
+          <span className="text-[200px]" style={{ color: GOLD }}>{scene.icon}</span>
+        </div>
+      )}
 
       {/* header */}
       <div className="relative z-10 flex items-center justify-between px-4 pt-12 pb-3">
@@ -373,7 +390,7 @@ function SceneView({
       </div>
 
       {/* hotspots */}
-      <div className="relative z-10 mx-auto mt-4 h-[55%] w-[88%] rounded-3xl border bg-black/30 backdrop-blur-sm" style={{ borderColor: `${GOLD}33` }}>
+      <div className="relative z-10 mx-auto mt-4 h-[55%] w-[88%] rounded-3xl border bg-black/18 backdrop-blur-[1px]" style={{ borderColor: `${GOLD}33` }}>
         {scene.hotspots.map((h) => {
           const done = collected.has(h.clueId);
           return (

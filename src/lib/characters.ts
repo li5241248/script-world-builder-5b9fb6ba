@@ -42,6 +42,19 @@ export const CHARACTERS: Character[] = [
     ],
   },
   {
+    id: "moshen", name: "傅云夕", role: "男主 · 神秘公子", gender: "男", age: 22, tag: "男主", img: mysteryImg, played: 1207,
+    desc: "庄府外墙边一个含着草梗的陌生身影，看见有人钻狗洞，竟笑出了声——「有意思。」",
+    motto: "「庄府上的丫头真奇怪，放着好好的大门不走，偏爱钻狗洞。」",
+    identity: "身份不明，常在京中游走",
+    personality: "懒散随性，眼神却毒辣",
+    skill: "察人于细微，行踪如风",
+    secret: "他为何会在那堵墙外，不是巧合",
+    story: "他斜倚在庄府外墙不远处，叼着一根草，本只是路过。却恰好瞧见一个粗布丫鬟打扮的姑娘，从狗洞里钻出来，拍了拍裙摆，竟还一脸欢喜。他眯起眼睛笑了一声——这京里高门贵女他见得太多，唯独没见过会钻狗洞的。这一笑，便记住了那个背影；这一记，往后许多事便都跟着拐了弯。",
+    relations: [
+      { id: "hanyan", label: "未识" },
+    ],
+  },
+  {
     id: "zhouyi", name: "周氏", role: "庄府继室", gender: "女", age: 32, tag: "千娇百媚", img: zhouyiImg, played: 9821,
     desc: "庄仕洋外室出身，母亲一去便登堂入室。柳眉细眼，笑里藏刀，最善借男人的疼宠杀人于无形。",
     motto: "「妾身也是心疼雁姐儿，这孩子就是心善。」",
@@ -86,19 +99,7 @@ export const CHARACTERS: Character[] = [
       { id: "hanyan", label: "假姐妹" },
     ],
   },
-  {
-    id: "moshen", name: "傅云夕", role: "男主 · 神秘公子", gender: "男", age: 22, tag: "男主", img: mysteryImg, played: 1207,
-    desc: "庄府外墙边一个含着草梗的陌生身影，看见有人钻狗洞，竟笑出了声——「有意思。」",
-    motto: "「庄府上的丫头真奇怪，放着好好的大门不走，偏爱钻狗洞。」",
-    identity: "身份不明，常在京中游走",
-    personality: "懒散随性，眼神却毒辣",
-    skill: "察人于细微，行踪如风",
-    secret: "他为何会在那堵墙外，不是巧合",
-    story: "他斜倚在庄府外墙不远处，叼着一根草，本只是路过。却恰好瞧见一个粗布丫鬟打扮的姑娘，从狗洞里钻出来，拍了拍裙摆，竟还一脸欢喜。他眯起眼睛笑了一声——这京里高门贵女他见得太多，唯独没见过会钻狗洞的。这一笑，便记住了那个背影；这一记，往后许多事便都跟着拐了弯。",
-    relations: [
-      { id: "hanyan", label: "未识" },
-    ],
-  },
+
 ];
 
 export const getCharacter = (id: string) => CHARACTERS.find((c) => c.id === id);

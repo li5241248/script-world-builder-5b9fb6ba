@@ -87,7 +87,7 @@ export const CHARACTERS: Character[] = [
     ],
   },
   {
-    id: "moshen", name: "墙外之人", role: "神秘男子", gender: "男", age: 22, tag: "局外人", img: mysteryImg, played: 1207,
+    id: "moshen", name: "傅云夕", role: "男主 · 神秘公子", gender: "男", age: 22, tag: "男主", img: mysteryImg, played: 1207,
     desc: "庄府外墙边一个含着草梗的陌生身影，看见有人钻狗洞，竟笑出了声——「有意思。」",
     motto: "「庄府上的丫头真奇怪，放着好好的大门不走，偏爱钻狗洞。」",
     identity: "身份不明，常在京中游走",

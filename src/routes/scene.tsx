@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, MoreHorizontal, Send, Sparkles, Mic, BookOpen, Feather, Lightbulb, Volume2, Asterisk, Clock, X, UserPlus, Check, ScrollText, Eye, EyeOff, Lock, History, Gauge, Heart, Eye as EyeIcon, MessageCircle, Swords, Brain, Crown } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
-import sceneBg from "@/assets/chat-bg-jubaolou.png";
+import sceneBg from "@/assets/scene-cijitang.png";
 import actorAvatar from "@/assets/actor-avatar.png";
 import { CHARACTERS, getCharacter } from "@/lib/characters";
 
@@ -193,7 +193,7 @@ export function Scene() {
       {/* full-bleed scene background */}
       <img src={sceneBg} alt="" className="absolute inset-0 h-full w-full object-cover" />
       {/* 背景蒙层 */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/20" />
       {/* soft top + bottom vignette only — keep image clear */}
       <div
         className="absolute inset-0"

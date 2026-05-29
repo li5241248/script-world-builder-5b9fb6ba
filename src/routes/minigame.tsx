@@ -608,35 +608,8 @@ function SceneView({
 
       {/* bottom ornate action bar */}
       <div className="absolute bottom-4 left-3 right-3 z-10">
-        <div
-          className="relative px-5 pb-3 pt-4"
-          style={{
-            background:
-              "linear-gradient(180deg, #1a140c 0%, #0d0905 100%)",
-            border: `1px solid ${GOLD}`,
-            boxShadow: `0 0 0 1px #000 inset, 0 -1px 14px ${GOLD}55, 0 8px 24px rgba(0,0,0,0.7)`,
-          }}
-        >
-          {/* glowing top hairline */}
-          <div
-            className="pointer-events-none absolute -top-[2px] left-6 right-6 h-[1px]"
-            style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`, boxShadow: `0 0 8px ${GOLD}` }}
-          />
-          {/* inner gold frame */}
-          <div
-            className="pointer-events-none absolute inset-1.5"
-            style={{ border: `1px solid ${GOLD}66` }}
-          />
-          {/* corner flourishes */}
-          <CornerFlourish className="absolute -left-0.5 -top-0.5" />
-          <CornerFlourish className="absolute -right-0.5 -top-0.5 scale-x-[-1]" />
-          <CornerFlourish className="absolute -left-0.5 -bottom-0.5 scale-y-[-1]" />
-          <CornerFlourish className="absolute -right-0.5 -bottom-0.5 scale-x-[-1] scale-y-[-1]" />
-          {/* bottom center ornament */}
-          <svg className="pointer-events-none absolute -bottom-[6px] left-1/2 -translate-x-1/2" width="44" height="10" viewBox="0 0 44 10" fill="none">
-            <path d="M2 5 L18 5 M26 5 L42 5" stroke={GOLD} strokeWidth="0.6" />
-            <path d="M22 1 L25 5 L22 9 L19 5 Z" stroke={GOLD} strokeWidth="0.7" fill="#0d0905" />
-          </svg>
+        <div className="relative px-5 pb-2 pt-2">
+
 
           <div className="relative flex items-center justify-between">
             <OrnateMedallion icon={<MapIcon size={22} />} label="舆图" onClick={onMap} />

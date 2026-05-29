@@ -44,7 +44,7 @@ const ACTORS: Record<string, string> = {
   wentang: "@沐雨",
 };
 
-function Scene() {
+export function Scene() {
   const navigate = useNavigate();
   const [messages, setMessages] = useState<Msg[]>(INITIAL);
   const [input, setInput] = useState("");

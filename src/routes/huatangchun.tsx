@@ -132,7 +132,7 @@ function HuatangChun() {
         </div>
 
         <div ref={trackRef} className="no-scrollbar mt-1 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[22%] pb-6 pt-4">
-          {CHARACTERS.map((c, i) => {
+          {[CHARACTERS[1], CHARACTERS[0], ...CHARACTERS.slice(2)].map((c, i) => {
             const isActive = i === active;
             return (
               <button

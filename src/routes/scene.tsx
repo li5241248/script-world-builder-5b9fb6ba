@@ -30,8 +30,8 @@ const INITIAL: Msg[] = [
     kind: "narration",
     text: "入宫十年，温棠早已习惯了被遗忘的滋味。今夜，窗外雪落无声，采桑宫偏殿里，她独自坐着，手边摆着一碟枣花糕——这是她唯一拿得出手的东西。",
   },
-  { kind: "dialog", charId: "mama", text: "贵人，仇公公来了，说……说陛下今夜要翻您的牌子。" },
-  { kind: "dialog", charId: "peirong", text: "朕问你，想不想抚育三皇子琰儿？" },
+  { kind: "dialog", charId: "zhouyi2", text: "贵人，仇公公来了，说……说陛下今夜要翻您的牌子。" },
+  { kind: "dialog", charId: "zhuangsy", text: "朕问你，想不想抚育三皇子琰儿？" },
   { kind: "prompt", text: "听到这个消息，你心里……" },
 ];
 
@@ -135,8 +135,8 @@ export function Scene() {
       setTimeout(() => {
         setMessages((m) => [
           ...m,
-          { kind: "action", charId: "peirong", text: "缓步上前，指尖挑起她的下颌，眸光深沉。" },
-          { kind: "dialog", charId: "peirong", text: "抬起头来，让朕好好看看你。" },
+          { kind: "action", charId: "zhuangsy", text: "缓步上前，指尖挑起她的下颌，眸光深沉。" },
+          { kind: "dialog", charId: "zhuangsy", text: "抬起头来，让朕好好看看你。" },
         ]);
       }, 700);
       return;
@@ -154,7 +154,7 @@ export function Scene() {
     setTimeout(() => {
       setMessages((m) => [
         ...m,
-        { kind: "dialog", charId: "peirong", text: "嗯……你倒是比朕想的更沉得住气。" },
+        { kind: "dialog", charId: "zhuangsy", text: "嗯……你倒是比朕想的更沉得住气。" },
       ]);
       setTimeout(() => {
         setMessages((m) => [
@@ -162,8 +162,8 @@ export function Scene() {
           {
             kind: "reward",
             affinities: [
-              { charId: "peirong", delta: 10 },
-              { charId: "peiyan", delta: 15 },
+              { charId: "zhuangsy", delta: 10 },
+              { charId: "moshen", delta: 15 },
             ],
             unlock: "采桑宫温居",
           },
@@ -393,7 +393,7 @@ function Bubble({ m, picked, onPickHint, onAvatarClick }: { m: Msg; picked?: boo
   }
 
   if (m.kind === "me") {
-    const me = getCharacter("wentang")!;
+    const me = getCharacter("hanyan")!;
     return (
       <div className="flex justify-end gap-2">
         <div className="max-w-[78%]">

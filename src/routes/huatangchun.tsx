@@ -16,9 +16,12 @@ export const Route = createFileRoute("/huatangchun")({
 });
 
 const STORY_CHAPTERS = [
-  { title: "第 1 幕：母丧未远，新人登门", body: "庄府的白幡尚未撤尽，周氏便携女庄语山堂而皇之地踏进了大门。一身桃色长裙，红宝石头面，富贵逼人。庄仕洋亲自相迎，命寒雁出来「认一认这位姐姐」——可她身上那股浓重的香粉味，先一步飘进了寒雁的鼻尖。" },
-  { title: "第 2 幕：跪与不跪，皆是交锋", body: "寒雁一句「她身上有香粉的味道」，惹得庄仕洋拍案叫她下跪。庄语山假意求情，反被父亲斥责。寒雁顺势起身，握住对方的手温柔致歉，又「好心」赠她一盒「连丫鬟都用得的香膏」——周氏的脸色，霎时由红转白。" },
-  { title: "第 3 幕：狗洞之外，有人含笑", body: "寒雁借丧期律例三言两语逼退周氏母女，转身换上丫鬟粗布衣裳，带着汲蓝姝红从清秋苑后墙的狗洞钻出府去。她不知道的是，外墙不远处，一个叼着草梗的陌生男子正含笑望着她的背影——「有意思。」" },
+  { title: "第 1 幕：洞房毒酒，凤凰重生", body: "红烛洞房，等来的是庶姐庄语山一杯鸩酒。再睁眼，已是十二岁那年。她不再哭，溜出府寻武师、拜状元、宫宴上一句话刺得继母脸色发青。白衣男子在人群外，记下了她的名字。" },
+  { title: "第 2 幕：宫闱博弈，反败为胜", body: "雪落梅园，玄清王傅云夕第一次正面照面。宫宴上李佳棋抚琴争艳、表哥动手相逼，她一手左手题字反败为胜。回府却撞上教习姑姑明责暗挑、媚姨娘喝下假怀胎药。两头开弓，谁也没占着便宜。" },
+  { title: "第 3 幕：山寺劫难，朝堂下聘", body: "山崖边黑衣人逼近，两片树叶破风而至。卫如风提亲被拒，她当众放话：「我的夫君，一辈子只能娶我一人。」金銮殿上，傅云夕负手而立：「本王以整个玄清王府为聘。」祠堂里他踏月而来，一只蓝玉鱼簪插进她发间。" },
+  { title: "第 4 幕：春毒祭刀，救驾立功", body: "陈贵妃寿宴的清酒里掺着春毒，太后命她当众验身坐实「祸乱后宫」。七皇子事败，反手毒杀亲母灭口。春祭血光骤起，她梅花刺扎进马屁股逃命，傅云夕的剑从斜刺里劈开乱刀，把她拢进怀里。" },
+  { title: "第 5 幕：凯旋别离，迷雾渐显", body: "她回庄府讨债，一局反将——周氏入狱、大周氏游街疯死、七皇子禁足。傅云夕却突然出征，归来时身侧挽着西戎公主伊琳娜。绿眼皇子卓七把蓝玉鱼簪掷进湖里。她淡然搬出王府，唐门「小乔」的名字浮出水面。" },
+  { title: "第 6 幕：身世大白，一网打尽", body: "暗巷长剑挑开乱刀，傅云夕的真实身世剥开——东侯王与唐门小乔之子，金枝玉叶却被偷换一生。他诈死引蛇出洞，金銮殿上七皇子逼宫，「死人」提剑而归。卫王九族尽诛，太后伏法。他终于把那个钻狗洞的小丫头，正正经经娶回了家。" },
 ];
 
 function HuatangChun() {
@@ -200,6 +203,18 @@ function HuatangChun() {
                 {open && (
                   <div className="animate-fade-up px-4 pb-4">
                     <p className="text-[13px] leading-7 text-neutral-600">{ch.body}</p>
+                    <div className="mt-4 flex justify-end">
+                      <button
+                        onClick={() => {
+                          if (i === 4) navigate({ to: "/lobby" });
+                        }}
+                        disabled={i !== 4}
+                        className="rounded-full px-5 py-2 text-[12px] font-medium text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                        style={{ background: "var(--gradient-rouge)" }}
+                      >
+                        {i === 4 ? "进入此幕" : "敬请期待"}
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -223,18 +238,6 @@ function HuatangChun() {
 
     </div>
 
-      {/* CTA — fixed to phone screen */}
-      <div className="absolute bottom-6 right-5 z-30">
-        <button
-          onClick={() => navigate({ to: "/lobby" })}
-          className="grid h-20 w-20 place-items-center rounded-full text-white shadow-[var(--shadow-card)] transition active:scale-95"
-          style={{ background: "var(--gradient-rouge)" }}
-        >
-          <span className="font-brush text-base leading-tight text-center">
-            开始<br/>游戏
-          </span>
-        </button>
-      </div>
 
       {/* WORLDVIEW SHEET */}
       {showWorld && (

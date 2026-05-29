@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, MoreHorizontal, Send, Sparkles, Mic, BookOpen, Feather, Lightbulb, Volume2, Asterisk, Clock, X, UserPlus, Check, ScrollText, Eye, EyeOff, Lock, History, Gauge, Heart, Eye as EyeIcon, MessageCircle, Swords, Brain, Crown } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
-import sceneBg from "@/assets/scene-cijitang.png";
+import sceneBg from "@/assets/chat-bg-courtyard.jpg";
 import actorAvatar from "@/assets/actor-avatar.png";
 import { CHARACTERS, getCharacter } from "@/lib/characters";
 

@@ -694,20 +694,34 @@ function MapDrawer({ currentId, visited, onGo, onClose }: {
             <button
               key={s.id}
               onClick={() => onGo(s.id)}
-              className="rounded-xl p-3 text-left active:scale-[0.98]"
+              className="relative h-[110px] overflow-hidden rounded-xl p-3 text-left active:scale-[0.98]"
               style={{
-                background: s.gradient,
+                backgroundImage: s.backgroundImage ? `url(${s.backgroundImage})` : undefined,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                background: s.backgroundImage ? undefined : s.gradient,
                 border: `1.5px solid ${cur ? GOLD : `${GOLD}44`}`,
                 boxShadow: cur ? `0 0 16px ${GOLD}66` : "none",
               }}
             >
-              <div className="text-2xl">{s.icon}</div>
-              <div className="mt-1 font-brush text-[15px]" style={{ color: GOLD }}>{s.name}</div>
-              <div className="text-[10px]" style={{ color: cur ? GOLD : v ? `${GOLD}99` : `${GOLD}55` }}>
-                {cur ? "当前所在" : v ? "已探访" : "未探访"}
+              {/* dark overlay for readability */}
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%)",
+                }}
+              />
+              <div className="relative">
+                <div className="text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{s.icon}</div>
+                <div className="mt-1 font-brush text-[15px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]" style={{ color: GOLD }}>{s.name}</div>
+                <div className="text-[10px]" style={{ color: cur ? GOLD : v ? `${GOLD}99` : `${GOLD}77` }}>
+                  {cur ? "当前所在" : v ? "已探访" : "未探访"}
+                </div>
               </div>
             </button>
           );
+
         })}
       </div>
     </Drawer>

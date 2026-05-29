@@ -69,6 +69,7 @@ export function Scene() {
   const [secretOpen, setSecretOpen] = useState(true);
   const [secretRevealed, setSecretRevealed] = useState(false);
   const [recapOpen, setRecapOpen] = useState(false);
+  const [statsOpen, setStatsOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 

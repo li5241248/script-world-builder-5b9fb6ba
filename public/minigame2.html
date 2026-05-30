@@ -221,18 +221,57 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 /* 隐藏旧 stat-bar */
 .stat-bar{display:none;}
 
-/* 结算 */
-.result-screen{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.91);display:none;flex-direction:column;align-items:center;justify-content:center;pointer-events:auto;padding:20px;}
-.result-screen.show{display:flex;animation:fadeIn 0.4s;}
+/* 结算 - 古风卷轴 */
+.result-screen{position:fixed;inset:0;z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center;pointer-events:auto;padding:20px;
+  background:radial-gradient(ellipse at 50% 28%,rgba(70,35,20,0.55) 0%,rgba(8,5,12,0.97) 65%),linear-gradient(180deg,#0a0610 0%,#15100c 100%);}
+.result-screen.show{display:flex;animation:fadeIn 0.5s;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.r-icon{font-size:58px;margin-bottom:12px;}
-.r-title{font-size:24px;letter-spacing:4px;margin-bottom:10px;}
-.r-win{color:var(--gold);} .r-lose{color:var(--danger);}
-.r-stats{font-size:12px;color:#aaa;line-height:2.1;margin-bottom:20px;text-align:center;}
-.fail-reason{background:rgba(204,68,68,0.1);border:1px solid rgba(204,68,68,0.3);border-radius:10px;padding:10px 18px;margin-bottom:14px;font-size:12px;color:#da8888;line-height:1.7;text-align:center;max-width:300px;}
+.r-crown{position:relative;text-align:center;margin-bottom:2px;height:62px;width:100%;max-width:340px;}
+.r-trophy{font-size:46px;display:inline-block;filter:drop-shadow(0 0 18px rgba(255,210,120,0.85));animation:trophyGlow 2.4s ease-in-out infinite;position:relative;z-index:3;}
+@keyframes trophyGlow{0%,100%{filter:drop-shadow(0 0 14px rgba(255,210,120,0.7))}50%{filter:drop-shadow(0 0 26px rgba(255,230,150,1))}}
+.r-swords{position:absolute;left:50%;top:36px;transform:translateX(-50%);font-size:30px;color:#c9c9d0;text-shadow:0 0 10px rgba(220,220,240,0.55);letter-spacing:-12px;z-index:1;}
+.r-title{font-family:'STXingkai','STKaiti',cursive;font-size:54px;letter-spacing:8px;margin:-8px 0 18px;font-weight:bold;
+  background:linear-gradient(180deg,#fff2c4 0%,#f5cf6c 38%,#c8932e 68%,#8a5a18 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 3px 18px rgba(217,150,40,0.55);position:relative;z-index:2;}
+.r-title.r-lose{background:linear-gradient(180deg,#ffd0d0 0%,#d96060 50%,#7a1f1f 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.r-scroll{position:relative;width:100%;max-width:340px;
+  background:linear-gradient(180deg,rgba(30,20,14,0.94),rgba(18,12,10,0.96));
+  border:1px solid rgba(201,169,110,0.55);border-radius:4px;padding:24px 24px 28px;margin-bottom:20px;
+  box-shadow:0 10px 34px rgba(0,0,0,0.7),inset 0 0 36px rgba(80,40,20,0.35);}
+.r-scroll::before,.r-scroll::after{content:'';position:absolute;top:-8px;bottom:-8px;width:14px;
+  background:linear-gradient(180deg,#3a2614,#1a0e08 50%,#3a2614);
+  border:1px solid #5a3a1e;border-radius:7px;box-shadow:0 0 12px rgba(0,0,0,0.7);}
+.r-scroll::before{left:-16px;} .r-scroll::after{right:-16px;}
+.r-corner{position:absolute;width:16px;height:16px;border:1px solid rgba(201,169,110,0.55);}
+.rc-tl{top:6px;left:6px;border-right:none;border-bottom:none;}
+.rc-tr{top:6px;right:6px;border-left:none;border-bottom:none;}
+.rc-bl{bottom:6px;left:6px;border-right:none;border-top:none;}
+.rc-br{bottom:6px;right:6px;border-left:none;border-top:none;}
+.r-stamp{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:2px solid #b8412a;
+  display:flex;align-items:center;justify-content:center;color:#d6573a;font-family:'STKaiti',serif;font-size:13px;font-weight:bold;
+  background:rgba(184,65,42,0.08);transform:rotate(-12deg);box-shadow:0 0 10px rgba(184,65,42,0.4);letter-spacing:1px;}
+.r-row{display:flex;align-items:baseline;padding:5px 0;font-family:'STKaiti',serif;color:#d9c9a0;font-size:13px;letter-spacing:1.5px;}
+.r-row .rk{flex:0 0 auto;color:#c9a96e;margin-right:10px;}
+.r-row .rk::before{content:'❖ ';color:#8a6a3a;font-size:10px;}
+.r-row .rv{flex:1;color:#e8d7a8;font-weight:bold;}
+.r-row.r-big{padding:8px 0;}
+.r-row.r-big .rv{font-family:'STXingkai','STKaiti',cursive;font-size:30px;line-height:1;
+  background:linear-gradient(180deg,#fff2c4,#e8b048 60%,#9a6a20);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 2px 10px rgba(217,150,40,0.5);letter-spacing:3px;}
+.r-row.r-combo .rk,.r-row.r-combo .rv{color:#e85d4a;}
+.r-row.r-combo .rk::before{content:'～ ';color:#a04030;}
+.r-leftv .h{color:#f5a8c4;margin-right:10px;} .r-leftv .f{color:#7ec3e8;}
+.fail-reason{background:rgba(204,68,68,0.1);border:1px solid rgba(204,68,68,0.3);border-radius:6px;padding:8px 14px;margin-bottom:12px;font-size:11px;color:#da8888;line-height:1.6;text-align:center;max-width:300px;font-family:'STKaiti',serif;}
 .fail-reason.hidden{display:none;}
-.btn-restart{padding:11px 34px;font-size:14px;letter-spacing:2px;border:1.5px solid var(--gold);background:rgba(201,169,110,0.15);color:var(--gold);border-radius:24px;cursor:pointer;font-family:inherit;touch-action:manipulation;pointer-events:auto;}
-.btn-restart:active{background:rgba(201,169,110,0.35);}
+.btn-restart{position:relative;padding:13px 48px;font-size:16px;letter-spacing:6px;
+  background:linear-gradient(180deg,#3a2410,#1a0e06);
+  border:1.5px solid #c9a96e;color:#f5d090;border-radius:4px;cursor:pointer;font-family:'STKaiti',serif;
+  box-shadow:0 0 18px rgba(217,180,106,0.35),inset 0 0 14px rgba(217,180,106,0.18);touch-action:manipulation;pointer-events:auto;}
+.btn-restart::after{content:' ›';color:#c9a96e;font-weight:bold;margin-left:4px;}
+.btn-restart:active{transform:translateY(1px);background:linear-gradient(180deg,#4a2e14,#2a160a);}
+.r-foot{margin-top:14px;font-family:'STKaiti',serif;font-size:11px;color:#8a7e66;letter-spacing:3px;}
+.r-foot::before,.r-foot::after{content:' ◇ ';color:#5a4a32;}
 
 /* 动画 */
 .sk-flash{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:20;pointer-events:none;font-size:70px;animation:skPop 0.55s forwards;}
@@ -503,10 +542,19 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <!-- ========== 结算 ========== -->
 <div class="result-screen" id="resScreen">
 <div class="fail-reason hidden" id="failReason"></div>
-<div class="r-icon" id="rIcon">🏆</div>
-<div class="r-title r-win" id="rTitle">胜利</div>
-<div class="r-stats" id="rStats"></div>
+<div class="r-crown">
+  <span class="r-swords">⚔</span>
+  <span class="r-trophy" id="rIcon">🏆</span>
+</div>
+<div class="r-title" id="rTitle">大获全胜</div>
+<div class="r-scroll">
+  <span class="r-corner rc-tl"></span><span class="r-corner rc-tr"></span>
+  <span class="r-corner rc-bl"></span><span class="r-corner rc-br"></span>
+  <div class="r-stamp" id="rStamp">完成</div>
+  <div id="rStats"></div>
+</div>
 <button class="btn-restart" id="btnRestart">再战一次</button>
+<div class="r-foot">生命成长，已然生效</div>
 </div>
 
 <script>
@@ -864,11 +912,17 @@ function showRes(isWin){
  var s=document.getElementById('resScreen');
  document.getElementById('rIcon').textContent=isWin?'🏆':'💀';
  document.getElementById('rTitle').textContent=isWin?'大获全胜':'护卫失败';
- document.getElementById('rTitle').className='r-title '+(isWin?'r-win':'r-lose');
+ document.getElementById('rTitle').className='r-title'+(isWin?'':' r-lose');
+ var stamp=document.getElementById('rStamp');
+ if(stamp){stamp.textContent=isWin?'完成':'败北';}
  var leftH=hanCnt.reduce(function(a,b){return a+b},0),leftF=fuCnt.reduce(function(a,b){return a+b},0);
  document.getElementById('rStats').innerHTML=
-  '抵御波数：'+(curWave+1)+'/5<br>总回合：'+rndCount+'<br>总伤害：'+stats.dmg+
-  '<br>组合技：'+stats.combos+' 次<br>技能使用：'+stats.used+'<br>剩余技能：寒雁'+leftH+' 云夕'+leftF;
+  '<div class="r-row"><span class="rk">抵御波数</span><span class="rv">'+(curWave+1)+' / 5</span></div>'+
+  '<div class="r-row"><span class="rk">总回合</span><span class="rv">'+rndCount+'</span></div>'+
+  '<div class="r-row r-big"><span class="rk">总伤害</span><span class="rv">'+stats.dmg+'</span></div>'+
+  '<div class="r-row r-combo"><span class="rk">组合技</span><span class="rv">'+stats.combos+' 次</span></div>'+
+  '<div class="r-row"><span class="rk">技能使用</span><span class="rv">'+stats.used+'</span></div>'+
+  '<div class="r-row"><span class="rk">剩余技能</span><span class="rv r-leftv"><span class="h">寒雁 '+leftH+'</span><span class="f">云夕 '+leftF+'</span></span></div>';
  s.classList.add('show');
 }
 function hideR(){

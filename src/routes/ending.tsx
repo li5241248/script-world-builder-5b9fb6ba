@@ -10,30 +10,50 @@ export const Route = createFileRoute("/ending")({
   component: EndingPage,
   head: () => ({
     meta: [
-      { title: "圆满结局 · 后宫净土" },
-      { name: "description", content: "采桑宫成为后宫净土，圆满结局。" },
+      { title: "圆满结局 · 凤凰归位" },
+      { name: "description", content: "重生之贵女难求 · 圆满结局。" },
     ],
   }),
 });
 
-const PLAYER_ID = "wentang";
+const PLAYER_ID = "hanyan";
 
-// 与主角的关系数据
-const RELATIONS: Record<string, { desc: string; intimacy: number; clues: number; tag: string }> = {
-  peiyan: { desc: "宫中知己，互为依靠的少年与贵妃。", intimacy: 95, clues: 12, tag: "知己" },
-  peiyu: { desc: "表面恭敬，暗藏机锋的君臣之谊。", intimacy: 62, clues: 7, tag: "认母成功" },
-  mama: { desc: "自幼相伴，唯一可以托付秘密的人。", intimacy: 99, clues: 9, tag: "心腹" },
-  empress: { desc: "凤位之下，宫规之内的微妙制衡。", intimacy: 48, clues: 5, tag: "母仪天下" },
-  peirong: { desc: "君妃名分，恩宠与猜忌并存。", intimacy: 70, clues: 8, tag: "勤政爱民" },
+// 与庄寒雁的关系
+const RELATIONS: Record<
+  string,
+  { desc: string; intimacy: number; clues: number; tag: string }
+> = {
+  moshen: {
+    desc: "钻狗洞那日的惊鸿一瞥，从此一生一世一双人。",
+    intimacy: 98,
+    clues: 14,
+    tag: "一生一世",
+  },
+  zhouyi: {
+    desc: "笑里藏刀的继母，终被亲手送进牢狱。",
+    intimacy: 8,
+    clues: 11,
+    tag: "宿敌伏法",
+  },
+  zhuangsy: {
+    desc: "凉薄寡情的父亲，迟来的悔意已无人在意。",
+    intimacy: 32,
+    clues: 7,
+    tag: "形同陌路",
+  },
+  yushan: {
+    desc: "假姐妹反目，她游街疯死，尘归尘土归土。",
+    intimacy: 5,
+    clues: 9,
+    tag: "因果自负",
+  },
 };
 
-const OTHERS = ["peiyan", "peiyu", "mama", "empress", "peirong"];
-
-
+const OTHERS = ["moshen", "zhouyi", "zhuangsy", "yushan"];
 
 function Ending() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState<string>("peiyan");
+  const [selected, setSelected] = useState<string>("moshen");
   const player = getCharacter(PLAYER_ID);
   const target = getCharacter(selected);
   const rel = RELATIONS[selected];
@@ -64,7 +84,7 @@ function Ending() {
 
           {/* title */}
           <h1 className="text-center font-brush text-[26px] leading-tight tracking-wide text-[#2b1a14]">
-            <span className="text-[#7a2a2a]">【圆满结局】</span>后宫净土
+            <span className="text-[#7a2a2a]">【圆满结局】</span>凤凰归位
           </h1>
 
           {/* divider */}
@@ -76,9 +96,10 @@ function Ending() {
 
           {/* body */}
           <p className="mt-5 text-center text-[14px] leading-[2] text-[#3a2a22]">
-            温棠封妃，裴琰健康成长，<br />
-            瑜儿终认生母，<br />
-            采桑宫成为后宫净土。
+            寒雁手刃旧怨，周氏伏法、语山疯死，<br />
+            玄清王府十里红妆，<br />
+            傅云夕一句「此生唯卿」，<br />
+            重生之路，终成正果。
           </p>
 
           {/* hairline */}
@@ -109,7 +130,7 @@ function Ending() {
             </div>
 
             {/* others row */}
-            <div className="grid w-full grid-cols-5 gap-1">
+            <div className="grid w-full grid-cols-4 gap-2">
               {OTHERS.map((id) => {
                 const ch = getCharacter(id);
                 const active = id === selected;
@@ -172,8 +193,8 @@ function Ending() {
             </div>
           </div>
 
-          {/* real player module - only for peiyan */}
-          {selected === "peiyan" && (
+          {/* real player module - only for moshen */}
+          {selected === "moshen" && (
             <div className="mt-4 rounded-xl border border-[#7a2a2a]/15 bg-white/60 p-3">
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -186,8 +207,12 @@ function Ending() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-[10px] text-[#3a2a22]/60">扮演者</div>
-                  <div className="text-[13px] font-medium text-[#2b1a14] truncate">真人玩家 · 听雨</div>
-                  <div className="text-[10px] text-[#3a2a22]/60">ID: 88231 · 已扮演 3 场</div>
+                  <div className="text-[13px] font-medium text-[#2b1a14] truncate">
+                    真人玩家 · 听雨
+                  </div>
+                  <div className="text-[10px] text-[#3a2a22]/60">
+                    ID: 88231 · 已扮演 3 场
+                  </div>
                 </div>
                 <button
                   onClick={() => navigate({ to: "/report" })}

@@ -792,7 +792,12 @@ function checkDead(){
 }
 
 // ==================== UI辅助 ====================
-function updEUI(){if(!enemy)return;document.getElementById('eName').textContent=enemy.n+(enemy.boss?' 【BOSS】':'');var pct=Math.max(0,Math.ceil(enemy.hp/enemy.mx*100));document.getElementById('eHpFill').style.width=pct+'%';document.getElementById('eHpTxt').textContent=Math.ceil(enemy.hp)+'/'+enemy.mx;}
+function updEUI(){if(!enemy)return;document.getElementById('eName').textContent=enemy.n+(enemy.boss?' 【BOSS】':'');var pct=Math.max(0,Math.ceil(enemy.hp/enemy.mx*100));document.getElementById('eHpFill').style.width=pct+'%';document.getElementById('eHpTxt').textContent=Math.ceil(enemy.hp)+'/'+enemy.mx;
+ var bi=document.getElementById('bpIcon');if(bi)bi.textContent=enemy.ic;
+ var bl=document.getElementById('bpLv');if(bl)bl.textContent='Lv.'+(12+curWave*8);
+ var ct=document.getElementById('chapTitle');if(ct&&WAVES[curWave])ct.textContent=WAVES[curWave].name;
+ var wn=document.getElementById('wvNum');if(wn)wn.textContent=(curWave+1);
+}
 
 function showLog(msg,t){var el=document.getElementById('bLog');el.textContent=msg;el.className='b-log log-'+t;el.classList.remove('hidden');}
 

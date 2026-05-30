@@ -138,9 +138,12 @@ const OTHERS = ["moshen", "zhouyi", "zhuangsy", "yushan"];
 function Ending() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<string>("moshen");
+  const [showReport, setShowReport] = useState(false);
   const player = getCharacter(PLAYER_ID);
   const target = getCharacter(selected);
   const rel = RELATIONS[selected];
+  const report = REPORTS[selected];
+
 
   return (
     <div className="relative h-full overflow-hidden">

@@ -382,7 +382,7 @@ function Ending() {
                     />
                   </div>
                   <div className="mt-1.5 text-[11px] font-medium text-[#2b1a14]">
-                    知乎 · 听雨
+                    听雨
                   </div>
                   <div className="mt-1 flex items-center gap-1 rounded-full bg-white/70 px-2 py-0.5">
                     <img
@@ -414,7 +414,7 @@ function Ending() {
                     />
                   </div>
                   <div className="mt-1.5 text-[11px] font-medium text-[#2b1a14]">
-                    知乎 · {report.partnerNick}
+                    {report.partnerNick}
                   </div>
                   <div className="mt-1 flex items-center gap-1 rounded-full bg-white/70 px-2 py-0.5">
                     <img

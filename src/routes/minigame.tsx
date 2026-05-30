@@ -1315,49 +1315,238 @@ function Drawer({ title, onClose, children }: { title: string; onClose: () => vo
 /* ============ Victory ============ */
 
 function VictoryView({ onExit }: { onExit: () => void }) {
-  const [particles] = useState(() => Array.from({ length: 24 }, (_, i) => ({
+  const [particles] = useState(() => Array.from({ length: 18 }, (_, i) => ({
     id: i,
     left: Math.random() * 100,
     delay: Math.random() * 2,
-    dur: 3 + Math.random() * 3,
-    size: 4 + Math.random() * 6,
+    dur: 4 + Math.random() * 4,
+    size: 3 + Math.random() * 5,
   })));
+
+  const rows: { label: string; value: React.ReactNode; accent?: string }[] = [
+    { label: "查案章回", value: "5 / 5" },
+    { label: "走访场所", value: "7" },
+    { label: "拾得线索", value: <span style={{ color: "#f5e0a8", fontSize: 26, fontFamily: "'Ma Shan Zheng', serif" }}>24</span> },
+    { label: "口供采纳", value: <span style={{ color: "#d97a6c" }}>15 条</span>, accent: "#d97a6c" },
+    { label: "推理时长", value: "23 分" },
+    { label: "关键人物", value: <><span style={{ color: "#f3b6a8" }}>寒雁</span>　<span style={{ color: "#a8c8f3" }}>云夕</span></> },
+  ];
+
   return (
-    <div className="relative h-full w-full overflow-hidden" style={{ background: "radial-gradient(circle at center,#3a2818 0%,#0a0604 100%)" }}>
+    <div
+      className="relative h-full w-full overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 30%, #2a1d12 0%, #15100b 45%, #08060a 100%)",
+      }}
+    >
+      {/* floating embers */}
       {particles.map((p) => (
-        <span key={p.id}
+        <span
+          key={p.id}
           className="absolute rounded-full"
           style={{
-            left: `${p.left}%`, bottom: -10,
-            width: p.size, height: p.size,
-            background: GOLD,
-            boxShadow: `0 0 8px ${GOLD}`,
+            left: `${p.left}%`,
+            bottom: -10,
+            width: p.size,
+            height: p.size,
+            background: "#d9b46a",
+            boxShadow: "0 0 8px #d9b46a",
+            opacity: 0.7,
             animation: `rise ${p.dur}s linear ${p.delay}s infinite`,
           }}
         />
       ))}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 text-center">
-        <Sparkles size={40} style={{ color: GOLD }} />
-        <div className="mt-3 font-brush text-[36px] tracking-[0.3em]" style={{ color: GOLD, textShadow: `0 0 24px ${GOLD}aa` }}>真 相 大 白</div>
-        <div className="mx-auto mt-4 h-px w-32" style={{ background: `${GOLD}88` }} />
-        <p className="mt-5 max-w-[320px] text-[13px] leading-relaxed" style={{ color: "#f5e6c8" }}>
-          庄寒雁之真名，乃东侯王与唐门嫡女唐小乔所诞遗孤。<br/>
-          二十年前东侯王府遭奸臣构陷，一夜满门尽丧；<br/>
-          唐小乔避祸城外破屋，诞下女儿即托亲信，由媚姨娘抱入庄府，
-          以代王氏夭折之婴。<br/>
-          太后早知一切，留你性命，藏于深闺，
-          只待今日——你以贵女之身，亲手揭开这桩二十年前的旧案。
-        </p>
-        <div className="mt-6 flex gap-3">
-          <button onClick={onExit} className="rounded-full px-5 py-2 text-[13px]" style={{ background: GOLD, color: "#1a1410" }}>
-            归 去
-          </button>
-          <button className="flex items-center gap-1.5 rounded-full px-5 py-2 text-[13px]" style={{ border: `1px solid ${GOLD}`, color: GOLD }}>
-            <Share2 size={13} /> 分享
-          </button>
+
+      {/* subtle palace silhouette */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'><path d='M0 180 L40 180 L40 140 L80 110 L120 140 L120 180 L200 180 L200 100 L240 70 L280 100 L280 180 L400 180 L400 200 L0 200 Z' fill='%23d9b46a'/></svg>\")",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center bottom",
+          backgroundSize: "120% auto",
+        }}
+      />
+
+      <div className="relative z-10 flex h-full flex-col items-center px-5 pt-10 pb-6">
+        {/* crossed swords + title */}
+        <div className="relative">
+          <div
+            className="absolute inset-0 -z-10"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(217,180,106,0.35) 0%, transparent 70%)",
+              filter: "blur(8px)",
+            }}
+          />
+          <div className="flex items-center justify-center gap-2 text-[22px]" style={{ color: "#d9b46a" }}>
+            <span style={{ transform: "rotate(-20deg)" }}>🗡</span>
+            <span style={{ transform: "rotate(20deg) scaleX(-1)" }}>🗡</span>
+          </div>
+          <h1
+            className="mt-1 text-center"
+            style={{
+              fontFamily: "'Ma Shan Zheng', 'STKaiti', serif",
+              fontSize: 44,
+              letterSpacing: "0.15em",
+              background: "linear-gradient(180deg,#f5e0a8 0%,#d9b46a 55%,#8a6a2e 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: "0 2px 8px rgba(217,180,106,0.35)",
+            }}
+          >
+            真相大白
+          </h1>
         </div>
+
+        {/* scroll panel */}
+        <div className="relative mt-4 w-full max-w-[360px]">
+          {/* scroll rods */}
+          <div
+            className="absolute -left-2 top-2 bottom-2 w-3 rounded-full"
+            style={{ background: "linear-gradient(90deg,#3a2814,#7a5526,#3a2814)" }}
+          />
+          <div
+            className="absolute -right-2 top-2 bottom-2 w-3 rounded-full"
+            style={{ background: "linear-gradient(90deg,#3a2814,#7a5526,#3a2814)" }}
+          />
+
+          {/* panel */}
+          <div
+            className="relative overflow-hidden rounded-[6px] px-5 py-5"
+            style={{
+              background:
+                "linear-gradient(180deg,#1a130c 0%,#0f0a06 100%)",
+              border: "1px solid rgba(217,180,106,0.45)",
+              boxShadow:
+                "0 0 0 1px rgba(217,180,106,0.15) inset, 0 0 30px rgba(0,0,0,0.6)",
+            }}
+          >
+            {/* inner gold frame */}
+            <div
+              className="pointer-events-none absolute inset-[6px] rounded-[3px]"
+              style={{ border: "1px solid rgba(217,180,106,0.25)" }}
+            />
+            {/* corner ornaments */}
+            {[
+              "top-1 left-1",
+              "top-1 right-1",
+              "bottom-1 left-1",
+              "bottom-1 right-1",
+            ].map((pos) => (
+              <span
+                key={pos}
+                className={`pointer-events-none absolute ${pos} h-3 w-3`}
+                style={{
+                  borderColor: "rgba(217,180,106,0.55)",
+                  borderStyle: "solid",
+                  borderWidth:
+                    pos.includes("top") && pos.includes("left")
+                      ? "1px 0 0 1px"
+                      : pos.includes("top") && pos.includes("right")
+                      ? "1px 1px 0 0"
+                      : pos.includes("bottom") && pos.includes("left")
+                      ? "0 0 1px 1px"
+                      : "0 1px 1px 0",
+                }}
+              />
+            ))}
+
+            {/* "完成" seal */}
+            <div
+              className="absolute right-3 top-3 flex h-10 w-10 -rotate-[12deg] items-center justify-center rounded-full text-[11px] font-bold"
+              style={{
+                color: "#c44a3a",
+                border: "1.5px solid #c44a3a",
+                background: "rgba(196,74,58,0.08)",
+                fontFamily: "'Ma Shan Zheng', serif",
+                letterSpacing: "0.05em",
+              }}
+            >
+              完成
+            </div>
+
+            {/* rows */}
+            <div className="relative mt-2 space-y-3">
+              {rows.map((r, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span style={{ color: "#d9b46a", fontSize: 10 }}>❖</span>
+                  <span
+                    className="flex-1 border-b border-dotted pb-1.5 text-[13px]"
+                    style={{
+                      color: r.accent ?? "#e8d4a8",
+                      borderColor: "rgba(217,180,106,0.18)",
+                      fontFamily: "'STKaiti','KaiTi',serif",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    {r.label}
+                  </span>
+                  <span
+                    className="pb-1.5 text-[14px]"
+                    style={{
+                      color: "#f5e0a8",
+                      fontFamily: "'STKaiti','KaiTi',serif",
+                    }}
+                  >
+                    {r.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <button
+          onClick={onExit}
+          className="mt-6 flex items-center gap-3 px-8 py-3 active:scale-[0.98]"
+          style={{
+            background:
+              "linear-gradient(180deg,#2a1d10 0%,#1a120a 100%)",
+            border: "1px solid rgba(217,180,106,0.7)",
+            boxShadow:
+              "0 0 0 1px rgba(217,180,106,0.15) inset, 0 6px 18px rgba(0,0,0,0.5)",
+          }}
+        >
+          <span
+            style={{
+              color: "#f5e0a8",
+              fontFamily: "'Ma Shan Zheng', serif",
+              fontSize: 20,
+              letterSpacing: "0.2em",
+            }}
+          >
+            归去重启
+          </span>
+          <span style={{ color: "#d9b46a" }}>▶</span>
+        </button>
+
+        {/* footer tagline */}
+        <div
+          className="mt-4 flex items-center gap-2 text-[11px]"
+          style={{ color: "rgba(217,180,106,0.7)" }}
+        >
+          <span>❖</span>
+          <span style={{ letterSpacing: "0.3em" }}>身世已明，恩怨可了</span>
+          <span>❖</span>
+        </div>
+
+        {/* share - subtle */}
+        <button
+          className="mt-3 flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px]"
+          style={{
+            border: "1px solid rgba(217,180,106,0.35)",
+            color: "rgba(245,224,168,0.85)",
+          }}
+        >
+          <Share2 size={11} /> 分享此案
+        </button>
       </div>
-      <style>{`@keyframes rise { from{transform:translateY(0);opacity:0} 10%{opacity:1} to{transform:translateY(-120vh);opacity:0} }`}</style>
+
+      <style>{`@keyframes rise { from{transform:translateY(0);opacity:0} 10%{opacity:0.7} to{transform:translateY(-120vh);opacity:0} }`}</style>
     </div>
   );
 }

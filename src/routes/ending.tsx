@@ -261,14 +261,19 @@ function Ending() {
                 {rel?.desc}
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="flex items-center justify-center gap-1.5 rounded-lg bg-white/70 py-2">
+                <button
+                  onClick={() => setShowReport(true)}
+                  className="flex items-center justify-center gap-1.5 rounded-lg bg-white/70 py-2 transition active:scale-95 hover:bg-white"
+                >
                   <Heart size={12} className="text-[#7a2a2a]" />
                   <span className="text-[10px] text-[#3a2a22]/70">亲密度</span>
                   <span className="font-brush text-[16px] leading-none text-[#7a2a2a]">
                     {rel?.intimacy}
                     <span className="text-[10px]">%</span>
                   </span>
-                </div>
+                  <span className="ml-0.5 text-[9px] text-[#7a2a2a]/70">›</span>
+                </button>
+
                 <div className="flex items-center justify-center gap-1.5 rounded-lg bg-white/70 py-2">
                   <Search size={12} className="text-[#7a2a2a]" />
                   <span className="text-[10px] text-[#3a2a22]/70">线索</span>

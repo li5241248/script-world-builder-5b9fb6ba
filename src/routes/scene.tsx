@@ -28,11 +28,11 @@ type Msg =
 const INITIAL: Msg[] = [
   {
     kind: "narration",
-    text: "入宫十年，温棠早已习惯了被遗忘的滋味。今夜，窗外雪落无声，采桑宫偏殿里，她独自坐着，手边摆着一碟枣花糕——这是她唯一拿得出手的东西。",
+    text: "母亲新丧，庄寒雁一觉醒来，竟回到了十三岁那年。窗外阴云未散，府里却已是另一番热闹——周氏带着庄语山，正抬着箱笼，浩浩荡荡地踏进庄府大门。",
   },
-  { kind: "dialog", charId: "zhouyi", text: "贵人，仇公公来了，说……说陛下今夜要翻您的牌子。" },
-  { kind: "dialog", charId: "zhuangsy", text: "朕问你，想不想抚育三皇子琰儿？" },
-  { kind: "prompt", text: "听到这个消息，你心里……" },
+  { kind: "dialog", charId: "zhouyi", text: "雁姐儿，姨娘以后就是你母亲了，往后咱们一家人，可要好好亲香。" },
+  { kind: "dialog", charId: "zhuangsy", text: "寒雁，你母亲走了，府里以后由周氏打理，你这做姐姐的，要懂事。" },
+  { kind: "prompt", text: "听到这番话，你心里……" },
 ];
 
 const ACTORS: Record<string, string> = {

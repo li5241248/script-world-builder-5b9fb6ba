@@ -53,78 +53,173 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 .btn-action:hover{background:rgba(201,169,110,0.25);}
 .btn-action:active{transform:scale(0.97);}
 
-/* ===== 游戏主界面 ===== */
-#game-root{position:fixed;inset:0;display:flex;flex-direction:column;z-index:1;pointer-events:none;}
+/* ===== 游戏主界面（古风重设计） ===== */
+#game-root{position:fixed;inset:0;display:flex;flex-direction:column;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(60,30,55,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 95%, rgba(40,20,60,0.7) 0%, transparent 60%),
+    linear-gradient(180deg,#0e0a1c 0%,#1a0f24 45%,#0a0712 100%);}
 #game-root.active{pointer-events:auto;}
 
-.top-bar{height:44px;flex-shrink:0;background:linear-gradient(180deg,#1a1025,#0f0815);border-bottom:1.5px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:10;}
-.top-bar h1{color:var(--gold);font-size:12px;letter-spacing:3px;}
-.wv-info{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gold-light);}
-.wv-num{background:rgba(201,169,110,0.15);padding:2px 8px;border-radius:8px;border:1px solid var(--gold);min-width:36px;text-align:center;font-size:11px;}
+/* —— 顶部章回栏 —— */
+.top-bar{height:54px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;z-index:10;
+  background:linear-gradient(180deg,rgba(20,12,30,0.95),rgba(15,8,22,0.7) 70%,transparent);
+  position:relative;}
+.top-bar::after{content:"";position:absolute;left:8%;right:8%;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,#c9a96e 30%,#c9a96e 70%,transparent);opacity:0.55;}
+.tb-back{width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,169,110,0.5);
+  background:rgba(0,0,0,0.4);color:#e8d5b7;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.tb-title-wrap{display:flex;align-items:center;gap:8px;}
+.tb-title-wrap::before,.tb-title-wrap::after{content:"❖";color:#c9a96e;font-size:9px;opacity:0.65;}
+.top-bar h1{font-family:'STKaiti','KaiTi','Noto Serif SC',serif;
+  background:linear-gradient(180deg,#f5e0a8,#c9a96e 60%,#7a5a26);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-size:18px;letter-spacing:6px;font-weight:700;}
+.wv-info{display:flex;align-items:center;gap:5px;font-size:11px;color:#cfc2a8;letter-spacing:2px;
+  padding:5px 12px;border:1px solid rgba(201,169,110,0.45);border-radius:14px;
+  background:linear-gradient(180deg,rgba(40,22,18,0.6),rgba(20,10,8,0.6));}
+.wv-info .wv-chap{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;
+  border:1px solid #c9a96e;color:#f5e0a8;font-size:10px;}
+.wv-num{color:#f5e0a8;font-weight:bold;}
 
-.enemy-zone{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#0d1117 0%,#161b22 40%,#0d1117 100%);}
-#game-canvas{width:100%;height:100%;display:block;}
+/* —— 战斗主区域 —— */
+.enemy-zone{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;}
+#game-canvas{width:100%;height:100%;display:block;opacity:0.55;}
 
-.enemy-hp-wrap{position:absolute;top:52px;left:50%;transform:translateX(-50%);width:min(250px,72%);z-index:8;pointer-events:none;}
-.e-name{text-align:center;font-size:12px;color:var(--danger);margin-bottom:3px;letter-spacing:2px;}
-.e-hp-trk{height:12px;background:rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;border:1.5px solid rgba(255,255,255,0.12);}
-.e-hp-fill{height:100%;border-radius:6px;transition:width 0.4s ease;background:linear-gradient(90deg,#a33,var(--danger));}
-.e-hp-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.8);}
+/* 敌方首领 名号 + 血条 */
+.enemy-hp-wrap{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:min(280px,82%);z-index:8;pointer-events:none;}
+.e-name{text-align:center;font-family:'STKaiti','KaiTi',serif;font-size:15px;color:#e84a4a;letter-spacing:5px;margin-bottom:6px;
+  text-shadow:0 0 10px rgba(232,74,74,0.6);display:flex;align-items:center;justify-content:center;gap:10px;}
+.e-name::before,.e-name::after{content:"";width:30px;height:1px;background:linear-gradient(90deg,transparent,#a33,transparent);}
+.e-hp-trk{position:relative;height:14px;border-radius:8px;overflow:hidden;
+  background:linear-gradient(180deg,#1a0608,#0d0405);
+  border:1px solid rgba(201,169,110,0.55);
+  box-shadow:inset 0 0 6px rgba(0,0,0,0.8),0 0 6px rgba(232,74,74,0.25);}
+.e-hp-fill{height:100%;border-radius:7px;transition:width 0.4s ease;
+  background:linear-gradient(180deg,#ff5a5a,#c0282d 60%,#8a1818);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.3);}
+.e-hp-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;letter-spacing:1px;text-shadow:0 1px 2px rgba(0,0,0,0.9);}
+
+/* 敌方首领 圆形画像 */
+.boss-portrait{position:absolute;top:52%;left:50%;transform:translate(-50%,-50%);z-index:6;pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;gap:6px;}
+.boss-portrait .bp-label{font-family:'STKaiti',serif;color:#cfc2a8;font-size:12px;letter-spacing:4px;opacity:0.9;}
+.boss-portrait .bp-ring{position:relative;width:118px;height:118px;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%, #4a1a20 0%, #2a0a12 55%, #14060a 100%);
+  border:2px solid #c9a96e;
+  box-shadow:0 0 24px rgba(180,40,50,0.45),inset 0 0 18px rgba(0,0,0,0.7);
+  display:flex;align-items:center;justify-content:center;}
+.boss-portrait .bp-ring::before,.boss-portrait .bp-ring::after{content:"◆";position:absolute;color:#c9a96e;font-size:9px;}
+.boss-portrait .bp-ring::before{top:-6px;left:50%;transform:translateX(-50%);}
+.boss-portrait .bp-ring::after{bottom:-6px;left:50%;transform:translateX(-50%);}
+.boss-portrait .bp-side{position:absolute;top:50%;color:#c9a96e;font-size:9px;transform:translateY(-50%);}
+.boss-portrait .bp-side.l{left:-8px;} .boss-portrait .bp-side.r{right:-8px;}
+.boss-portrait .bp-icon{font-size:54px;filter:drop-shadow(0 0 8px rgba(217,180,106,0.6));}
+.boss-portrait .bp-lv{margin-top:-6px;color:#e84a4a;font-size:13px;letter-spacing:2px;font-family:'STKaiti',serif;font-weight:bold;}
 
 /* 倒计时 */
-.cd-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;pointer-events:none;opacity:0;transition:opacity 0.3s;}
+.cd-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:7;pointer-events:none;opacity:0;transition:opacity 0.3s;}
 .cd-ring.show{opacity:1;}
-.cd-svg{width:96px;height:96px;transform:rotate(-90deg);}
-.cd-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:4;}
-.cd-fg{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 0.1s linear;}
-.cd-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:30px;font-weight:bold;color:var(--gold);}
+.cd-svg{width:140px;height:140px;transform:rotate(-90deg);}
+.cd-bg{fill:none;stroke:rgba(201,169,110,0.18);stroke-width:3;}
+.cd-fg{fill:none;stroke:#c9a96e;stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset 0.1s linear;
+  filter:drop-shadow(0 0 6px rgba(201,169,110,0.6));}
+.cd-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:28px;font-weight:bold;color:#f5e0a8;font-family:'STKaiti',serif;}
 
-/* 日志 */
-.b-log{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);max-width:92%;z-index:8;pointer-events:none;text-align:center;font-size:11px;letter-spacing:1px;padding:5px 14px;border-radius:14px;white-space:nowrap;transition:all 0.3s;}
-.log-c{background:rgba(248,136,68,0.25);border:1.5px solid var(--t4);color:var(--t4);font-weight:bold;font-size:13px;}
-.log-n{background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.12);color:var(--text);}
-.log-h{background:rgba(90,170,136,0.2);border:1.5px solid var(--success);color:var(--success);}
-.log-w{background:rgba(204,68,68,0.2);border:1.5px solid var(--danger);color:var(--danger);}
+/* —— 战斗日志（古卷） —— */
+.b-log{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);max-width:94%;z-index:8;pointer-events:none;
+  text-align:center;font-size:11.5px;letter-spacing:1px;padding:7px 38px 7px 16px;border-radius:6px;white-space:nowrap;transition:all 0.3s;
+  background:linear-gradient(180deg,rgba(30,18,12,0.92),rgba(18,10,8,0.92));
+  border:1px solid rgba(201,169,110,0.45);
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.6);
+  color:#cfc2a8;display:flex;align-items:center;gap:8px;}
+.b-log::before{content:"⚔";color:#c9a96e;font-size:13px;}
+.b-log::after{content:"战斗日志 ▸";position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-size:10px;color:#c9a96e;letter-spacing:2px;
+  border-left:1px solid rgba(201,169,110,0.35);padding-left:8px;}
+.log-c{border-color:#e8a03a !important;color:#f5d090 !important;text-shadow:0 0 6px rgba(232,160,58,0.5);font-weight:bold;}
+.log-n{}
+.log-h{border-color:#5a9 !important;color:#9be0c2 !important;}
+.log-w{border-color:#c44 !important;color:#f0a0a0 !important;}
 
-/* 底部技能区 */
-.skill-area{height:auto;min-height:185px;flex-shrink:0;background:linear-gradient(0deg,#1a1025,#0f0815);border-top:1.5px solid var(--gold);padding:10px 8px 6px;}
-.sec-lbl{text-align:center;font-size:10px;letter-spacing:2px;margin-bottom:6px;opacity:0.8;}
-.sec-you{color:var(--han);}
-.sec-pt{color:var(--fu);}
+/* —— 我方双角色状态条 —— */
+.ally-bar{padding:8px 10px 0;flex-shrink:0;display:flex;gap:8px;}
+.ally-card{flex:1;position:relative;padding:6px 10px 8px;border-radius:6px;
+  background:linear-gradient(180deg,rgba(30,20,40,0.85),rgba(18,12,28,0.85));
+  border:1px solid rgba(201,169,110,0.4);
+  box-shadow:inset 0 0 8px rgba(0,0,0,0.5);}
+.ally-card::before,.ally-card::after{content:"◆";position:absolute;font-size:7px;color:#c9a96e;opacity:0.7;}
+.ally-card::before{top:3px;left:4px;} .ally-card::after{top:3px;right:4px;}
+.ac-head{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
+.ac-badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;border:1px solid;}
+.ac-name{font-family:'STKaiti',serif;font-size:13px;letter-spacing:2px;}
+.ally-card.han .ac-badge{border-color:#e84a8f;color:#e84a8f;background:rgba(232,74,143,0.12);}
+.ally-card.han .ac-name{color:#f5b8d4;}
+.ally-card.fu .ac-badge{border-color:#4a90d9;color:#4a90d9;background:rgba(74,144,217,0.12);}
+.ally-card.fu .ac-name{color:#b8d4f5;}
+.ac-hpwrap{position:relative;height:11px;border-radius:6px;overflow:hidden;
+  background:#0a0408;border:1px solid rgba(201,169,110,0.35);box-shadow:inset 0 0 4px rgba(0,0,0,0.7);}
+.ac-hpfill{height:100%;transition:width 0.4s ease;}
+.ally-card.han .ac-hpfill{background:linear-gradient(180deg,#ff6090,#c02060);}
+.ally-card.fu .ac-hpfill{background:linear-gradient(180deg,#60a0ff,#2060c0);}
+.ac-hptxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;letter-spacing:1px;text-shadow:0 1px 2px rgba(0,0,0,0.9);}
+.ac-deco{margin-top:3px;height:6px;display:flex;align-items:center;justify-content:center;gap:3px;}
+.ac-deco i{font-size:6px;color:#c9a96e;opacity:0.5;font-style:normal;}
+.ally-card.han .ac-deco i{color:#e84a8f;} .ally-card.fu .ac-deco i{color:#4a90d9;}
 
-.sk-grid{display:flex;gap:7px;justify-content:center;margin-bottom:8px;}
-.sk-card{width:calc((100vw-76px)/4);max-width:82px;min-width:62px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;border:2px solid;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;touch-action:manipulation;pointer-events:auto;}
-.sk-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,currentColor,transparent);opacity:0.07;}
-.sk-card:active{transform:scale(0.93);}
-.t1{border-color:var(--t1);color:var(--t1);background:rgba(122,138,154,0.07);}
-.t2{border-color:var(--t2);color:var(--t2);background:rgba(68,170,204,0.07);}
-.t3{border-color:var(--t3);color:var(--t3);background:rgba(170,102,255,0.07);}
-.t4{border-color:var(--t4);color:var(--t4);background:rgba(248,136,68,0.07);}
-.t1.sel{background:rgba(122,138,154,0.22);} .t2.sel{background:rgba(68,170,204,0.22);}
-.t3.sel{background:rgba(170,102,255,0.22);} .t4.sel{background:rgba(248,136,68,0.22);}
-.sk-card.sel{transform:scale(1.05);box-shadow:0 0 16px currentColor;}
-.sk-icon{font-size:23px;margin-bottom:1px;}
-.sk-tier{font-size:9px;font-weight:bold;opacity:0.75;}
-.sk-name{font-size:9px;margin-top:1px;opacity:0.85;}
-.sk-cnt{position:absolute;top:2px;right:3px;font-size:9px;font-weight:bold;background:rgba(0,0,0,0.55);padding:1px 4px;border-radius:7px;}
-.sk-dmg{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:8px;opacity:0.65;}
-.sk-card.warn .sk-cnt{color:var(--danger);}
-.sk-card.empty{opacity:0.2;filter:grayscale(1);pointer-events:none;}
+/* —— 技能区 —— */
+.skill-area{flex-shrink:0;padding:8px 10px 4px;
+  background:linear-gradient(180deg,transparent,rgba(20,12,28,0.6) 40%,rgba(15,8,22,0.95));}
+.sec-lbl{text-align:center;font-family:'STKaiti',serif;font-size:12px;letter-spacing:6px;color:#c9a96e;margin:8px 0 8px;
+  display:flex;align-items:center;justify-content:center;gap:10px;}
+.sec-lbl::before,.sec-lbl::after{content:"◆";font-size:7px;opacity:0.7;}
+.sec-you,.sec-pt{display:none;}
 
-/* 同伴技能 */
-.pt-skills{display:flex;gap:6px;justify-content:center;margin-top:4px;padding:6px 10px;border-radius:10px;background:rgba(74,144,217,0.04);border:1px solid rgba(74,144,217,0.15)}
-.pt-mini{width:34px;height:34px;border-radius:8px;border:1.5px solid;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.3s;opacity:0.28;}
-.pt-mini.t1{border-color:var(--t1);color:var(--t1);background:rgba(122,138,154,0.05);}
-.pt-mini.t2{border-color:var(--t2);color:var(--t2);background:rgba(68,170,204,0.05);}
-.pt-mini.t3{border-color:var(--t3);color:var(--t3);background:rgba(170,102,255,0.05);}
-.pt-mini.t4{border-color:var(--t4);color:var(--t4);background:rgba(248,136,68,0.05);}
-.pt-mini.chosen{opacity:1;transform:scale(1.1);box-shadow:0 0 8px currentColor;}
+.sk-grid{display:flex;gap:7px;justify-content:center;margin-bottom:6px;}
+.sk-card{flex:1;max-width:88px;min-width:60px;padding:7px 4px 8px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  border-radius:8px;border:1.5px solid;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;touch-action:manipulation;pointer-events:auto;
+  background:linear-gradient(180deg,rgba(30,18,40,0.85),rgba(15,10,22,0.85));}
+.sk-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,currentColor,transparent 60%);opacity:0.18;pointer-events:none;}
+.sk-card::after{content:"◆";position:absolute;top:2px;right:3px;font-size:5px;color:#c9a96e;opacity:0.55;}
+.sk-card:active{transform:scale(0.95);}
+.t1{border-color:#a18ed9;color:#c9b8ff;}      /* 紫 */
+.t2{border-color:#4a90d9;color:#a8d0ff;}      /* 蓝 */
+.t3{border-color:#d9b46a;color:#f5d090;}      /* 金 */
+.t4{border-color:#e84a8f;color:#ff90b8;}      /* 粉红 */
+.sk-card.sel{transform:scale(1.05);box-shadow:0 0 14px currentColor;background:linear-gradient(180deg,rgba(60,32,80,0.95),rgba(30,16,40,0.95));}
+.sk-icon{font-size:28px;line-height:1;margin:4px 0 6px;filter:drop-shadow(0 0 6px currentColor);}
+.sk-tier{display:none;}
+.sk-name{font-family:'STKaiti',serif;font-size:12px;letter-spacing:1px;margin-bottom:3px;font-weight:600;}
+.sk-dmg{font-size:9px;color:#8a7e66;letter-spacing:0.5px;}
+.sk-cnt{position:absolute;top:3px;left:4px;font-size:10px;font-weight:bold;width:16px;height:16px;border-radius:50%;
+  background:rgba(0,0,0,0.7);border:1px solid currentColor;display:flex;align-items:center;justify-content:center;line-height:1;}
+.sk-card.warn .sk-cnt{color:#ff7070;}
+.sk-card.empty{opacity:0.25;filter:grayscale(1);pointer-events:none;}
 
-/* 状态栏 */
-.stat-bar{display:flex;gap:8px;justify-content:center;margin-top:5px}
-.st-pill{display:flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:10px;border:1px solid;}
-.st-h{border-color:var(--han);color:var(--han);background:rgba(232,74,143,0.06);}
-.st-f{border-color:var(--fu);color:var(--fu);background:rgba(74,144,217,0.06);}
+/* 行动点 */
+.action-pts{display:flex;align-items:center;justify-content:center;gap:6px;margin:4px auto 0;
+  padding:3px 14px;border-top:1px solid rgba(201,169,110,0.25);border-bottom:1px solid rgba(201,169,110,0.25);width:max-content;}
+.action-pts .ap-l{font-size:9px;color:#8a7e66;letter-spacing:2px;margin-right:4px;}
+.action-pts i{font-style:normal;font-size:9px;color:#5a4a32;}
+.action-pts i.on{color:#d9b46a;text-shadow:0 0 4px #d9b46a;}
+
+/* 同伴小图标（隐藏视觉，仅在 logic 中标记选择） */
+.pt-skills{display:none;}
+
+/* 底部操作栏（装饰） */
+.action-bar{flex-shrink:0;display:flex;justify-content:space-around;align-items:flex-end;
+  padding:6px 4px 8px;background:linear-gradient(180deg,rgba(20,12,28,0.95),rgba(10,6,16,1));
+  border-top:1px solid rgba(201,169,110,0.35);}
+.ab-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;color:#8a7e66;
+  font-family:'STKaiti',serif;font-size:10px;letter-spacing:1px;cursor:pointer;}
+.ab-btn .ab-ic{font-size:18px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(201,169,110,0.4);background:rgba(30,18,40,0.7);}
+.ab-btn.active{color:#f5d090;}
+.ab-btn.active .ab-ic{background:radial-gradient(circle,#5a2a80 0%,#2a1040 100%);border-color:#d9b46a;
+  box-shadow:0 0 12px rgba(217,180,106,0.5);color:#f5d090;}
+
+/* 隐藏旧 stat-bar */
+.stat-bar{display:none;}
 
 /* 结算 */
 .result-screen{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.91);display:none;flex-direction:column;align-items:center;justify-content:center;pointer-events:auto;padding:20px;}
@@ -341,8 +436,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <!-- ========== 主界面 ========== -->
 <div id="game-root">
 <div class="top-bar">
-<h1>⚔️ 王府御敌</h1>
-<div class="wv-info"><span>第</span><span class="wv-num" id="wvNum">1</span><span>/5波</span></div>
+<div class="tb-back" id="tbBack">‹</div>
+<div class="tb-title-wrap"><h1 id="chapTitle">凤仪宫之乱</h1></div>
+<div class="wv-info">第<span class="wv-chap">1</span>章·<span class="wv-num" id="wvNum">1</span>/5波</div>
 </div>
 
 <div class="enemy-zone" id="eZone">
@@ -351,6 +447,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <div class="e-name" id="eName">暗影刺客</div>
 <div class="e-hp-trk"><div class="e-hp-fill" id="eHpFill"></div><div class="e-hp-txt" id="eHpTxt">120/120</div></div>
 </div>
+
+<div class="boss-portrait">
+  <div class="bp-label">敌方首领</div>
+  <div class="bp-ring">
+    <span class="bp-side l">◆</span><span class="bp-side r">◆</span>
+    <span class="bp-icon" id="bpIcon">🗡️</span>
+  </div>
+  <div class="bp-lv" id="bpLv">Lv.12</div>
+</div>
+
 <div class="cd-ring" id="cdRing">
 <svg class="cd-svg" viewBox="0 0 100 100">
 <circle class="cd-bg" cx="50" cy="50" r="44"/>
@@ -361,15 +467,36 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <div class="b-log log-n hidden" id="bLog"></div>
 </div>
 
-<div class="skill-area">
-<div class="stat-bar">
-<div class="st-pill st-h"><span>🗡️</span><span id="stH">寒雁 HP:100</span></div>
-<div class="st-pill st-f"><span>🏹</span><span id="stF">云夕 HP:100</span></div>
+<div class="ally-bar">
+  <div class="ally-card han">
+    <div class="ac-head"><div class="ac-badge">♣</div><div class="ac-name">寒雁</div></div>
+    <div class="ac-hpwrap"><div class="ac-hpfill" id="hanHpFill" style="width:100%"></div><div class="ac-hptxt" id="hanHpTxt">HP 100/100</div></div>
+    <div class="ac-deco"><i>◆</i><i>◆</i><i>◆</i></div>
+  </div>
+  <div class="ally-card fu">
+    <div class="ac-head"><div class="ac-badge">✦</div><div class="ac-name">云夕</div></div>
+    <div class="ac-hpwrap"><div class="ac-hpfill" id="fuHpFill" style="width:100%"></div><div class="ac-hptxt" id="fuHpTxt">HP 100/100</div></div>
+    <div class="ac-deco"><i>◆</i><i>◆</i><i>◆</i></div>
+  </div>
 </div>
-<div class="sec-lbl sec-you">【你的技能】寒雁 — 选择一招</div>
+
+<div class="skill-area">
+<div class="stat-bar"><span id="stH" style="display:none"></span><span id="stF" style="display:none"></span></div>
+<div class="sec-lbl">选择技能指令</div>
 <div class="sk-grid" id="skGrid"></div>
-<div class="sec-lbl sec-pt">【同伴】傅云夕 — 等待抉择...</div>
 <div class="pt-skills" id="ptSlot"></div>
+<div class="action-pts">
+  <span class="ap-l">行动点</span>
+  <i id="ap1">◆</i><i id="ap2">◆</i><i id="ap3">◆</i>
+</div>
+</div>
+
+<div class="action-bar">
+  <div class="ab-btn"><div class="ab-ic">⚑</div>撤退</div>
+  <div class="ab-btn"><div class="ab-ic">▶▶</div>自动</div>
+  <div class="ab-btn active"><div class="ab-ic">❀</div>技能</div>
+  <div class="ab-btn"><div class="ab-ic">◈</div>道具</div>
+  <div class="ab-btn"><div class="ab-ic">⚙</div>设置</div>
 </div>
 </div>
 
@@ -475,6 +602,10 @@ function init(){
   e.preventDefault();e.stopPropagation();hideR();showScreen('story');
  },{passive:false});
 
+ // 返回按钮
+ var bk=document.getElementById('tbBack');
+ if(bk)bk.addEventListener('click',function(){running=false;document.getElementById('game-root').classList.remove('active');showScreen('story');});
+
  buildGrid();
 }
 
@@ -518,6 +649,16 @@ function updUI(){
  });
  document.getElementById('stH').textContent='寒雁 HP:'+Math.ceil(hanHP)+'/'+hanMaxHP;
  document.getElementById('stF').textContent='云夕 HP:'+Math.ceil(fuHP)+'/'+fuMaxHP;
+ var hp1=Math.max(0,Math.ceil(hanHP)),hp2=Math.max(0,Math.ceil(fuHP));
+ var f1=document.getElementById('hanHpFill'),f2=document.getElementById('fuHpFill');
+ if(f1)f1.style.width=(hp1/hanMaxHP*100)+'%';
+ if(f2)f2.style.width=(hp2/fuMaxHP*100)+'%';
+ var t1=document.getElementById('hanHpTxt'),t2=document.getElementById('fuHpTxt');
+ if(t1)t1.textContent='HP '+hp1+'/'+hanMaxHP;
+ if(t2)t2.textContent='HP '+hp2+'/'+fuMaxHP;
+ // 行动点：剩余技能档位数
+ var aps=[hanCnt[0]+hanCnt[1],hanCnt[2],hanCnt[3]];
+ ['ap1','ap2','ap3'].forEach(function(id,i){var el=document.getElementById(id);if(el)el.className=aps[i]>0?'on':'';});
 }
 
 // ==================== 流程 ====================
@@ -655,7 +796,12 @@ function checkDead(){
 }
 
 // ==================== UI辅助 ====================
-function updEUI(){if(!enemy)return;document.getElementById('eName').textContent=enemy.n+(enemy.boss?' 【BOSS】':'');var pct=Math.max(0,Math.ceil(enemy.hp/enemy.mx*100));document.getElementById('eHpFill').style.width=pct+'%';document.getElementById('eHpTxt').textContent=Math.ceil(enemy.hp)+'/'+enemy.mx;}
+function updEUI(){if(!enemy)return;document.getElementById('eName').textContent=enemy.n+(enemy.boss?' 【BOSS】':'');var pct=Math.max(0,Math.ceil(enemy.hp/enemy.mx*100));document.getElementById('eHpFill').style.width=pct+'%';document.getElementById('eHpTxt').textContent=Math.ceil(enemy.hp)+'/'+enemy.mx;
+ var bi=document.getElementById('bpIcon');if(bi)bi.textContent=enemy.ic;
+ var bl=document.getElementById('bpLv');if(bl)bl.textContent='Lv.'+(12+curWave*8);
+ var ct=document.getElementById('chapTitle');if(ct&&WAVES[curWave])ct.textContent=WAVES[curWave].name;
+ var wn=document.getElementById('wvNum');if(wn)wn.textContent=(curWave+1);
+}
 
 function showLog(msg,t){var el=document.getElementById('bLog');el.textContent=msg;el.className='b-log log-'+t;el.classList.remove('hidden');}
 

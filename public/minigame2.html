@@ -602,6 +602,10 @@ function init(){
   e.preventDefault();e.stopPropagation();hideR();showScreen('story');
  },{passive:false});
 
+ // 返回按钮
+ var bk=document.getElementById('tbBack');
+ if(bk)bk.addEventListener('click',function(){running=false;document.getElementById('game-root').classList.remove('active');showScreen('story');});
+
  buildGrid();
 }
 

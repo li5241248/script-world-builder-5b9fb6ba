@@ -645,6 +645,16 @@ function updUI(){
  });
  document.getElementById('stH').textContent='寒雁 HP:'+Math.ceil(hanHP)+'/'+hanMaxHP;
  document.getElementById('stF').textContent='云夕 HP:'+Math.ceil(fuHP)+'/'+fuMaxHP;
+ var hp1=Math.max(0,Math.ceil(hanHP)),hp2=Math.max(0,Math.ceil(fuHP));
+ var f1=document.getElementById('hanHpFill'),f2=document.getElementById('fuHpFill');
+ if(f1)f1.style.width=(hp1/hanMaxHP*100)+'%';
+ if(f2)f2.style.width=(hp2/fuMaxHP*100)+'%';
+ var t1=document.getElementById('hanHpTxt'),t2=document.getElementById('fuHpTxt');
+ if(t1)t1.textContent='HP '+hp1+'/'+hanMaxHP;
+ if(t2)t2.textContent='HP '+hp2+'/'+fuMaxHP;
+ // 行动点：剩余技能档位数
+ var aps=[hanCnt[0]+hanCnt[1],hanCnt[2],hanCnt[3]];
+ ['ap1','ap2','ap3'].forEach(function(id,i){var el=document.getElementById(id);if(el)el.className=aps[i]>0?'on':'';});
 }
 
 // ==================== 流程 ====================

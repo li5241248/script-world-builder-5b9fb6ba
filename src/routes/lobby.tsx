@@ -99,8 +99,11 @@ function Lobby() {
             <h1 className="font-brush text-[26px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
               组队入梦
             </h1>
-            <button className="grid h-9 w-9 place-items-center rounded-full bg-black/25 backdrop-blur-md">
-              <Share2 className="h-4 w-4 text-white" />
+            <button
+              onClick={() => navigate({ to: "/ending" })}
+              className="rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white backdrop-blur-md active:scale-95"
+            >
+              查看结局
             </button>
           </div>
         </section>

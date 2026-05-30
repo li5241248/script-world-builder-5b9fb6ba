@@ -307,11 +307,12 @@ function Ending() {
                   </div>
                 </div>
                 <button
-                  onClick={() => navigate({ to: "/report" })}
+                  onClick={() => setShowReport(true)}
                   className="shrink-0 rounded-full bg-[#7a2a2a]/10 px-3 py-1.5 text-[11px] text-[#7a2a2a] active:scale-95"
                 >
                   亲密关系报告 →
                 </button>
+
               </div>
             </div>
           )}

@@ -436,8 +436,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <!-- ========== 主界面 ========== -->
 <div id="game-root">
 <div class="top-bar">
-<h1>⚔️ 王府御敌</h1>
-<div class="wv-info"><span>第</span><span class="wv-num" id="wvNum">1</span><span>/5波</span></div>
+<div class="tb-back" id="tbBack">‹</div>
+<div class="tb-title-wrap"><h1 id="chapTitle">凤仪宫之乱</h1></div>
+<div class="wv-info">第<span class="wv-chap">1</span>章·<span class="wv-num" id="wvNum">1</span>/5波</div>
 </div>
 
 <div class="enemy-zone" id="eZone">
@@ -446,6 +447,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <div class="e-name" id="eName">暗影刺客</div>
 <div class="e-hp-trk"><div class="e-hp-fill" id="eHpFill"></div><div class="e-hp-txt" id="eHpTxt">120/120</div></div>
 </div>
+
+<div class="boss-portrait">
+  <div class="bp-label">敌方首领</div>
+  <div class="bp-ring">
+    <span class="bp-side l">◆</span><span class="bp-side r">◆</span>
+    <span class="bp-icon" id="bpIcon">🗡️</span>
+  </div>
+  <div class="bp-lv" id="bpLv">Lv.12</div>
+</div>
+
 <div class="cd-ring" id="cdRing">
 <svg class="cd-svg" viewBox="0 0 100 100">
 <circle class="cd-bg" cx="50" cy="50" r="44"/>
@@ -456,15 +467,36 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <div class="b-log log-n hidden" id="bLog"></div>
 </div>
 
-<div class="skill-area">
-<div class="stat-bar">
-<div class="st-pill st-h"><span>🗡️</span><span id="stH">寒雁 HP:100</span></div>
-<div class="st-pill st-f"><span>🏹</span><span id="stF">云夕 HP:100</span></div>
+<div class="ally-bar">
+  <div class="ally-card han">
+    <div class="ac-head"><div class="ac-badge">♣</div><div class="ac-name">寒雁</div></div>
+    <div class="ac-hpwrap"><div class="ac-hpfill" id="hanHpFill" style="width:100%"></div><div class="ac-hptxt" id="hanHpTxt">HP 100/100</div></div>
+    <div class="ac-deco"><i>◆</i><i>◆</i><i>◆</i></div>
+  </div>
+  <div class="ally-card fu">
+    <div class="ac-head"><div class="ac-badge">✦</div><div class="ac-name">云夕</div></div>
+    <div class="ac-hpwrap"><div class="ac-hpfill" id="fuHpFill" style="width:100%"></div><div class="ac-hptxt" id="fuHpTxt">HP 100/100</div></div>
+    <div class="ac-deco"><i>◆</i><i>◆</i><i>◆</i></div>
+  </div>
 </div>
-<div class="sec-lbl sec-you">【你的技能】寒雁 — 选择一招</div>
+
+<div class="skill-area">
+<div class="stat-bar"><span id="stH" style="display:none"></span><span id="stF" style="display:none"></span></div>
+<div class="sec-lbl">选择技能指令</div>
 <div class="sk-grid" id="skGrid"></div>
-<div class="sec-lbl sec-pt">【同伴】傅云夕 — 等待抉择...</div>
 <div class="pt-skills" id="ptSlot"></div>
+<div class="action-pts">
+  <span class="ap-l">行动点</span>
+  <i id="ap1">◆</i><i id="ap2">◆</i><i id="ap3">◆</i>
+</div>
+</div>
+
+<div class="action-bar">
+  <div class="ab-btn"><div class="ab-ic">⚑</div>撤退</div>
+  <div class="ab-btn"><div class="ab-ic">▶▶</div>自动</div>
+  <div class="ab-btn active"><div class="ab-ic">❀</div>技能</div>
+  <div class="ab-btn"><div class="ab-ic">◈</div>道具</div>
+  <div class="ab-btn"><div class="ab-ic">⚙</div>设置</div>
 </div>
 </div>
 

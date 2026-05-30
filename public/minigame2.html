@@ -912,11 +912,17 @@ function showRes(isWin){
  var s=document.getElementById('resScreen');
  document.getElementById('rIcon').textContent=isWin?'🏆':'💀';
  document.getElementById('rTitle').textContent=isWin?'大获全胜':'护卫失败';
- document.getElementById('rTitle').className='r-title '+(isWin?'r-win':'r-lose');
+ document.getElementById('rTitle').className='r-title'+(isWin?'':' r-lose');
+ var stamp=document.getElementById('rStamp');
+ if(stamp){stamp.textContent=isWin?'完成':'败北';}
  var leftH=hanCnt.reduce(function(a,b){return a+b},0),leftF=fuCnt.reduce(function(a,b){return a+b},0);
  document.getElementById('rStats').innerHTML=
-  '抵御波数：'+(curWave+1)+'/5<br>总回合：'+rndCount+'<br>总伤害：'+stats.dmg+
-  '<br>组合技：'+stats.combos+' 次<br>技能使用：'+stats.used+'<br>剩余技能：寒雁'+leftH+' 云夕'+leftF;
+  '<div class="r-row"><span class="rk">抵御波数</span><span class="rv">'+(curWave+1)+' / 5</span></div>'+
+  '<div class="r-row"><span class="rk">总回合</span><span class="rv">'+rndCount+'</span></div>'+
+  '<div class="r-row r-big"><span class="rk">总伤害</span><span class="rv">'+stats.dmg+'</span></div>'+
+  '<div class="r-row r-combo"><span class="rk">组合技</span><span class="rv">'+stats.combos+' 次</span></div>'+
+  '<div class="r-row"><span class="rk">技能使用</span><span class="rv">'+stats.used+'</span></div>'+
+  '<div class="r-row"><span class="rk">剩余技能</span><span class="rv r-leftv"><span class="h">寒雁 '+leftH+'</span><span class="f">云夕 '+leftF+'</span></span></div>';
  s.classList.add('show');
 }
 function hideR(){

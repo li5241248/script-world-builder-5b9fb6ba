@@ -542,10 +542,19 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);font-
 <!-- ========== 结算 ========== -->
 <div class="result-screen" id="resScreen">
 <div class="fail-reason hidden" id="failReason"></div>
-<div class="r-icon" id="rIcon">🏆</div>
-<div class="r-title r-win" id="rTitle">胜利</div>
-<div class="r-stats" id="rStats"></div>
+<div class="r-crown">
+  <span class="r-swords">⚔</span>
+  <span class="r-trophy" id="rIcon">🏆</span>
+</div>
+<div class="r-title" id="rTitle">大获全胜</div>
+<div class="r-scroll">
+  <span class="r-corner rc-tl"></span><span class="r-corner rc-tr"></span>
+  <span class="r-corner rc-bl"></span><span class="r-corner rc-br"></span>
+  <div class="r-stamp" id="rStamp">完成</div>
+  <div id="rStats"></div>
+</div>
 <button class="btn-restart" id="btnRestart">再战一次</button>
+<div class="r-foot">生命成长，已然生效</div>
 </div>
 
 <script>

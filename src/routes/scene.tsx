@@ -323,7 +323,7 @@ export function Scene() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && send()}
-              placeholder="以温棠的身份开口，或点（）输入动作"
+              placeholder="以庄寒雁的身份开口，或点（）输入动作"
               className="flex-1 min-w-0 bg-transparent text-[13px] outline-none placeholder:text-white/50"
             />
             <button

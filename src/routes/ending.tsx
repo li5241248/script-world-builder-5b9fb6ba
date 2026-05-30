@@ -1,6 +1,16 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Share2, RotateCcw, ChevronLeft, Heart, Search } from "lucide-react";
+import {
+  Share2,
+  RotateCcw,
+  ChevronLeft,
+  Heart,
+  Search,
+  Sparkles,
+  Trophy,
+  Quote,
+  X,
+} from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import sceneBg from "@/assets/ending-bg.jpg";
 import playerAvatar from "@/assets/player-tingyu.png";
@@ -46,6 +56,80 @@ const RELATIONS: Record<
     intimacy: 5,
     clues: 9,
     tag: "因果自负",
+  },
+};
+
+// 亲密关系报告（按角色）
+type IntimacyReport = {
+  partnerNick: string; // 对方玩家昵称
+  partnerRole: string; // 对方扮演角色名（= 角色名）
+  bond: number; // 羁绊值
+  bondLabel: string; // 羁绊关系
+  unlocked: number; // 解锁剧情
+  ending: string; // 达成结局
+  hidden: number; // 隐藏成就
+  achievements: string[];
+  moment: string; // 高光时刻
+  quote: string; // 高光发言
+  quoteFrom: string; // 发言来源
+};
+
+const REPORTS: Record<string, IntimacyReport> = {
+  moshen: {
+    partnerNick: "墙外有故人",
+    partnerRole: "傅云夕",
+    bond: 98,
+    bondLabel: "一生一世",
+    unlocked: 9,
+    ending: "凤凰归位",
+    hidden: 4,
+    achievements: ["狗洞之缘", "雪夜递伞", "十里红妆"],
+    moment:
+      "庄府西墙下，她从狗洞里钻出来拍裙摆，抬头撞上他含笑的眼。那一刻，他叼着的草梗轻轻一颤——这京里高门贵女他见得太多，唯独没见过会钻狗洞的姑娘。",
+    quote: "「庄府上的丫头真奇怪，放着好好的大门不走，偏爱钻狗洞。」",
+    quoteFrom: "墙外有故人 饰 傅云夕",
+  },
+  zhouyi: {
+    partnerNick: "桃花酿三两",
+    partnerRole: "周氏",
+    bond: 8,
+    bondLabel: "宿敌伏法",
+    unlocked: 8,
+    ending: "周氏入狱",
+    hidden: 2,
+    achievements: ["识破伪善", "灵堂对峙", "夺回中馈"],
+    moment:
+      "她一身桃色衣裙踏进庄府灵堂，本以为三言两语就能拿捏这个新丧母的小姑娘。却被庄寒雁一句「母亲尸骨未寒」逼得当场失了颜色，连鬓边那支红宝石都晃得刺眼。",
+    quote: "「妾身也是心疼雁姐儿，这孩子就是心善。」",
+    quoteFrom: "桃花酿三两 饰 周氏",
+  },
+  zhuangsy: {
+    partnerNick: "侯门一盏灯",
+    partnerRole: "庄仕洋",
+    bond: 32,
+    bondLabel: "形同陌路",
+    unlocked: 6,
+    ending: "迟来悔意",
+    hidden: 1,
+    achievements: ["针锋相对", "夺回弟弟", "父女离心"],
+    moment:
+      "他一拍桌子说「这里没你说话的地步」，却没料到嫡女抬眼回看，那双眼睛冷得像她母亲临终前的样子。多年以后他才明白，那一刻他失去的不止是一个女儿。",
+    quote: "「这里没你说话的地步。」",
+    quoteFrom: "侯门一盏灯 饰 庄仕洋",
+  },
+  yushan: {
+    partnerNick: "桃枝压新雪",
+    partnerRole: "庄语山",
+    bond: 5,
+    bondLabel: "因果自负",
+    unlocked: 7,
+    ending: "游街疯死",
+    hidden: 2,
+    achievements: ["香粉破绽", "假千金现形", "众目睽睽"],
+    moment:
+      "她穿着母亲精挑的桃色衣裳进府，本以为这把千金交椅手到擒来。却被寒雁一句「这香粉味儿，倒像是青楼里熏出来的」当众戳破，跪也不是、笑也不是。",
+    quote: "「总有一天，这府里千金的位置，会是我庄语山的。」",
+    quoteFrom: "桃枝压新雪 饰 庄语山",
   },
 };
 

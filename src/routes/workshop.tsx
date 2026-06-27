@@ -10,9 +10,21 @@ export const Route = createFileRoute("/workshop")({
   }),
 });
 
+const PRESET_SYNOPSIS = `《重生之贵女难求》
+
+前世，温棠是裴容明媒正娶的太子妃，却在册封皇后那夜，被亲手送上一碗"安神汤"。她死在裴容怀里，听见他低声说："棠儿，是你逼我的。"
+
+再睁眼，她回到了十六岁，回到那个还未入宫、还未与裴家三兄弟纠缠的春日。庭中海棠开得正好，陈嬷嬷端着一碗冰糖燕窝走来，唤她："姑娘，太子殿下又来了。"
+
+这一世，她不要再做那只被人精心豢养、再一刀斩尽的笼中雀。
+
+裴容温润如玉，却心思深沉；二皇子裴琰冷面修罗，却独独纵容她一人；三皇子裴瑜放荡不羁，却在她每一次落难时第一个赶到。皇后母仪天下，笑里藏刀；陈嬷嬷忠心耿耿，却握着她前世的死因。
+
+大梁开元年间，采桑宫的海棠又开了一季。温棠提着裙摆走进这盘棋，这一次，她要自己执子。`;
+
 function Workshop() {
   const navigate = useNavigate();
-  const [text, setText] = useState("");
+  const [text, setText] = useState(PRESET_SYNOPSIS);
   const [fileName, setFileName] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 

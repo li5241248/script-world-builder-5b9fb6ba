@@ -412,6 +412,34 @@ export function Scene() {
 
       {/* 玩家数值 */}
       {statsOpen && <StatsPanel onClose={() => setStatsOpen(false)} /> }
+
+      {/* 幕前剧情卡 — 阻断式弹窗,进入本幕必读 */}
+      <StoryCardModal
+        open={actIntroOpen}
+        data={ACT_INTRO}
+        onContinue={() => setActIntroOpen(false)}
+        ctaLabel="入幕"
+      />
+
+      {/* 幕后剧情卡 — 本幕完成后弹出,总结+承接下一幕 */}
+      <StoryCardModal
+        open={actOutroOpen}
+        data={ACT_OUTRO}
+        onContinue={() => {
+          setActOutroOpen(false);
+          navigate({ to: "/lobby" });
+        }}
+        onClose={() => setActOutroOpen(false)}
+        ctaLabel="进入下一幕"
+      />
+
+      {/* 手动触发幕后卡(测试 / 玩家主动结束本幕) */}
+      <button
+        onClick={() => setActOutroOpen(true)}
+        className="absolute bottom-20 right-3 z-20 rounded-full border border-amber-200/30 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
+      >
+        结束本幕
+      </button>
     </div>
   );
 }

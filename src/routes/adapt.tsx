@@ -13,9 +13,9 @@ export const Route = createFileRoute("/adapt")({
 
 const STEPS = [
   { label: "解析小说章节结构", detail: "提取 6 个关键场景" },
-  { label: "拆解人物关系网", detail: "温棠 · 裴容 · 裴琰 · 裴瑜 · 皇后 · 陈嬷嬷" },
-  { label: "构建世界观与时间线", detail: "大梁开元年间 · 采桑宫" },
-  { label: "生成可代入角色卡", detail: "6 位可玩角色档案" },
+  { label: "拆解人物关系网", detail: "庄寒雁 · 周氏 · 庄仕洋 · 庄语山 · 傅云夕" },
+  { label: "构建世界观与时间线", detail: "大宗朝 · 京城镇国侯府" },
+  { label: "生成可代入角色卡", detail: "5 位可玩角色档案" },
   { label: "铺设分支剧情与结局", detail: "AI 实时改编中" },
   { label: "完成互动文游打包", detail: "《重生之贵女难求》已就绪" },
 ];

@@ -61,7 +61,7 @@ function GameHub() {
   };
 
   return (
-    <div className="relative h-full overflow-y-auto bg-[#fbf7ef] pb-10 no-scrollbar">
+    <div className="relative h-full overflow-y-auto bg-[#fbf7ef] pb-24 no-scrollbar">
       <header className="sticky top-0 z-20 bg-[#fbf7ef]/90 px-5 pb-3 pt-12 backdrop-blur-md">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

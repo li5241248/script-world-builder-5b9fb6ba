@@ -10,12 +10,11 @@
  *  - title:   场景标题
  *  - scene:   时间 · 地点
  *  - summary: 1–2 句剧情背景
- *  - memories:    已解锁记忆条目
- *  - mood:        当前主角（或对手）情绪
- *  - relation:    当前关系变化原因
+ *  - memories: 当前记忆条目
+ *  - relation:   关系流转（与谁、如何变化、为何变化）
  */
 import { useEffect } from "react";
-import { X, BookOpen, MapPin, Sparkles, Heart, ScrollText } from "lucide-react";
+import { X, BookOpen, MapPin, Heart, ScrollText } from "lucide-react";
 
 export type StoryCardData = {
   chapter: string;
@@ -23,7 +22,6 @@ export type StoryCardData = {
   scene: string;
   summary: string;
   memories: { time: string; text: string }[];
-  mood: { who: string; emotion: string; reason: string };
   relation: { who: string; change: string; reason: string };
 };
 
@@ -80,17 +78,20 @@ function CardBody({ data, compact = false }: { data: StoryCardData; compact?: bo
         <div className="h-px flex-1 bg-[oklch(0.88_0.012_50)]" />
       </div>
 
-      {/* 剧情背景 */}
-      <p
-        className="text-[15px] leading-7 text-[oklch(0.32_0.015_30)] first-letter:text-[26px] first-letter:font-semibold first-letter:text-[oklch(0.48_0.12_20)]"
-        style={{ fontFamily: "'Noto Serif SC', serif" }}
-      >
-        {data.summary}
-      </p>
+      {/* 1. 故事背景 */}
+      <div className={compact ? "space-y-2.5" : "space-y-3"}>
+        <SectionLabel icon={BookOpen}>故事背景</SectionLabel>
+        <p
+          className="text-[15px] leading-7 text-[oklch(0.32_0.015_30)] first-letter:text-[26px] first-letter:font-semibold first-letter:text-[oklch(0.48_0.12_20)]"
+          style={{ fontFamily: "'Noto Serif SC', serif" }}
+        >
+          {data.summary}
+        </p>
+      </div>
 
-      {/* 已解锁记忆 */}
+      {/* 2. 当前记忆 */}
       <div className={`mt-${compact ? 4 : 6} space-y-2.5`}>
-        <SectionLabel icon={ScrollText}>已解锁记忆</SectionLabel>
+        <SectionLabel icon={ScrollText}>当前记忆</SectionLabel>
         <ul className="space-y-2 pl-1">
           {data.memories.map((m, i) => (
             <li key={i} className="flex gap-3 text-[13.5px] leading-6">
@@ -106,45 +107,24 @@ function CardBody({ data, compact = false }: { data: StoryCardData; compact?: bo
         </ul>
       </div>
 
-      {/* 情绪 + 关系 双栏 */}
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        <div className="rounded-lg border border-[oklch(0.88_0.012_50)] bg-[oklch(0.95_0.012_55/0.6)] p-3">
-          <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[oklch(0.5_0.02_40)]">
-            <Sparkles className="h-3 w-3" strokeWidth={1.6} />
-            当前情绪
-          </div>
-          <div className="mt-1.5 flex items-baseline gap-1.5">
-            <span className="text-sm text-[oklch(0.5_0.02_40)]">{data.mood.who}</span>
-            <span
-              className="text-lg text-[oklch(0.48_0.12_20)]"
-              style={{ fontFamily: "'Ma Shan Zheng', serif" }}
-            >
-              {data.mood.emotion}
-            </span>
-          </div>
-          <p className="mt-1 text-[12px] leading-5 text-[oklch(0.42_0.015_30)]">
-            {data.mood.reason}
-          </p>
+      {/* 3. 关系流转（全宽，不左右分栏） */}
+      <div className={`mt-${compact ? 4 : 6} rounded-lg border border-[oklch(0.88_0.012_50)] bg-[oklch(0.95_0.012_55/0.6)] p-3.5`}>
+        <SectionLabel icon={Heart}>关系流转</SectionLabel>
+        <div className="mt-2 flex items-baseline gap-2">
+          <span className="text-sm text-[oklch(0.5_0.02_40)]">与{data.relation.who}</span>
+          <span
+            className="text-lg text-[oklch(0.48_0.12_20)]"
+            style={{ fontFamily: "'Ma Shan Zheng', serif" }}
+          >
+            {data.relation.change}
+          </span>
         </div>
-
-        <div className="rounded-lg border border-[oklch(0.88_0.012_50)] bg-[oklch(0.95_0.012_55/0.6)] p-3">
-          <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-[oklch(0.5_0.02_40)]">
-            <Heart className="h-3 w-3" strokeWidth={1.6} />
-            关系流转
-          </div>
-          <div className="mt-1.5 flex items-baseline gap-1.5">
-            <span className="text-sm text-[oklch(0.5_0.02_40)]">与{data.relation.who}</span>
-            <span
-              className="text-lg text-[oklch(0.48_0.12_20)]"
-              style={{ fontFamily: "'Ma Shan Zheng', serif" }}
-            >
-              {data.relation.change}
-            </span>
-          </div>
-          <p className="mt-1 text-[12px] leading-5 text-[oklch(0.42_0.015_30)]">
-            {data.relation.reason}
-          </p>
-        </div>
+        <p
+          className="mt-1 text-[13px] leading-6 text-[oklch(0.42_0.015_30)]"
+          style={{ fontFamily: "'Noto Serif SC', serif" }}
+        >
+          {data.relation.reason}
+        </p>
       </div>
     </div>
   );

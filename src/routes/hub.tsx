@@ -129,6 +129,28 @@ function GameHub() {
         </button>
       </section>
 
+      {/* 创作工作台入口 */}
+      <section className="mt-6 px-5">
+        <button
+          onClick={() => navigate({ to: "/workshop" })}
+          className="group flex w-full items-center justify-between overflow-hidden rounded-2xl border border-black/5 bg-white px-4 py-4 text-left transition active:scale-[0.99]"
+        >
+          <div className="flex items-center gap-3">
+            <div
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-xl text-white"
+              style={{ background: "var(--gradient-rouge)" }}
+            >
+              <Sparkles className="h-4 w-4" />
+            </div>
+            <div>
+              <div className="text-[14px] font-semibold text-neutral-900">互动文游创作工作台</div>
+              <p className="mt-0.5 text-[11px] text-neutral-500">上传你的小说，让 AI 改编为互动文游</p>
+            </div>
+          </div>
+          <ChevronRight className="h-4 w-4 text-neutral-400" />
+        </button>
+      </section>
+
       <section className="mt-8 px-5">
         <div className="mb-3 flex items-end justify-between">
           <div>

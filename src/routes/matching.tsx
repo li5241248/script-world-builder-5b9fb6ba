@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import bg from "@/assets/matching-bg.png";
-import titleText from "@/assets/huatangchun-text.png";
+
 
 export const Route = createFileRoute("/matching")({
   component: MatchingPage,

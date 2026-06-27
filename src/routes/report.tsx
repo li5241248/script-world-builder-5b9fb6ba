@@ -10,7 +10,7 @@ export const Route = createFileRoute("/report")({
   component: ReportPage,
   head: () => ({
     meta: [
-      { title: "亲密关系报告 · 画堂春" },
+      { title: "亲密关系报告 · 重生之贵女难求" },
       { name: "description", content: "和好友一起解锁的剧情结局报告。" },
     ],
   }),
@@ -38,7 +38,7 @@ function Report() {
               <Sparkles size={10} /> 亲密关系报告
             </div>
             <h1 className="mt-2 font-brush text-[24px] tracking-wide text-[#2b1a14]">
-              《画堂春》
+              《重生之贵女难求》
             </h1>
             <div className="mt-1 flex items-center justify-center gap-2">
               <span className="h-px w-10 bg-[#7a2a2a]/30" />
@@ -82,7 +82,7 @@ function Report() {
 
           <p className="mt-4 text-center text-[12px] leading-[1.8] text-[#3a2a22]">
             <span className="font-medium text-[#7a2a2a]">听雨</span> 和{" "}
-            <span className="font-medium text-[#7a2a2a]">棠梨煎雪</span> 在《画堂春》中
+            <span className="font-medium text-[#7a2a2a]">棠梨煎雪</span> 在《重生之贵女难求》中
             <br />
             分别扮演了 <span className="text-[#7a2a2a]">裴琰</span> 与{" "}
             <span className="text-[#7a2a2a]">温棠</span>
@@ -138,7 +138,7 @@ function Report() {
               <Quote size={12} /> 高光发言
             </div>
             <p className="mt-1.5 font-brush text-[14px] leading-[1.8] text-[#2b1a14]">
-              "若有一日山河崩，我执剑为你守这画堂春。"
+              "若有一日山河崩，我执剑为你守这重生之贵女难求。"
             </p>
             <p className="mt-1 text-right text-[10px] text-[#3a2a22]/60">—— 听雨 饰 裴琰</p>
           </div>

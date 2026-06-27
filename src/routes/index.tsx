@@ -14,8 +14,8 @@ export const Route = createFileRoute("/")({
   component: HomePage,
   head: () => ({
     meta: [
-      { title: "画堂春 · 互动文游" },
-      { name: "description", content: "AI 互动文游《画堂春》，自由代入角色，每个选择都改写故事。" },
+      { title: "重生之贵女难求 · 互动文游" },
+      { name: "description", content: "AI 互动文游《重生之贵女难求》，自由代入角色，每个选择都改写故事。" },
     ],
   }),
 });
@@ -35,8 +35,8 @@ type Game = {
 
 const FEATURED: Game = {
   id: "huatangchun",
-  title: "画堂春",
-  subtitle: "一卷画堂春，半阙血色词。深宫之中，谁是故人，谁是劫数。",
+  title: "重生之贵女难求",
+  subtitle: "一卷重生之贵女难求，半阙血色词。深宫之中，谁是故人，谁是劫数。",
   cover: heroHuatang,
   tags: ["古风", "宫廷", "悬疑"],
   players: "34,221",
@@ -71,7 +71,7 @@ function GameHub() {
             <button
               onClick={() => navigate({ to: "/novel" })}
               className="-ml-1 grid h-8 w-8 place-items-center"
-              aria-label="返回画堂春"
+              aria-label="返回重生之贵女难求"
             >
               <ChevronLeft className="h-5 w-5 text-neutral-700" />
             </button>
@@ -102,7 +102,7 @@ function GameHub() {
         </div>
       </header>
 
-      {/* Featured banner — 画堂春 */}
+      {/* Featured banner — 重生之贵女难求 */}
       <section className="px-5 pt-2">
         <div className="mb-2 flex items-center gap-1.5">
           <Flame className="h-4 w-4" style={{ color: "var(--rouge)" }} />

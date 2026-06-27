@@ -83,7 +83,7 @@ function HuatangChun() {
     <div className="relative h-full overflow-y-auto pb-32 text-foreground no-scrollbar">
       {/* HERO */}
       <section className="relative h-[68vh] min-h-[600px] w-full overflow-hidden">
-        <img src={heroImg} alt="画堂春世界" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={heroImg} alt="重生之贵女难求世界" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 88%, #ffffff 100%)" }} />
 
         {/* Top bar */}

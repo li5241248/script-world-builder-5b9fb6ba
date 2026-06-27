@@ -72,7 +72,6 @@ function GameHub() {
               <ChevronLeft className="h-5 w-5 text-neutral-700" />
             </button>
             <div>
-              <div className="text-[10px] tracking-[0.3em] text-neutral-500">知乎严选</div>
               <h1 className="font-brush text-2xl text-neutral-900">互动文游</h1>
             </div>
           </div>

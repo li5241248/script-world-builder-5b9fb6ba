@@ -9,7 +9,7 @@ import { PhoneMockup } from "@/components/PhoneMockup";
 
 export const Route = createFileRoute("/")({
   beforeLoad: () => {
-    throw redirect({ to: "/novel" });
+    throw redirect({ to: "/hub" });
   },
   component: HomePage,
   head: () => ({

@@ -48,27 +48,35 @@ const ACT_INTRO: StoryCardData = {
   title: "暗 流 涌 动",
   scene: "庄府 · 正堂 · 周氏入府次日",
   summary:
-    "母丧未远，姨娘携庶妹昂然入府。寒雁知道，这一幕的真正较量不在堂前的茶水寒暄，而在那双盯着掌家钥匙的眼睛里。",
+    "母丧未远，姨娘携庶妹昂然入府。寒雁知道，这一幕的真正**较量**不在堂前的茶水寒暄，而在那双盯着**掌家钥匙**的眼睛里。",
   memories: [
-    { time: "重生前夜", text: "梦回十三岁，母亲灵前血书未冷。" },
+    { time: "前夜", text: "梦回十三岁，母亲灵前血书未冷。" },
     { time: "今晨", text: "周氏一句『以后就是你母亲』，定下今日基调。" },
     { time: "昨日", text: "庄思言把账册悄悄藏进了书房第三格。" },
   ],
-  relation: { who: "周姨娘", change: "试探期", reason: "前世她笑里藏刀，此世我笑得比她更早。" },
+  relations: [
+    { who: "周姨娘", relation: "试探期", reason: "前世她笑里藏刀，此世我笑得比她更早。" },
+    { who: "庄思言", relation: "暗盟", reason: "幼妹未涉深水，仍是可拉拢的同盟。" },
+  ],
 };
+
 
 const ACT_OUTRO: StoryCardData = {
   chapter: "第二幕 · 幕后",
   title: "钥 已 易 主",
   scene: "庄府 · 偏厅 · 申时",
   summary:
-    "一席话毕，父亲沉吟未决，周氏面色微变。这一幕你赢下了第一回合——却也让她看清，你不再是前世那个任人拿捏的孩子。",
+    "一席话毕，父亲沉吟未决，周氏面色微变。这一幕你赢下了**第一回合**——却也让她看清，你不再是前世那个任人拿捏的孩子。",
   memories: [
     { time: "方才", text: "在父亲面前，你第一次说出『母亲』二字时停顿了半息。" },
     { time: "此刻", text: "掌家钥匙仍在父亲手中，但他的目光已开始游移。" },
   ],
-  relation: { who: "周姨娘", change: "−10 信任", reason: "她意识到这个继女比传闻中难缠，开始重新部署。" },
+  relations: [
+    { who: "周姨娘", relation: "戒备", reason: "她意识到这个继女比传闻中难缠，开始重新部署。" },
+    { who: "父亲", relation: "动摇", reason: "他第一次正视你眼底的锋芒，开始重新衡量。" },
+  ],
 };
+
 
 export const Route = createFileRoute("/scene")({
   component: ScenePage,

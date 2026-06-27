@@ -65,7 +65,7 @@ function GameHub() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <button
-              onClick={() => navigate({ to: "/novel" })}
+              onClick={() => navigate({ to: "/hub" })}
               className="-ml-1 grid h-8 w-8 place-items-center"
               aria-label="返回"
             >

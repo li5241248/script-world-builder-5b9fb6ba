@@ -40,7 +40,7 @@ function AdaptPage() {
         {/* Header */}
         <header className="sticky top-0 z-20 flex items-center justify-between bg-gradient-to-b from-[#0d0b14] to-transparent px-4 pb-3 pt-12">
           <button
-            onClick={() => navigate({ to: "/novel" })}
+            onClick={() => navigate({ to: "/hub" })}
             className="grid h-9 w-9 place-items-center rounded-full bg-white/10 backdrop-blur-md"
             aria-label="返回"
           >

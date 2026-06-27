@@ -116,8 +116,18 @@ export function Scene() {
   const [secretRevealed, setSecretRevealed] = useState(false);
   const [recapOpen, setRecapOpen] = useState(false);
   const [statsOpen, setStatsOpen] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [actIntroOpen, setActIntroOpen] = useState(true);
+  const [actOutroOpen, setActOutroOpen] = useState(false);
+
+  // 当出现 reward（标志本幕关键节点完成）后,自动弹出幕后回顾
+  useEffect(() => {
+    if (messages.some((m) => m.kind === "reward")) {
+      const t = setTimeout(() => setActOutroOpen(true), 1800);
+      return () => clearTimeout(t);
+    }
+  }, [messages]);
+
+
 
   // 剩余时间：单人无限制，双人/多人每幕 ≤ 20 分钟
   const mode = "multi" as "solo" | "multi";

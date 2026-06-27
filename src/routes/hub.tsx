@@ -215,10 +215,218 @@ function GameHub() {
   );
 }
 
+type TabKey = "home" | "create" | "friends" | "me";
+
+function CreateTab() {
+  const navigate = useNavigate();
+  const drafts = [
+    { id: "d1", title: "重生之贵女难求", status: "已发布", cover: heroHuatang, updated: "2 小时前" },
+    { id: "d2", title: "未命名草稿 · 03", status: "改编中 · 4/6", cover: coverChangan, updated: "昨天" },
+  ];
+  return (
+    <div className="relative h-full overflow-y-auto bg-[#fbf7ef] pb-24 no-scrollbar">
+      <header className="sticky top-0 z-20 bg-[#fbf7ef]/90 px-5 pb-3 pt-12 backdrop-blur-md">
+        <h1 className="font-brush text-2xl text-neutral-900">我的创作</h1>
+        <p className="mt-1 text-[11px] text-neutral-500">把你的小说，交给 AI 改成可玩文游</p>
+      </header>
+
+      <section className="px-5 pt-2">
+        <button
+          onClick={() => navigate({ to: "/workshop" })}
+          className="flex w-full items-center justify-between overflow-hidden rounded-2xl px-5 py-5 text-left text-white shadow-[0_18px_40px_-16px_rgba(232,107,90,0.6)] active:scale-[0.99] transition"
+          style={{ background: "var(--gradient-rouge)" }}
+        >
+          <div className="flex items-center gap-3">
+            <div className="grid h-11 w-11 place-items-center rounded-xl bg-white/20 backdrop-blur-md">
+              <Plus className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="text-[15px] font-semibold">新建互动文游</div>
+              <div className="mt-0.5 text-[11px] text-white/80">上传或粘贴小说，AI 一键改编</div>
+            </div>
+          </div>
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      </section>
+
+      <section className="mt-7 px-5">
+        <div className="mb-3 flex items-center justify-between">
+          <h3 className="text-[13px] font-medium text-neutral-900">我的作品</h3>
+          <span className="text-[11px] text-neutral-400">{drafts.length} 部</span>
+        </div>
+        <div className="space-y-3">
+          {drafts.map((d) => (
+            <div key={d.id} className="flex items-center gap-3 rounded-2xl border border-black/5 bg-white p-3">
+              <img src={d.cover} alt={d.title} className="h-16 w-12 shrink-0 rounded-lg object-cover" />
+              <div className="min-w-0 flex-1">
+                <div className="truncate text-[13px] font-medium text-neutral-900">{d.title}</div>
+                <div className="mt-1 flex items-center gap-2 text-[11px] text-neutral-500">
+                  <span className="rounded-sm bg-black/[0.06] px-1.5 py-0.5 text-[10px]">{d.status}</span>
+                  <span>{d.updated}</span>
+                </div>
+              </div>
+              <ChevronRight className="h-4 w-4 text-neutral-400" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-7 px-5">
+        <div className="rounded-2xl border border-black/10 bg-white p-4">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-4 w-4" style={{ color: "var(--rouge)" }} />
+            <span className="text-[12px] font-medium text-neutral-900">创作指引</span>
+          </div>
+          <p className="mt-2 text-[12px] leading-6 text-neutral-600">
+            建议上传 1 万字以上的完整故事，AI 将自动拆解章节、人物与场景，并生成可代入的角色卡。
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function FriendsTab() {
+  const friends = [
+    { id: "1", name: "执笔ang", note: "正在玩《重生之贵女难求》", online: true },
+    { id: "2", name: "墨白", note: "刚完成一个改编草稿", online: true },
+    { id: "3", name: "青衫客", note: "3 天前在线", online: false },
+    { id: "4", name: "云栖", note: "邀请你共读《长安花事》", online: false },
+  ];
+  return (
+    <div className="relative h-full overflow-y-auto bg-[#fbf7ef] pb-24 no-scrollbar">
+      <header className="sticky top-0 z-20 bg-[#fbf7ef]/90 px-5 pb-3 pt-12 backdrop-blur-md">
+        <div className="flex items-center justify-between">
+          <h1 className="font-brush text-2xl text-neutral-900">好友</h1>
+          <button className="rounded-full bg-black/[0.05] px-3 py-1.5 text-[11px] text-neutral-700">+ 添加</button>
+        </div>
+      </header>
+
+      <section className="px-5 pt-2">
+        <div className="rounded-2xl border border-black/5 bg-white">
+          {friends.map((f, i) => (
+            <div key={f.id} className={`flex items-center gap-3 px-4 py-3 ${i > 0 ? "border-t border-black/5" : ""}`}>
+              <div className="relative">
+                <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#e86b5a] to-[#c0392b] text-[13px] font-medium text-white">
+                  {f.name.slice(0, 1)}
+                </div>
+                {f.online && (
+                  <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-500" />
+                )}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-[13px] font-medium text-neutral-900">{f.name}</div>
+                <div className="mt-0.5 truncate text-[11px] text-neutral-500">{f.note}</div>
+              </div>
+              <button className="rounded-full bg-black/[0.05] px-3 py-1.5 text-[11px] text-neutral-700">邀玩</button>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function MeTab() {
+  return (
+    <div className="relative h-full overflow-y-auto bg-[#fbf7ef] pb-24 no-scrollbar">
+      <header className="px-5 pt-12">
+        <div className="flex items-center gap-4">
+          <div className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-[#e86b5a] to-[#c0392b] text-[20px] font-medium text-white">
+            雁
+          </div>
+          <div className="min-w-0">
+            <div className="text-[16px] font-semibold text-neutral-900">寒雁</div>
+            <div className="mt-0.5 text-[11px] text-neutral-500">ID · 20260628 · 加入 32 天</div>
+          </div>
+        </div>
+
+        <div className="mt-5 grid grid-cols-3 gap-2 rounded-2xl border border-black/5 bg-white p-4 text-center">
+          {[
+            { k: "已玩", v: "12" },
+            { k: "已创作", v: "2" },
+            { k: "好友", v: "8" },
+          ].map((s) => (
+            <div key={s.k}>
+              <div className="text-[18px] font-semibold text-neutral-900">{s.v}</div>
+              <div className="mt-0.5 text-[10px] text-neutral-500">{s.k}</div>
+            </div>
+          ))}
+        </div>
+      </header>
+
+      <section className="mt-6 px-5">
+        <div className="overflow-hidden rounded-2xl border border-black/5 bg-white">
+          {[
+            "我的收藏",
+            "游玩记录",
+            "通知设置",
+            "隐私与安全",
+            "帮助与反馈",
+          ].map((label, i) => (
+            <button
+              key={label}
+              className={`flex w-full items-center justify-between px-4 py-3.5 text-left text-[13px] text-neutral-800 ${
+                i > 0 ? "border-t border-black/5" : ""
+              }`}
+            >
+              <span>{label}</span>
+              <ChevronRight className="h-4 w-4 text-neutral-400" />
+            </button>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function BottomNav({ tab, setTab }: { tab: TabKey; setTab: (t: TabKey) => void }) {
+  const items: { key: TabKey; label: string; Icon: typeof Home }[] = [
+    { key: "home", label: "互动文游", Icon: Home },
+    { key: "create", label: "我的创作", Icon: PenLine },
+    { key: "friends", label: "好友", Icon: Users },
+    { key: "me", label: "我的", Icon: UserRound },
+  ];
+  return (
+    <nav className="absolute inset-x-0 bottom-0 z-30 border-t border-black/5 bg-white/95 backdrop-blur-md">
+      <div className="flex items-stretch justify-around px-2 pb-2 pt-1.5">
+        {items.map(({ key, label, Icon }) => {
+          const active = tab === key;
+          return (
+            <button
+              key={key}
+              onClick={() => setTab(key)}
+              className="flex flex-1 flex-col items-center gap-0.5 py-1"
+            >
+              <Icon
+                className={`h-5 w-5 transition ${active ? "" : "text-neutral-400"}`}
+                style={active ? { color: "var(--rouge)" } : undefined}
+              />
+              <span
+                className={`text-[10px] transition ${active ? "font-medium" : "text-neutral-400"}`}
+                style={active ? { color: "var(--rouge)" } : undefined}
+              >
+                {label}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
 function HubPage() {
+  const [tab, setTab] = useState<TabKey>("home");
   return (
     <PhoneMockup>
-      <GameHub />
+      <div className="relative h-full">
+        {tab === "home" && <GameHub />}
+        {tab === "create" && <CreateTab />}
+        {tab === "friends" && <FriendsTab />}
+        {tab === "me" && <MeTab />}
+        <BottomNav tab={tab} setTab={setTab} />
+      </div>
     </PhoneMockup>
   );
 }

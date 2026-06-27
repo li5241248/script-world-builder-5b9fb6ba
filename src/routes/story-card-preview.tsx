@@ -18,18 +18,18 @@ const SAMPLE: StoryCardData = {
   title: "梅园初遇",
   scene: "盛京 · 永宁侯府 · 寒梅小筑 · 卯时三刻",
   summary:
-    "重生归来的温棠刻意避开正院请安，独自踱至寒梅小筑。她记得，正是在这一日，裴容会与她不期而遇——前世他递出的那枝梅，是她整个错误人生的开端。",
+    "重生归来的温棠刻意避开正院请安，独自踱至**寒梅小筑**。她记得，正是在这一日，裴容会与她不期而遇——前世他递出的那枝**红梅**，是她整个错误人生的开端。",
   memories: [
-    { time: "前世·三月", text: "在此处接过裴容递来的红梅，自此心动。" },
+    { time: "前世", text: "在此处接过裴容递来的红梅，自此心动。" },
     { time: "今晨", text: "于母亲灵前立誓，此生绝不再嫁裴家。" },
     { time: "昨夜", text: "得知陈嬷嬷暗中传递皇后赏赐，心生戒备。" },
   ],
-  relation: {
-    who: "裴容",
-    change: "−2 信任",
-    reason: "重生后第一次见他，刻意冷淡以打破前世惯性。",
-  },
+  relations: [
+    { who: "裴容", relation: "疏离", reason: "重生后第一次见他，刻意冷淡以打破前世惯性。" },
+    { who: "皇后", relation: "暗防", reason: "察觉赏赐另有图谋，不再如前世般领情。" },
+  ],
 };
+
 
 function SectionTitle({ number, children }: { number: string; children: React.ReactNode }) {
   return (

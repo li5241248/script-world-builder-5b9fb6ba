@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkshopRouteImport } from './routes/workshop'
 import { Route as StoryCardPreviewRouteImport } from './routes/story-card-preview'
 import { Route as SceneRouteImport } from './routes/scene'
 import { Route as ReportRouteImport } from './routes/report'
@@ -29,6 +30,11 @@ import { Route as AdaptRouteImport } from './routes/adapt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CharacterIdRouteImport } from './routes/character.$id'
 
+const WorkshopRoute = WorkshopRouteImport.update({
+  id: '/workshop',
+  path: '/workshop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StoryCardPreviewRoute = StoryCardPreviewRouteImport.update({
   id: '/story-card-preview',
   path: '/story-card-preview',
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
+  '/workshop': typeof WorkshopRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesByTo {
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
+  '/workshop': typeof WorkshopRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesById {
@@ -187,6 +195,7 @@ export interface FileRoutesById {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
+  '/workshop': typeof WorkshopRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRouteTypes {
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
+    | '/workshop'
     | '/character/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
+    | '/workshop'
     | '/character/$id'
   id:
     | '__root__'
@@ -252,6 +263,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
+    | '/workshop'
     | '/character/$id'
   fileRoutesById: FileRoutesById
 }
@@ -274,11 +286,19 @@ export interface RootRouteChildren {
   ReportRoute: typeof ReportRoute
   SceneRoute: typeof SceneRoute
   StoryCardPreviewRoute: typeof StoryCardPreviewRoute
+  WorkshopRoute: typeof WorkshopRoute
   CharacterIdRoute: typeof CharacterIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/workshop': {
+      id: '/workshop'
+      path: '/workshop'
+      fullPath: '/workshop'
+      preLoaderRoute: typeof WorkshopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/story-card-preview': {
       id: '/story-card-preview'
       path: '/story-card-preview'
@@ -434,6 +454,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReportRoute: ReportRoute,
   SceneRoute: SceneRoute,
   StoryCardPreviewRoute: StoryCardPreviewRoute,
+  WorkshopRoute: WorkshopRoute,
   CharacterIdRoute: CharacterIdRoute,
 }
 export const routeTree = rootRouteImport

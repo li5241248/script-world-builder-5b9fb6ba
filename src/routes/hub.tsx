@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Bell, Sparkles, Flame, Lock, ChevronRight, Users, Clock } from "lucide-react";
+import { useState } from "react";
+import { Bell, Sparkles, Flame, Lock, ChevronRight, Users, Clock, Home, PenLine, UserRound, BookOpen, Plus } from "lucide-react";
 import heroHuatang from "@/assets/hero-huatangchun.jpg";
 import coverJiu from "@/assets/cover-jiuchongxue.jpg";
 import coverWu from "@/assets/cover-wugang.jpg";

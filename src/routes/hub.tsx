@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { ChevronLeft, Bell, Sparkles, Flame, Lock, ChevronRight, Users, Clock } from "lucide-react";
+import { Bell, Sparkles, Flame, Lock, ChevronRight, Users, Clock } from "lucide-react";
 import heroHuatang from "@/assets/hero-huatangchun.jpg";
 import coverJiu from "@/assets/cover-jiuchongxue.jpg";
 import coverWu from "@/assets/cover-wugang.jpg";
@@ -64,13 +64,6 @@ function GameHub() {
       <header className="sticky top-0 z-20 bg-[#fbf7ef]/90 px-5 pb-3 pt-12 backdrop-blur-md">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => navigate({ to: "/hub" })}
-              className="-ml-1 grid h-8 w-8 place-items-center"
-              aria-label="返回"
-            >
-              <ChevronLeft className="h-5 w-5 text-neutral-700" />
-            </button>
             <div>
               <h1 className="font-brush text-2xl text-neutral-900">互动文游</h1>
             </div>

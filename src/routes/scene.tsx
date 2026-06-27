@@ -5,6 +5,52 @@ import { PhoneMockup } from "@/components/PhoneMockup";
 import sceneBg from "@/assets/scene-cijitang.png";
 import actorAvatar from "@/assets/actor-avatar.png";
 import { CHARACTERS, getCharacter } from "@/lib/characters";
+import { StoryCardModal, type StoryCardData } from "@/components/StoryCard";
+
+const ACT_INTRO: StoryCardData = {
+  chapter: "第二幕 · 幕前",
+  title: "暗 流 涌 动",
+  scene: "庄府 · 正堂 · 周氏入府次日",
+  summary:
+    "母丧未远，姨娘携庶妹昂然入府。寒雁知道，这一幕的真正较量不在堂前的茶水寒暄，而在那双盯着掌家钥匙的眼睛里。",
+  memories: [
+    { time: "重生前夜", text: "梦回十三岁，母亲灵前血书未冷。" },
+    { time: "今晨", text: "周氏一句『以后就是你母亲』，定下今日基调。" },
+    { time: "昨日", text: "庄思言把账册悄悄藏进了书房第三格。" },
+  ],
+  mood: {
+    who: "庄寒雁",
+    emotion: "敛锋于鞘",
+    reason: "强压旧世之恨,以稚女之态周旋,等一个破局的缝。",
+  },
+  relation: {
+    who: "周姨娘",
+    change: "试探期",
+    reason: "前世她笑里藏刀,此世我笑得比她更早。",
+  },
+};
+
+const ACT_OUTRO: StoryCardData = {
+  chapter: "第二幕 · 幕后",
+  title: "钥 已 易 主",
+  scene: "庄府 · 偏厅 · 申时",
+  summary:
+    "一席话毕,父亲沉吟未决,周氏面色微变。这一幕你赢下了第一回合——却也让她看清,你不再是前世那个任人拿捏的孩子。",
+  memories: [
+    { time: "方才", text: "在父亲面前,你第一次说出『母亲』二字时停顿了半息。" },
+    { time: "此刻", text: "掌家钥匙仍在父亲手中,但他的目光已开始游移。" },
+  ],
+  mood: {
+    who: "庄寒雁",
+    emotion: "冷意微扬",
+    reason: "压下指尖的颤,这一场没有输,便是赢了一寸。",
+  },
+  relation: {
+    who: "周姨娘",
+    change: "−10 信任",
+    reason: "她意识到这个继女比传闻中难缠,开始重新部署。",
+  },
+};
 
 export const Route = createFileRoute("/scene")({
   component: ScenePage,
@@ -72,6 +118,18 @@ export function Scene() {
   const [statsOpen, setStatsOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [actIntroOpen, setActIntroOpen] = useState(true);
+  const [actOutroOpen, setActOutroOpen] = useState(false);
+
+  // 当出现 reward（标志本幕关键节点完成）后,自动弹出幕后回顾
+  useEffect(() => {
+    if (messages.some((m) => m.kind === "reward")) {
+      const t = setTimeout(() => setActOutroOpen(true), 1800);
+      return () => clearTimeout(t);
+    }
+  }, [messages]);
+
+
 
   // 剩余时间：单人无限制，双人/多人每幕 ≤ 20 分钟
   const mode = "multi" as "solo" | "multi";
@@ -354,6 +412,34 @@ export function Scene() {
 
       {/* 玩家数值 */}
       {statsOpen && <StatsPanel onClose={() => setStatsOpen(false)} /> }
+
+      {/* 幕前剧情卡 — 阻断式弹窗,进入本幕必读 */}
+      <StoryCardModal
+        open={actIntroOpen}
+        data={ACT_INTRO}
+        onContinue={() => setActIntroOpen(false)}
+        ctaLabel="入幕"
+      />
+
+      {/* 幕后剧情卡 — 本幕完成后弹出,总结+承接下一幕 */}
+      <StoryCardModal
+        open={actOutroOpen}
+        data={ACT_OUTRO}
+        onContinue={() => {
+          setActOutroOpen(false);
+          navigate({ to: "/lobby" });
+        }}
+        onClose={() => setActOutroOpen(false)}
+        ctaLabel="进入下一幕"
+      />
+
+      {/* 手动触发幕后卡(测试 / 玩家主动结束本幕) */}
+      <button
+        onClick={() => setActOutroOpen(true)}
+        className="absolute bottom-20 right-3 z-20 rounded-full border border-amber-200/30 bg-black/40 px-2.5 py-1 text-[11px] text-amber-200/90 backdrop-blur-md active:scale-95"
+      >
+        结束本幕
+      </button>
     </div>
   );
 }

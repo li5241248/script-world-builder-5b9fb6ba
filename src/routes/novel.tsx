@@ -34,7 +34,7 @@ function NovelPage() {
         <header className="z-20 flex shrink-0 items-center justify-between border-b border-black/5 bg-white px-4 pb-3 pt-12">
           <div className="text-[22px] font-bold leading-none text-[#0084FF]">知乎</div>
           <button
-            onClick={() => navigate({ to: "/", search: { entered: "1" } })}
+            onClick={() => navigate({ to: "/hub" })}
             className="flex items-center gap-1 rounded-full px-3 py-1.5 text-[11px] font-medium text-white shadow-[0_8px_20px_-8px_rgba(232,107,90,0.6)] active:scale-[0.98] transition"
             style={{ background: "var(--gradient-rouge)" }}
           >

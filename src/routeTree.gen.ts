@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StoryCardPreviewRouteImport } from './routes/story-card-preview'
 import { Route as SceneRouteImport } from './routes/scene'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as PlayEndingRouteImport } from './routes/play-ending'
@@ -27,6 +28,11 @@ import { Route as AdaptRouteImport } from './routes/adapt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CharacterIdRouteImport } from './routes/character.$id'
 
+const StoryCardPreviewRoute = StoryCardPreviewRouteImport.update({
+  id: '/story-card-preview',
+  path: '/story-card-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SceneRoute = SceneRouteImport.update({
   id: '/scene',
   path: '/scene',
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/play-ending': typeof PlayEndingRoute
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
+  '/story-card-preview': typeof StoryCardPreviewRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesByTo {
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/play-ending': typeof PlayEndingRoute
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
+  '/story-card-preview': typeof StoryCardPreviewRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesById {
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/play-ending': typeof PlayEndingRoute
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
+  '/story-card-preview': typeof StoryCardPreviewRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRouteTypes {
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/play-ending'
     | '/report'
     | '/scene'
+    | '/story-card-preview'
     | '/character/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -209,6 +219,7 @@ export interface FileRouteTypes {
     | '/play-ending'
     | '/report'
     | '/scene'
+    | '/story-card-preview'
     | '/character/$id'
   id:
     | '__root__'
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/play-ending'
     | '/report'
     | '/scene'
+    | '/story-card-preview'
     | '/character/$id'
   fileRoutesById: FileRoutesById
 }
@@ -248,11 +260,19 @@ export interface RootRouteChildren {
   PlayEndingRoute: typeof PlayEndingRoute
   ReportRoute: typeof ReportRoute
   SceneRoute: typeof SceneRoute
+  StoryCardPreviewRoute: typeof StoryCardPreviewRoute
   CharacterIdRoute: typeof CharacterIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/story-card-preview': {
+      id: '/story-card-preview'
+      path: '/story-card-preview'
+      fullPath: '/story-card-preview'
+      preLoaderRoute: typeof StoryCardPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scene': {
       id: '/scene'
       path: '/scene'
@@ -392,18 +412,9 @@ const rootRouteChildren: RootRouteChildren = {
   PlayEndingRoute: PlayEndingRoute,
   ReportRoute: ReportRoute,
   SceneRoute: SceneRoute,
+  StoryCardPreviewRoute: StoryCardPreviewRoute,
   CharacterIdRoute: CharacterIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

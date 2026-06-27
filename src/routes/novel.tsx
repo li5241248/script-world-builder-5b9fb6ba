@@ -64,30 +64,6 @@ function NovelPage() {
               ))}
             </div>
 
-            {/* CTA — 改编为互动文游 */}
-            <button
-              onClick={() => navigate({ to: "/adapt" })}
-              className="group mt-10 block w-full overflow-hidden rounded-2xl border border-black/5 bg-neutral-100 text-left transition hover:bg-neutral-200/70 active:scale-[0.99]"
-            >
-              <div className="relative px-5 py-4 text-neutral-900">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-neutral-500" />
-                  <span className="text-[10px] tracking-[0.3em] text-neutral-500">AI · 互动文游</span>
-                </div>
-                <div className="mt-2 flex items-end justify-between">
-                  <div>
-                    <div className="text-[17px] font-semibold leading-tight text-neutral-900">改编为互动文游</div>
-                    <p className="mt-1 text-[11px] leading-5 text-neutral-500">让 AI 把这本小说变成你能代入主角的故事</p>
-                  </div>
-                  <span
-                    className="flex shrink-0 items-center gap-1 rounded-full px-3 py-1.5 text-[11px] font-medium text-white shadow-[0_8px_20px_-8px_rgba(232,107,90,0.6)]"
-                    style={{ background: "var(--gradient-rouge)" }}
-                  >
-                    立即改编 <ChevronRight className="h-3 w-3" />
-                  </span>
-                </div>
-              </div>
-            </button>
           </article>
         </div>
 

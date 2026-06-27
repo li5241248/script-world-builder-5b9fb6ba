@@ -14,8 +14,8 @@ export const Route = createFileRoute("/lobby")({
   component: LobbyPage,
   head: () => ({
     meta: [
-      { title: "组队入梦 · 画堂春" },
-      { name: "description", content: "选剧情、选角色、选模式，开启属于你的画堂春。" },
+      { title: "组队入梦 · 重生之贵女难求" },
+      { name: "description", content: "选剧情、选角色、选模式，开启属于你的重生之贵女难求。" },
     ],
   }),
 });
@@ -86,7 +86,7 @@ function Lobby() {
       <div className="relative h-full overflow-y-auto pb-10 text-foreground no-scrollbar">
         {/* HEADER */}
         <section className="relative h-[12vh] min-h-[100px] w-full overflow-hidden">
-          <img src={heroImg} alt="画堂春" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={heroImg} alt="重生之贵女难求" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black/25" />
 
           <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-5 pt-12">

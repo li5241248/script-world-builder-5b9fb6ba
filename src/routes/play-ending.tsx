@@ -19,8 +19,8 @@ export const Route = createFileRoute("/play-ending")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "结局 · 画堂春" },
-      { name: "description", content: "你的画堂春结局" },
+      { title: "结局 · 重生之贵女难求" },
+      { name: "description", content: "你的重生之贵女难求结局" },
     ],
   }),
 });

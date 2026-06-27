@@ -2,13 +2,13 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import bg from "@/assets/matching-bg.png";
-import titleText from "@/assets/huatangchun-text.png";
+
 
 export const Route = createFileRoute("/matching")({
   component: MatchingPage,
   head: () => ({
     meta: [
-      { title: "匹配中 · 画堂春" },
+      { title: "匹配中 · 重生之贵女难求" },
       { name: "description", content: "正在为你寻找入梦的旅人…" },
     ],
   }),
@@ -56,24 +56,13 @@ function Matching() {
       </button>
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-8">
-        {/* Brush title - rendered as white via CSS mask */}
-        <div
-          aria-label="画堂春"
-          role="img"
-          className="h-[260px] w-[200px]"
-          style={{
-            backgroundColor: "white",
-            WebkitMaskImage: `url(${titleText})`,
-            maskImage: `url(${titleText})`,
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskPosition: "center",
-            maskPosition: "center",
-            WebkitMaskSize: "contain",
-            maskSize: "contain",
-            filter: "drop-shadow(0 2px 12px rgba(0,0,0,0.6))",
-          }}
-        />
+        {/* Brush title */}
+        <h1
+          className="font-brush text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)] text-center leading-[1.05] tracking-[0.08em] text-[56px]"
+        >
+          重生之<br />贵女难求
+        </h1>
+
 
         {/* status */}
         <div className="mt-14 flex flex-col items-center">

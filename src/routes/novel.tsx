@@ -6,8 +6,8 @@ export const Route = createFileRoute("/novel")({
   component: NovelPage,
   head: () => ({
     meta: [
-      { title: "画堂春 · 知乎盐选小说" },
-      { name: "description", content: "知乎盐选小说《画堂春》原著阅读。" },
+      { title: "重生之贵女难求 · 知乎盐选小说" },
+      { name: "description", content: "知乎盐选小说《重生之贵女难求》原著阅读。" },
     ],
   }),
 });
@@ -48,7 +48,7 @@ function NovelPage() {
         <div className="flex-1 overflow-y-auto pb-6 no-scrollbar">
           {/* Title */}
           <section className="px-6 pt-6">
-            <h1 className="text-[26px] font-bold tracking-wide text-neutral-900">画堂春</h1>
+            <h1 className="text-[26px] font-bold tracking-wide text-neutral-900">重生之贵女难求</h1>
             <div className="mt-5 flex items-center gap-1 text-[11px] text-neutral-400">
               <span>©</span>
               <span>本内容版权为知乎及版权方所有，正在受版权保护中</span>

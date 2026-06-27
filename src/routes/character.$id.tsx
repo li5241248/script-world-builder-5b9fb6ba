@@ -34,7 +34,7 @@ export const Route = createFileRoute("/character/$id")({
   ),
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.name ?? "人物"} · 画堂春` },
+      { title: `${loaderData?.name ?? "人物"} · 重生之贵女难求` },
       { name: "description", content: loaderData?.desc ?? "" },
     ],
   }),

@@ -1,3 +1,4 @@
+// 页面:邀请好友入梦(微信 / 链接 / 二维码)  路由:/invite
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Plus, MessageCircle, Link2, QrCode } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";

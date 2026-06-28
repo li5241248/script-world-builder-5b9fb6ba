@@ -1,3 +1,4 @@
+// 页面:剧情场景对话(AI 实时叙事 / 选择 / 输入行动)  路由:/scene
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, MoreHorizontal, Send, Sparkles, Mic, BookOpen, Feather, Lightbulb, Asterisk, Clock, X, UserPlus, Check, ScrollText, History, Gauge, Heart, Eye as EyeIcon, MessageCircle, Swords, Brain, Crown, MapPin } from "lucide-react";

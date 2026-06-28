@@ -1,3 +1,4 @@
+// 页面:根布局(全局 Provider / HTML Shell)  路由:__root
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,

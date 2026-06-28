@@ -1,3 +1,4 @@
+// 页面:互动文游首页(底部 4 Tab:互动文游 / 我的创作 / 好友 / 我的)  路由:/hub
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Bell, Sparkles, Flame, Lock, ChevronRight, Users, Clock, Home, PenLine, UserRound, BookOpen, Plus } from "lucide-react";

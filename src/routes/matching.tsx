@@ -1,3 +1,4 @@
+// 页面:匹配中转场(寻找玩家 Loading)  路由:/matching
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { PhoneMockup } from "@/components/PhoneMockup";

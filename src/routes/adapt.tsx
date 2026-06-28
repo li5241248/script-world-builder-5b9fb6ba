@@ -1,3 +1,4 @@
+// 页面:AI 改编进行中(人物 / 场景 / 章节拆解 Loading)  路由:/adapt
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronLeft, Sparkles, Check, Loader2, Wand2 } from "lucide-react";

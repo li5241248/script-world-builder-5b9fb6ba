@@ -1,3 +1,4 @@
+// 页面:游玩入口(Scene 的 PhoneMockup 容器)  路由:/play
 import { createFileRoute } from "@tanstack/react-router";
 import { PhoneMockup } from "@/components/PhoneMockup";
 import { Scene } from "./scene";

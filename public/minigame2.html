@@ -783,54 +783,47 @@ html,body{
 <div class="enemy-zone" id="eZone">
 <canvas id="game-canvas"></canvas>
 
-<!-- KOF 风顶部双方血条 -->
-<div class="kof-top">
-  <div class="kof-side-hp left">
-    <div class="kof-hp-row">
-      <span class="kof-hp-name han">寒雁</span>
-      <div class="kof-hp-trk"><div class="kof-hp-fill han" id="hanHpFill" style="width:100%"></div></div>
-      <span class="kof-hp-txt" id="hanHpTxt">100/100</span>
-    </div>
-    <div class="kof-hp-row">
-      <span class="kof-hp-name fu">云夕</span>
-      <div class="kof-hp-trk"><div class="kof-hp-fill fu" id="fuHpFill" style="width:100%"></div></div>
-      <span class="kof-hp-txt" id="fuHpTxt">100/100</span>
-    </div>
+<!-- 远景：宫墙 + 灯笼 -->
+<div class="arena-sky">
+  <span class="lantern l1"></span><span class="lantern l2"></span>
+  <span class="lantern l3"></span><span class="lantern l4"></span>
+</div>
+
+<!-- 地面 / 石阶 -->
+<div class="arena-ground"></div>
+
+<!-- 敌方首领（中央后景，大体型） -->
+<div class="arena-boss">
+  <div class="b-shape">
+    <span class="b-lv" id="bpLv">Lv.12</span>
+    <span class="b-icon" id="bpIcon">🗡️</span>
   </div>
-  <div class="kof-side-hp right">
-    <div class="kof-hp-row">
-      <span class="kof-hp-name enemy" id="eName">暗影刺客</span>
-      <div class="kof-hp-trk big"><div class="kof-hp-fill enemy" id="eHpFill" style="width:100%"></div></div>
-      <span class="kof-hp-txt" id="eHpTxt">120/120</span>
-    </div>
+  <div class="b-name" id="eName">暗影刺客</div>
+</div>
+
+<!-- 我方双人立绘（前景地面） -->
+<div class="arena-allies">
+  <div class="arena-hero han">
+    <div class="h-shape"><span class="h-icon">🌸</span></div>
+    <div class="h-shadow"></div>
+    <div class="h-name">寒雁</div>
+    <div class="h-hp"><div class="h-hp-fill" id="hanHpFill" style="width:100%"></div></div>
+    <div class="h-hp-txt" id="hanHpTxt">100/100</div>
+  </div>
+  <div class="arena-hero fu">
+    <div class="h-shape"><span class="h-icon">🏹</span></div>
+    <div class="h-shadow"></div>
+    <div class="h-name">云夕</div>
+    <div class="h-hp"><div class="h-hp-fill" id="fuHpFill" style="width:100%"></div></div>
+    <div class="h-hp-txt" id="fuHpTxt">100/100</div>
   </div>
 </div>
 
-<div class="kof-vs">VS</div>
-
-<!-- 左侧：我方双人立绘 -->
-<div class="kof-fighter left">
-  <div class="kof-stack">
-    <div class="kof-portrait han">
-      <div class="kof-icon">🌸</div>
-      <div class="kof-pname">寒雁</div>
-    </div>
-    <div class="kof-portrait fu">
-      <div class="kof-icon">🏹</div>
-      <div class="kof-pname">云夕</div>
-    </div>
-  </div>
+<!-- 大型 BOSS 血条（贴战场下沿） -->
+<div class="arena-bosshp">
+  <div class="bh-lv" id="bhLvTag">BOSS</div>
+  <div class="bh-trk"><div class="bh-fill" id="eHpFill" style="width:100%"></div><div class="bh-txt" id="eHpTxt">120/120</div></div>
 </div>
-
-<!-- 右侧：敌方首领立绘 -->
-<div class="kof-fighter right">
-  <div class="kof-portrait enemy">
-    <span class="kof-lv-badge" id="bpLv">Lv.12</span>
-    <div class="kof-icon" id="bpIcon">🗡️</div>
-    <div class="kof-pname">敌方首领</div>
-  </div>
-</div>
-
 
 <div class="cd-ring" id="cdRing">
 <svg class="cd-svg" viewBox="0 0 100 100">
@@ -841,6 +834,7 @@ html,body{
 </div>
 <div class="b-log log-n hidden" id="bLog"></div>
 </div>
+
 
 
 <div class="skill-area">

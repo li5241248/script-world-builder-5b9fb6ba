@@ -1,3 +1,4 @@
+// 页面:开局确认(角色 / 模式 / 时长信息核对)  路由:/confirm
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Check, Users, Clock, Mountain } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";

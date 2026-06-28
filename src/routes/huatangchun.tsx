@@ -1,3 +1,4 @@
+// 页面:《重生之贵女难求》文游主页(简介 / 角色 / 章节入口)  路由:/huatangchun
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Share2, Bookmark, ChevronDown, Sparkles, Users, Clock, X } from "lucide-react";

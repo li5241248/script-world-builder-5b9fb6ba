@@ -1,3 +1,4 @@
+// 页面:应用入口(重定向到 /hub 互动文游首页)  路由:/
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft, Bell, Sparkles, Flame, Lock, ChevronRight, Users, Clock } from "lucide-react";
 import heroHuatang from "@/assets/hero-huatangchun.jpg";

@@ -1,3 +1,4 @@
+// 页面:组队大厅 / 准备入梦(房主 · 角色分配 · AI 替补)  路由:/lobby
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronLeft, Share2, Sparkles, Crown, Check, Plus, X, User, Users, Bot } from "lucide-react";

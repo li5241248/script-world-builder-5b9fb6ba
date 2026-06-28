@@ -750,19 +750,55 @@ html,body{
 
 <div class="enemy-zone" id="eZone">
 <canvas id="game-canvas"></canvas>
-<div class="enemy-hp-wrap">
-<div class="e-name" id="eName">暗影刺客</div>
-<div class="e-hp-trk"><div class="e-hp-fill" id="eHpFill"></div><div class="e-hp-txt" id="eHpTxt">120/120</div></div>
+
+<!-- KOF 风顶部双方血条 -->
+<div class="kof-top">
+  <div class="kof-side-hp left">
+    <div class="kof-hp-row">
+      <span class="kof-hp-name han">寒雁</span>
+      <div class="kof-hp-trk"><div class="kof-hp-fill han" id="hanHpFill" style="width:100%"></div></div>
+      <span class="kof-hp-txt" id="hanHpTxt">100/100</span>
+    </div>
+    <div class="kof-hp-row">
+      <span class="kof-hp-name fu">云夕</span>
+      <div class="kof-hp-trk"><div class="kof-hp-fill fu" id="fuHpFill" style="width:100%"></div></div>
+      <span class="kof-hp-txt" id="fuHpTxt">100/100</span>
+    </div>
+  </div>
+  <div class="kof-side-hp right">
+    <div class="kof-hp-row">
+      <span class="kof-hp-name enemy" id="eName">暗影刺客</span>
+      <div class="kof-hp-trk big"><div class="kof-hp-fill enemy" id="eHpFill" style="width:100%"></div></div>
+      <span class="kof-hp-txt" id="eHpTxt">120/120</span>
+    </div>
+  </div>
 </div>
 
-<div class="boss-portrait">
-  <div class="bp-label">敌方首领</div>
-  <div class="bp-ring">
-    <span class="bp-side l">◆</span><span class="bp-side r">◆</span>
-    <span class="bp-icon" id="bpIcon">🗡️</span>
+<div class="kof-vs">VS</div>
+
+<!-- 左侧：我方双人立绘 -->
+<div class="kof-fighter left">
+  <div class="kof-stack">
+    <div class="kof-portrait han">
+      <div class="kof-icon">🌸</div>
+      <div class="kof-pname">寒雁</div>
+    </div>
+    <div class="kof-portrait fu">
+      <div class="kof-icon">🏹</div>
+      <div class="kof-pname">云夕</div>
+    </div>
   </div>
-  <div class="bp-lv" id="bpLv">Lv.12</div>
 </div>
+
+<!-- 右侧：敌方首领立绘 -->
+<div class="kof-fighter right">
+  <div class="kof-portrait enemy">
+    <span class="kof-lv-badge" id="bpLv">Lv.12</span>
+    <div class="kof-icon" id="bpIcon">🗡️</div>
+    <div class="kof-pname">敌方首领</div>
+  </div>
+</div>
+
 
 <div class="cd-ring" id="cdRing">
 <svg class="cd-svg" viewBox="0 0 100 100">

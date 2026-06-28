@@ -1,3 +1,4 @@
+// 页面:AI 改编结果预览(章节 / 场景 / 角色卡确认)  路由:/adapt-preview
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronLeft, Pencil, Check, Sparkles, Loader2, RefreshCw, ImageIcon, Users, BookOpen, MapPin } from "lucide-react";

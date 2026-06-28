@@ -1,3 +1,4 @@
+// 页面:角色详情页(角色卡 / 关系 / 选择此角色入梦)  路由:/character/$id
 import { useState } from "react";
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft, Share2, MoreHorizontal, Calendar, User, Heart, Sparkles, Lock, Wand2, X, Link2, FileText, Check } from "lucide-react";

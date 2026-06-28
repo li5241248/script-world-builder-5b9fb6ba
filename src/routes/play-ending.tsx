@@ -1,3 +1,4 @@
+// 页面:真实结局页(从后端 GameResult 渲染)  路由:/play-ending
 /**
  * /play-ending — 真实结局页
  * 从后端获取的 GameResult 渲染

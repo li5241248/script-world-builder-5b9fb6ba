@@ -1,3 +1,4 @@
+// 页面:结局页(本地预设结局展示)  路由:/ending
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import {

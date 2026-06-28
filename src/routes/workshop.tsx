@@ -1,3 +1,4 @@
+// 页面:互动文游创作工作台(上传/粘贴小说,启动 AI 改编)  路由:/workshop
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { ChevronLeft, Upload, Sparkles, FileText, Wand2 } from "lucide-react";

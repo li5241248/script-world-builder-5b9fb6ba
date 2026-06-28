@@ -1,3 +1,4 @@
+// 页面:战报 / 故事总结(高光语录 / 数据)  路由:/report
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft, Share2, Sparkles, Trophy, Quote, Heart } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";

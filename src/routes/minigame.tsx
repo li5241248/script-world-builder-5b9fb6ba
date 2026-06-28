@@ -1,3 +1,4 @@
+// 页面:小游戏 1(剧情解谜 / 互动小关)  路由:/minigame
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { ChevronLeft, Map as MapIcon, Paperclip, Puzzle, X, Check, Share2, Sparkles } from "lucide-react";

@@ -546,6 +546,98 @@ html,body{
 
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,166,74,0.3);}50%{box-shadow:0 0 0 14px rgba(212,166,74,0);}}
 
+/* ============ KOF 风格双方立绘 ============ */
+/* 隐藏旧版居中首领 + 顶部敌方血条 + 底部我方状态条（被 KOF 布局取代） */
+.boss-portrait,.enemy-hp-wrap,.ally-bar{display:none!important;}
+
+/* 顶部 KOF 风血条 */
+.kof-top{position:absolute;top:10px;left:10px;right:10px;z-index:9;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none;}
+.kof-side-hp{display:flex;flex-direction:column;gap:5px;flex:1;max-width:46%;}
+.kof-side-hp.right{align-items:flex-end;}
+.kof-hp-row{display:flex;align-items:center;gap:6px;width:100%;}
+.kof-side-hp.right .kof-hp-row{flex-direction:row-reverse;}
+.kof-hp-name{font-family:'STKaiti','KaiTi',serif;font-size:11px;letter-spacing:3px;color:var(--gilt-1);
+  text-shadow:0 1px 2px rgba(0,0,0,0.9),0 0 8px rgba(245,226,168,0.4);min-width:34px;}
+.kof-hp-name.han{color:#ffb0cf;text-shadow:0 0 8px rgba(232,74,143,0.6);}
+.kof-hp-name.fu{color:#b0d6ff;text-shadow:0 0 8px rgba(90,166,232,0.6);}
+.kof-hp-name.enemy{color:var(--vermilion-glow);text-shadow:0 0 10px rgba(216,80,80,0.7);font-size:13px;letter-spacing:5px;}
+.kof-hp-trk{flex:1;position:relative;height:11px;border-radius:2px;overflow:hidden;
+  background:linear-gradient(180deg,#1a0608,#0a0204);
+  box-shadow:inset 0 0 0 1px var(--gold-line),inset 0 0 5px rgba(0,0,0,0.85),0 1px 3px rgba(0,0,0,0.6);}
+.kof-hp-trk.big{height:15px;}
+.kof-hp-fill{height:100%;transition:width 0.4s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),inset 0 -1px 0 rgba(0,0,0,0.5);
+  transform-origin:left center;}
+.kof-side-hp.right .kof-hp-fill{transform-origin:right center;float:right;}
+.kof-hp-fill.han{background:linear-gradient(180deg,#ff7aa8,#c02060);}
+.kof-hp-fill.fu{background:linear-gradient(180deg,#7ab8ff,#2060c0);}
+.kof-hp-fill.enemy{background:linear-gradient(180deg,#ff6a5a 0%,#d44030 50%,#8a1818 100%);}
+.kof-hp-txt{font-size:9px;color:#fff;letter-spacing:1px;font-family:'STKaiti',serif;text-shadow:0 1px 2px rgba(0,0,0,0.9);min-width:50px;text-align:center;}
+
+/* 中央 VS */
+.kof-vs{position:absolute;top:50px;left:50%;transform:translateX(-50%);z-index:7;
+  font-family:'STKaiti','KaiTi',serif;font-size:36px;font-weight:900;font-style:italic;letter-spacing:2px;
+  background:linear-gradient(180deg,#fff2c4 0%,#e8c878 40%,#a06030 90%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 12px rgba(216,80,80,0.55)) drop-shadow(0 2px 3px rgba(0,0,0,0.8));
+  animation:vsFloat 2.4s ease-in-out infinite;}
+@keyframes vsFloat{0%,100%{transform:translateX(-50%) scale(1);}50%{transform:translateX(-50%) scale(1.06);}}
+
+/* 立绘容器 */
+.kof-fighter{position:absolute;bottom:6px;width:48%;z-index:6;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;}
+.kof-fighter.left{left:0;}
+.kof-fighter.right{right:0;}
+.kof-stack{display:flex;align-items:flex-end;justify-content:center;gap:-8px;}
+.kof-portrait{position:relative;width:96px;height:128px;border-radius:8px 8px 4px 4px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:8px 4px;
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(255,255,255,0.08) 0%,transparent 60%),
+    linear-gradient(180deg,rgba(60,24,46,0.85) 0%,rgba(20,8,18,0.95) 100%);
+  box-shadow:
+    inset 0 0 0 2px var(--gilt-3),
+    inset 0 0 0 3px rgba(0,0,0,0.5),
+    inset 0 0 0 4px rgba(212,166,74,0.35),
+    inset 0 -40px 40px -20px rgba(0,0,0,0.6),
+    0 6px 20px rgba(0,0,0,0.6);
+  animation:kofFloat 3s ease-in-out infinite;}
+.kof-portrait::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent 0,transparent 6px,rgba(212,166,74,0.04) 6px,rgba(212,166,74,0.04) 7px);
+  pointer-events:none;}
+.kof-portrait::after{content:"◆";position:absolute;top:3px;left:50%;transform:translateX(-50%);
+  font-size:7px;color:var(--gilt-2);text-shadow:0 0 4px var(--gold);}
+.kof-portrait .kof-icon{font-size:64px;line-height:1;margin-bottom:4px;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.7));z-index:2;}
+.kof-portrait .kof-pname{font-family:'STKaiti',serif;font-size:11px;letter-spacing:4px;font-weight:700;z-index:2;
+  text-shadow:0 1px 2px rgba(0,0,0,0.9);}
+.kof-portrait.han{box-shadow:inset 0 0 0 2px #c02060,inset 0 0 0 3px rgba(0,0,0,0.5),inset 0 0 0 4px rgba(232,74,143,0.4),inset 0 -40px 40px -20px rgba(0,0,0,0.6),0 6px 24px rgba(232,74,143,0.35);}
+.kof-portrait.han .kof-pname{color:#ffb0cf;}
+.kof-portrait.han .kof-icon{filter:drop-shadow(0 0 10px rgba(232,74,143,0.6));}
+.kof-portrait.fu{box-shadow:inset 0 0 0 2px #2060c0,inset 0 0 0 3px rgba(0,0,0,0.5),inset 0 0 0 4px rgba(90,166,232,0.4),inset 0 -40px 40px -20px rgba(0,0,0,0.6),0 6px 24px rgba(90,166,232,0.35);animation-delay:-1.5s;}
+.kof-portrait.fu .kof-pname{color:#b0d6ff;}
+.kof-portrait.fu .kof-icon{filter:drop-shadow(0 0 10px rgba(90,166,232,0.6));}
+
+/* 敌方更大更威 */
+.kof-portrait.enemy{width:150px;height:200px;
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(255,180,160,0.15) 0%,transparent 55%),
+    linear-gradient(180deg,#5a1828 0%,#2a0a14 60%,#10040a 100%);
+  box-shadow:
+    inset 0 0 0 2px var(--gilt-3),
+    inset 0 0 0 3px rgba(0,0,0,0.5),
+    inset 0 0 0 5px rgba(212,166,74,0.5),
+    inset 0 -60px 60px -30px rgba(0,0,0,0.7),
+    0 8px 32px rgba(216,80,80,0.5);}
+.kof-portrait.enemy .kof-icon{font-size:96px;filter:drop-shadow(0 0 16px rgba(232,92,68,0.7));}
+.kof-portrait.enemy .kof-pname{color:var(--vermilion-glow);font-size:12px;letter-spacing:5px;}
+.kof-lv-badge{position:absolute;top:8px;right:8px;z-index:3;
+  font-family:'STKaiti',serif;font-size:10px;font-weight:bold;letter-spacing:1px;
+  padding:2px 7px;border-radius:10px;
+  background:linear-gradient(180deg,#3a1020,#14060a);
+  color:var(--gilt-1);box-shadow:inset 0 0 0 1px var(--gilt-3),0 2px 4px rgba(0,0,0,0.6);}
+
+@keyframes kofFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+
+/* 移动我方两人横排，并贴左下 */
+.kof-fighter.left .kof-stack{flex-direction:row;gap:6px;}
 
 </style>
 </head>
@@ -658,19 +750,55 @@ html,body{
 
 <div class="enemy-zone" id="eZone">
 <canvas id="game-canvas"></canvas>
-<div class="enemy-hp-wrap">
-<div class="e-name" id="eName">暗影刺客</div>
-<div class="e-hp-trk"><div class="e-hp-fill" id="eHpFill"></div><div class="e-hp-txt" id="eHpTxt">120/120</div></div>
+
+<!-- KOF 风顶部双方血条 -->
+<div class="kof-top">
+  <div class="kof-side-hp left">
+    <div class="kof-hp-row">
+      <span class="kof-hp-name han">寒雁</span>
+      <div class="kof-hp-trk"><div class="kof-hp-fill han" id="hanHpFill" style="width:100%"></div></div>
+      <span class="kof-hp-txt" id="hanHpTxt">100/100</span>
+    </div>
+    <div class="kof-hp-row">
+      <span class="kof-hp-name fu">云夕</span>
+      <div class="kof-hp-trk"><div class="kof-hp-fill fu" id="fuHpFill" style="width:100%"></div></div>
+      <span class="kof-hp-txt" id="fuHpTxt">100/100</span>
+    </div>
+  </div>
+  <div class="kof-side-hp right">
+    <div class="kof-hp-row">
+      <span class="kof-hp-name enemy" id="eName">暗影刺客</span>
+      <div class="kof-hp-trk big"><div class="kof-hp-fill enemy" id="eHpFill" style="width:100%"></div></div>
+      <span class="kof-hp-txt" id="eHpTxt">120/120</span>
+    </div>
+  </div>
 </div>
 
-<div class="boss-portrait">
-  <div class="bp-label">敌方首领</div>
-  <div class="bp-ring">
-    <span class="bp-side l">◆</span><span class="bp-side r">◆</span>
-    <span class="bp-icon" id="bpIcon">🗡️</span>
+<div class="kof-vs">VS</div>
+
+<!-- 左侧：我方双人立绘 -->
+<div class="kof-fighter left">
+  <div class="kof-stack">
+    <div class="kof-portrait han">
+      <div class="kof-icon">🌸</div>
+      <div class="kof-pname">寒雁</div>
+    </div>
+    <div class="kof-portrait fu">
+      <div class="kof-icon">🏹</div>
+      <div class="kof-pname">云夕</div>
+    </div>
   </div>
-  <div class="bp-lv" id="bpLv">Lv.12</div>
 </div>
+
+<!-- 右侧：敌方首领立绘 -->
+<div class="kof-fighter right">
+  <div class="kof-portrait enemy">
+    <span class="kof-lv-badge" id="bpLv">Lv.12</span>
+    <div class="kof-icon" id="bpIcon">🗡️</div>
+    <div class="kof-pname">敌方首领</div>
+  </div>
+</div>
+
 
 <div class="cd-ring" id="cdRing">
 <svg class="cd-svg" viewBox="0 0 100 100">
@@ -682,18 +810,6 @@ html,body{
 <div class="b-log log-n hidden" id="bLog"></div>
 </div>
 
-<div class="ally-bar">
-  <div class="ally-card han">
-    <div class="ac-head"><div class="ac-badge">♣</div><div class="ac-name">寒雁</div></div>
-    <div class="ac-hpwrap"><div class="ac-hpfill" id="hanHpFill" style="width:100%"></div><div class="ac-hptxt" id="hanHpTxt">HP 100/100</div></div>
-    <div class="ac-deco"><i>◆</i><i>◆</i><i>◆</i></div>
-  </div>
-  <div class="ally-card fu">
-    <div class="ac-head"><div class="ac-badge">✦</div><div class="ac-name">云夕</div></div>
-    <div class="ac-hpwrap"><div class="ac-hpfill" id="fuHpFill" style="width:100%"></div><div class="ac-hptxt" id="fuHpTxt">HP 100/100</div></div>
-    <div class="ac-deco"><i>◆</i><i>◆</i><i>◆</i></div>
-  </div>
-</div>
 
 <div class="skill-area">
 <div class="stat-bar"><span id="stH" style="display:none"></span><span id="stF" style="display:none"></span></div>

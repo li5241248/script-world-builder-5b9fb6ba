@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "sdk_version": "0.23.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "script-world-builder-mcp",
+      "version": "0.1.0",
+      "title": "互动文游 MCP"
+    },
+    "tools": [
+      {
+        "name": "list_characters",
+        "title": "List characters",
+        "description": "List all playable characters in the interactive story, including their role, identity, personality, and short backstory.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_character",
+        "title": "Get character detail",
+        "description": "Return full detail for a single character by id (e.g. hanyan, zhouyi, zhuangsy, yushan, moshen), including backstory, skills, secret and relations.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Character id, e.g. 'hanyan'."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

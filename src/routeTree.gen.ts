@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkshopRouteImport } from './routes/workshop'
+import { Route as UniverseRouteImport } from './routes/universe'
 import { Route as StoryCardPreviewRouteImport } from './routes/story-card-preview'
 import { Route as SceneRouteImport } from './routes/scene'
 import { Route as ReportRouteImport } from './routes/report'
@@ -36,6 +37,11 @@ import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[
 const WorkshopRoute = WorkshopRouteImport.update({
   id: '/workshop',
   path: '/workshop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UniverseRoute = UniverseRouteImport.update({
+  id: '/universe',
+  path: '/universe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoryCardPreviewRoute = StoryCardPreviewRouteImport.update({
@@ -171,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
+  '/universe': typeof UniverseRoute
   '/workshop': typeof WorkshopRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -196,6 +203,7 @@ export interface FileRoutesByTo {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
+  '/universe': typeof UniverseRoute
   '/workshop': typeof WorkshopRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
+  '/universe': typeof UniverseRoute
   '/workshop': typeof WorkshopRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
+    | '/universe'
     | '/workshop'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
+    | '/universe'
     | '/workshop'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -299,6 +310,7 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
+    | '/universe'
     | '/workshop'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -325,6 +337,7 @@ export interface RootRouteChildren {
   ReportRoute: typeof ReportRoute
   SceneRoute: typeof SceneRoute
   StoryCardPreviewRoute: typeof StoryCardPreviewRoute
+  UniverseRoute: typeof UniverseRoute
   WorkshopRoute: typeof WorkshopRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -339,6 +352,13 @@ declare module '@tanstack/react-router' {
       path: '/workshop'
       fullPath: '/workshop'
       preLoaderRoute: typeof WorkshopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/universe': {
+      id: '/universe'
+      path: '/universe'
+      fullPath: '/universe'
+      preLoaderRoute: typeof UniverseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/story-card-preview': {
@@ -517,6 +537,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReportRoute: ReportRoute,
   SceneRoute: SceneRoute,
   StoryCardPreviewRoute: StoryCardPreviewRoute,
+  UniverseRoute: UniverseRoute,
   WorkshopRoute: WorkshopRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:

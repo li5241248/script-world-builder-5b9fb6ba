@@ -201,6 +201,21 @@ function GameHub() {
           <p className="mt-2 text-[12px] leading-6 text-neutral-600">
             互动文游基于长篇故事改编，由 AI 实时生成剧情走向。你可以自由代入任意角色，每一次选择都将塑造一个独属于你的结局。
           </p>
+          <div className="mt-3 flex gap-2">
+            <button
+              onClick={() => navigate({ to: "/novel" })}
+              className="flex-1 rounded-full border border-black/10 px-3 py-2 text-[11px] text-neutral-600 active:scale-[0.98] transition"
+            >
+              查看原著小说
+            </button>
+            <button
+              onClick={() => navigate({ to: "/adapt" })}
+              className="flex-1 flex items-center justify-center gap-1 rounded-full px-3 py-2 text-[11px] font-medium text-white active:scale-[0.98] transition"
+              style={{ background: "var(--gradient-rouge)" }}
+            >
+              <Wand2 className="h-3 w-3" /> AI 改编生成
+            </button>
+          </div>
         </div>
       </section>
     </div>

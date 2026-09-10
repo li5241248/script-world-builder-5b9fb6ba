@@ -8,9 +8,6 @@ import coverXing from "@/assets/cover-xinghai.jpg";
 import { PhoneMockup } from "@/components/PhoneMockup";
 
 export const Route = createFileRoute("/")({
-  beforeLoad: () => {
-    throw redirect({ to: "/huatangchun" });
-  },
   component: HomePage,
   head: () => ({
     meta: [

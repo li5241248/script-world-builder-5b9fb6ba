@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkshopRouteImport } from './routes/workshop'
-import { Route as UniverseRouteImport } from './routes/universe'
 import { Route as StoryCardPreviewRouteImport } from './routes/story-card-preview'
 import { Route as SceneRouteImport } from './routes/scene'
 import { Route as ReportRouteImport } from './routes/report'
@@ -18,7 +17,6 @@ import { Route as PlayEndingRouteImport } from './routes/play-ending'
 import { Route as PlayRouteImport } from './routes/play'
 import { Route as Minigame2RouteImport } from './routes/minigame2'
 import { Route as MinigameRouteImport } from './routes/minigame'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MatchingRouteImport } from './routes/matching'
 import { Route as LobbyRouteImport } from './routes/lobby'
 import { Route as InviteRouteImport } from './routes/invite'
@@ -30,18 +28,10 @@ import { Route as AdaptPreviewRouteImport } from './routes/adapt-preview'
 import { Route as AdaptRouteImport } from './routes/adapt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CharacterIdRouteImport } from './routes/character.$id'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const WorkshopRoute = WorkshopRouteImport.update({
   id: '/workshop',
   path: '/workshop',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UniverseRoute = UniverseRouteImport.update({
-  id: '/universe',
-  path: '/universe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoryCardPreviewRoute = StoryCardPreviewRouteImport.update({
@@ -77,11 +67,6 @@ const Minigame2Route = Minigame2RouteImport.update({
 const MinigameRoute = MinigameRouteImport.update({
   id: '/minigame',
   path: '/minigame',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MatchingRoute = MatchingRouteImport.update({
@@ -139,24 +124,6 @@ const CharacterIdRoute = CharacterIdRouteImport.update({
   path: '/character/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -169,7 +136,6 @@ export interface FileRoutesByFullPath {
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
-  '/mcp': typeof McpRoute
   '/minigame': typeof MinigameRoute
   '/minigame2': typeof Minigame2Route
   '/play': typeof PlayRoute
@@ -177,12 +143,8 @@ export interface FileRoutesByFullPath {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
-  '/universe': typeof UniverseRoute
   '/workshop': typeof WorkshopRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/character/$id': typeof CharacterIdRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -195,7 +157,6 @@ export interface FileRoutesByTo {
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
-  '/mcp': typeof McpRoute
   '/minigame': typeof MinigameRoute
   '/minigame2': typeof Minigame2Route
   '/play': typeof PlayRoute
@@ -203,12 +164,8 @@ export interface FileRoutesByTo {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
-  '/universe': typeof UniverseRoute
   '/workshop': typeof WorkshopRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/character/$id': typeof CharacterIdRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -222,7 +179,6 @@ export interface FileRoutesById {
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
-  '/mcp': typeof McpRoute
   '/minigame': typeof MinigameRoute
   '/minigame2': typeof Minigame2Route
   '/play': typeof PlayRoute
@@ -230,12 +186,8 @@ export interface FileRoutesById {
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
   '/story-card-preview': typeof StoryCardPreviewRoute
-  '/universe': typeof UniverseRoute
   '/workshop': typeof WorkshopRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/character/$id': typeof CharacterIdRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -250,7 +202,6 @@ export interface FileRouteTypes {
     | '/invite'
     | '/lobby'
     | '/matching'
-    | '/mcp'
     | '/minigame'
     | '/minigame2'
     | '/play'
@@ -258,12 +209,8 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
-    | '/universe'
     | '/workshop'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/character/$id'
-    | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -276,7 +223,6 @@ export interface FileRouteTypes {
     | '/invite'
     | '/lobby'
     | '/matching'
-    | '/mcp'
     | '/minigame'
     | '/minigame2'
     | '/play'
@@ -284,12 +230,8 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
-    | '/universe'
     | '/workshop'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/character/$id'
-    | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
@@ -302,7 +244,6 @@ export interface FileRouteTypes {
     | '/invite'
     | '/lobby'
     | '/matching'
-    | '/mcp'
     | '/minigame'
     | '/minigame2'
     | '/play'
@@ -310,12 +251,8 @@ export interface FileRouteTypes {
     | '/report'
     | '/scene'
     | '/story-card-preview'
-    | '/universe'
     | '/workshop'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/character/$id'
-    | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -329,7 +266,6 @@ export interface RootRouteChildren {
   InviteRoute: typeof InviteRoute
   LobbyRoute: typeof LobbyRoute
   MatchingRoute: typeof MatchingRoute
-  McpRoute: typeof McpRoute
   MinigameRoute: typeof MinigameRoute
   Minigame2Route: typeof Minigame2Route
   PlayRoute: typeof PlayRoute
@@ -337,12 +273,8 @@ export interface RootRouteChildren {
   ReportRoute: typeof ReportRoute
   SceneRoute: typeof SceneRoute
   StoryCardPreviewRoute: typeof StoryCardPreviewRoute
-  UniverseRoute: typeof UniverseRoute
   WorkshopRoute: typeof WorkshopRoute
-  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   CharacterIdRoute: typeof CharacterIdRoute
-  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -352,13 +284,6 @@ declare module '@tanstack/react-router' {
       path: '/workshop'
       fullPath: '/workshop'
       preLoaderRoute: typeof WorkshopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/universe': {
-      id: '/universe'
-      path: '/universe'
-      fullPath: '/universe'
-      preLoaderRoute: typeof UniverseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/story-card-preview': {
@@ -408,13 +333,6 @@ declare module '@tanstack/react-router' {
       path: '/minigame'
       fullPath: '/minigame'
       preLoaderRoute: typeof MinigameRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/matching': {
@@ -494,27 +412,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CharacterIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -529,7 +426,6 @@ const rootRouteChildren: RootRouteChildren = {
   InviteRoute: InviteRoute,
   LobbyRoute: LobbyRoute,
   MatchingRoute: MatchingRoute,
-  McpRoute: McpRoute,
   MinigameRoute: MinigameRoute,
   Minigame2Route: Minigame2Route,
   PlayRoute: PlayRoute,
@@ -537,24 +433,9 @@ const rootRouteChildren: RootRouteChildren = {
   ReportRoute: ReportRoute,
   SceneRoute: SceneRoute,
   StoryCardPreviewRoute: StoryCardPreviewRoute,
-  UniverseRoute: UniverseRoute,
   WorkshopRoute: WorkshopRoute,
-  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   CharacterIdRoute: CharacterIdRoute,
-  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -1,0 +1,9 @@
+{
+  "pages": ["pages/index/index"],
+  "window": {
+    "navigationBarTitleText": "重生之贵女难求",
+    "navigationBarBackgroundColor": "#0b0b10",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0b0b10"
+  }
+}

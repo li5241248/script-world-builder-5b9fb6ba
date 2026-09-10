@@ -1,0 +1,10 @@
+{
+  "description": "互动文游 web-view 外壳",
+  "appid": "请替换为你的小程序AppID",
+  "projectname": "douyin-interactive-novel",
+  "setting": {
+    "es6": true,
+    "minified": true
+  },
+  "compileType": "miniprogram"
+}

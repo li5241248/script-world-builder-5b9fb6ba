@@ -6,5 +6,5 @@
     "es6": true,
     "minified": true
   },
-  "compileType": "game"
+  "compileType": "miniprogram"
 }

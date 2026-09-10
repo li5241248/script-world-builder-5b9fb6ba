@@ -1,4 +1,3 @@
-// 页面:邀请好友入梦(微信 / 链接 / 二维码)  路由:/invite
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Plus, MessageCircle, Link2, QrCode } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";
@@ -8,8 +7,8 @@ export const Route = createFileRoute("/invite")({
   component: InvitePage,
   head: () => ({
     meta: [
-      { title: "邀请队友 · 重生之贵女难求" },
-      { name: "description", content: "邀请 3-6 位玩家共入重生之贵女难求。" },
+      { title: "邀请队友 · 画堂春" },
+      { name: "description", content: "邀请 3-6 位玩家共入画堂春。" },
     ],
   }),
 });

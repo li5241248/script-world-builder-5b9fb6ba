@@ -1,4 +1,3 @@
-// 页面:真实结局页(从后端 GameResult 渲染)  路由:/play-ending
 /**
  * /play-ending — 真实结局页
  * 从后端获取的 GameResult 渲染
@@ -20,8 +19,8 @@ export const Route = createFileRoute("/play-ending")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "结局 · 重生之贵女难求" },
-      { name: "description", content: "你的重生之贵女难求结局" },
+      { title: "结局 · 画堂春" },
+      { name: "description", content: "你的画堂春结局" },
     ],
   }),
 });

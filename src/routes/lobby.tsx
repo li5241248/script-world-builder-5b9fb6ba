@@ -1,4 +1,3 @@
-// 页面:组队大厅 / 准备入梦(房主 · 角色分配 · AI 替补)  路由:/lobby
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronLeft, Share2, Sparkles, Crown, Check, Plus, X, User, Users, Bot } from "lucide-react";
@@ -15,8 +14,8 @@ export const Route = createFileRoute("/lobby")({
   component: LobbyPage,
   head: () => ({
     meta: [
-      { title: "组队入梦 · 重生之贵女难求" },
-      { name: "description", content: "选剧情、选角色、选模式，开启属于你的重生之贵女难求。" },
+      { title: "组队入梦 · 画堂春" },
+      { name: "description", content: "选剧情、选角色、选模式，开启属于你的画堂春。" },
     ],
   }),
 });
@@ -87,7 +86,7 @@ function Lobby() {
       <div className="relative h-full overflow-y-auto pb-10 text-foreground no-scrollbar">
         {/* HEADER */}
         <section className="relative h-[12vh] min-h-[100px] w-full overflow-hidden">
-          <img src={heroImg} alt="重生之贵女难求" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={heroImg} alt="画堂春" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black/25" />
 
           <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-5 pt-12">
@@ -100,11 +99,8 @@ function Lobby() {
             <h1 className="font-brush text-[26px] leading-none text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
               组队入梦
             </h1>
-            <button
-              onClick={() => navigate({ to: "/ending" })}
-              className="rounded-full bg-black/35 px-3 py-1.5 text-[11px] text-white backdrop-blur-md active:scale-95"
-            >
-              查看结局
+            <button className="grid h-9 w-9 place-items-center rounded-full bg-black/25 backdrop-blur-md">
+              <Share2 className="h-4 w-4 text-white" />
             </button>
           </div>
         </section>

@@ -1,4 +1,3 @@
-// 页面:AI 改编进行中(人物 / 场景 / 章节拆解 Loading)  路由:/adapt
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronLeft, Sparkles, Check, Loader2, Wand2 } from "lucide-react";
@@ -8,17 +7,17 @@ import heroImg from "@/assets/hero-huatangchun.jpg";
 export const Route = createFileRoute("/adapt")({
   component: AdaptPage,
   head: () => ({
-    meta: [{ title: "改编工作台 · 重生之贵女难求" }],
+    meta: [{ title: "改编工作台 · 画堂春" }],
   }),
 });
 
 const STEPS = [
   { label: "解析小说章节结构", detail: "提取 6 个关键场景" },
-  { label: "拆解人物关系网", detail: "庄寒雁 · 周氏 · 庄仕洋 · 庄语山 · 傅云夕" },
-  { label: "构建世界观与时间线", detail: "大宗朝 · 京城镇国侯府" },
-  { label: "生成可代入角色卡", detail: "5 位可玩角色档案" },
+  { label: "拆解人物关系网", detail: "温棠 · 裴容 · 裴琰 · 裴瑜 · 皇后 · 陈嬷嬷" },
+  { label: "构建世界观与时间线", detail: "大梁开元年间 · 采桑宫" },
+  { label: "生成可代入角色卡", detail: "6 位可玩角色档案" },
   { label: "铺设分支剧情与结局", detail: "AI 实时改编中" },
-  { label: "完成互动文游打包", detail: "《重生之贵女难求》已就绪" },
+  { label: "完成互动文游打包", detail: "《画堂春》已就绪" },
 ];
 
 function AdaptPage() {
@@ -41,7 +40,7 @@ function AdaptPage() {
         {/* Header */}
         <header className="sticky top-0 z-20 flex items-center justify-between bg-gradient-to-b from-[#0d0b14] to-transparent px-4 pb-3 pt-12">
           <button
-            onClick={() => navigate({ to: "/hub" })}
+            onClick={() => navigate({ to: "/novel" })}
             className="grid h-9 w-9 place-items-center rounded-full bg-white/10 backdrop-blur-md"
             aria-label="返回"
           >
@@ -54,7 +53,7 @@ function AdaptPage() {
         {/* Hero cover with shimmer */}
         <section className="px-5">
           <div className="relative overflow-hidden rounded-3xl">
-            <img src={heroImg} alt="重生之贵女难求" className="h-[200px] w-full object-cover" />
+            <img src={heroImg} alt="画堂春" className="h-[200px] w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0b14] via-[#0d0b14]/30 to-transparent" />
             {!done && (
               <div className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer_2.4s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -64,7 +63,7 @@ function AdaptPage() {
                 <Sparkles className="h-3.5 w-3.5" />
                 <span className="text-[10px] tracking-[0.3em]">知乎 · 盐言 AI</span>
               </div>
-              <h1 className="font-brush text-3xl text-white drop-shadow">重生之贵女难求 · 改编中</h1>
+              <h1 className="font-brush text-3xl text-white drop-shadow">画堂春 · 改编中</h1>
             </div>
           </div>
         </section>

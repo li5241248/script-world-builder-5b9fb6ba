@@ -1,4 +1,3 @@
-// 页面:AI 改编结果预览(章节 / 场景 / 角色卡确认)  路由:/adapt-preview
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronLeft, Pencil, Check, Sparkles, Loader2, RefreshCw, ImageIcon, Users, BookOpen, MapPin } from "lucide-react";
@@ -8,27 +7,27 @@ import sceneHuatang from "@/assets/scene-huatang.jpg";
 
 export const Route = createFileRoute("/adapt-preview")({
   component: AdaptPreviewPage,
-  head: () => ({ meta: [{ title: "改编预览 · 重生之贵女难求" }] }),
+  head: () => ({ meta: [{ title: "改编预览 · 画堂春" }] }),
 });
 
 type Tab = "chapters" | "characters" | "scenes";
 
 const INITIAL_CHAPTERS = [
-  { title: "母丧重生", detail: "庄寒雁睁眼回到母亲新丧那一日，誓不再走旧路。" },
-  { title: "外室登堂", detail: "周氏携女入府借宿，桃色长裙踩着丧期而来。" },
-  { title: "桃裙撞礼", detail: "庄语山初见嫡姐，一句话便被寒雁堵了回去。" },
-  { title: "狗洞偶遇", detail: "侯府后墙边，傅云夕含草而笑，记住那道背影。" },
-  { title: "灵堂对峙", detail: "庄仕洋冷言相待，寒雁于母亲灵前立威。" },
-  { title: "复仇起势", detail: "寒雁暗中布局，誓要把虎狼一个个送回原处。" },
-].map((c, i) => ({ id: `c${i + 1}`, title: c.title, detail: c.detail }));
+  { title: "雪夜采桑宫", detail: "帝王初见温棠，红豆汤暖一炉夜雪。" },
+  { title: "六岁推手", detail: "裴瑜在坤宁宫前推开生母，雪地里站到天亮。" },
+  { title: "废妃药引", detail: "周贵妃饮下那盏汤，留下九岁的裴琰。" },
+  { title: "改记名分", detail: "裴琰被记于温棠名下，半盏药里的橘瓣甜。" },
+  { title: "凤印翻案", detail: "赵将军溺亡，旧案翻出，皇后凤印松动。" },
+  { title: "画堂春深", deta: "温棠册后，裴琰登基前夜的最后一碗汤。", },
+].map((c, i) => ({ id: `c${i + 1}`, title: c.title, detail: (c as { detail?: string; deta?: string }).detail ?? (c as { deta: string }).deta }));
 
 const INITIAL_SCENES = [
-  { id: "s1", title: "侯府·灵堂", img: sceneHuatang, ready: true },
-  { id: "s2", title: "正院·桃裙", img: "", ready: false },
-  { id: "s3", title: "后园·狗洞", img: "", ready: false },
-  { id: "s4", title: "偏厅·茶局", img: "", ready: false },
-  { id: "s5", title: "书房·父训", img: "", ready: false },
-  { id: "s6", title: "夜雨·长廊", img: "", ready: false },
+  { id: "s1", title: "采桑宫·雪夜", img: sceneHuatang, ready: true },
+  { id: "s2", title: "坤宁宫·清晨", img: "", ready: false },
+  { id: "s3", title: "御书房·烛火", img: "", ready: false },
+  { id: "s4", title: "画堂·春深", img: "", ready: false },
+  { id: "s5", title: "宫道·风雪", img: "", ready: false },
+  { id: "s6", title: "凤仪殿·夜审", img: "", ready: false },
 ];
 
 function AdaptPreviewPage() {
@@ -65,7 +64,7 @@ function AdaptPreviewPage() {
 
         {/* Hint */}
         <div className="mx-5 mt-4 rounded-xl border border-white/5 bg-white/[0.04] px-3 py-2.5 text-[11px] text-white/60 leading-relaxed">
-          AI 已为《重生之贵女难求》拆出章节、人物与场景。你可以逐项编辑、重生成图，再确认进入文游。
+          AI 已为《画堂春》拆出章节、人物与场景。你可以逐项编辑、重生成图，再确认进入文游。
         </div>
 
         {/* Tabs */}

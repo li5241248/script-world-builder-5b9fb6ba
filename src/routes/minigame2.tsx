@@ -1,4 +1,3 @@
-// 页面:小游戏 2(嵌入 public/minigame2.html)  路由:/minigame2
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft } from "lucide-react";
 import { PhoneMockup } from "@/components/PhoneMockup";

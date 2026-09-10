@@ -9,18 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorkshopRouteImport } from './routes/workshop'
-import { Route as StoryCardPreviewRouteImport } from './routes/story-card-preview'
 import { Route as SceneRouteImport } from './routes/scene'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as PlayEndingRouteImport } from './routes/play-ending'
 import { Route as PlayRouteImport } from './routes/play'
+import { Route as NovelRouteImport } from './routes/novel'
 import { Route as Minigame2RouteImport } from './routes/minigame2'
 import { Route as MinigameRouteImport } from './routes/minigame'
 import { Route as MatchingRouteImport } from './routes/matching'
 import { Route as LobbyRouteImport } from './routes/lobby'
 import { Route as InviteRouteImport } from './routes/invite'
-import { Route as HubRouteImport } from './routes/hub'
 import { Route as HuatangchunRouteImport } from './routes/huatangchun'
 import { Route as EndingRouteImport } from './routes/ending'
 import { Route as ConfirmRouteImport } from './routes/confirm'
@@ -29,16 +27,6 @@ import { Route as AdaptRouteImport } from './routes/adapt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CharacterIdRouteImport } from './routes/character.$id'
 
-const WorkshopRoute = WorkshopRouteImport.update({
-  id: '/workshop',
-  path: '/workshop',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StoryCardPreviewRoute = StoryCardPreviewRouteImport.update({
-  id: '/story-card-preview',
-  path: '/story-card-preview',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SceneRoute = SceneRouteImport.update({
   id: '/scene',
   path: '/scene',
@@ -57,6 +45,11 @@ const PlayEndingRoute = PlayEndingRouteImport.update({
 const PlayRoute = PlayRouteImport.update({
   id: '/play',
   path: '/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NovelRoute = NovelRouteImport.update({
+  id: '/novel',
+  path: '/novel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Minigame2Route = Minigame2RouteImport.update({
@@ -82,11 +75,6 @@ const LobbyRoute = LobbyRouteImport.update({
 const InviteRoute = InviteRouteImport.update({
   id: '/invite',
   path: '/invite',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HubRoute = HubRouteImport.update({
-  id: '/hub',
-  path: '/hub',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HuatangchunRoute = HuatangchunRouteImport.update({
@@ -132,18 +120,16 @@ export interface FileRoutesByFullPath {
   '/confirm': typeof ConfirmRoute
   '/ending': typeof EndingRoute
   '/huatangchun': typeof HuatangchunRoute
-  '/hub': typeof HubRoute
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
   '/minigame': typeof MinigameRoute
   '/minigame2': typeof Minigame2Route
+  '/novel': typeof NovelRoute
   '/play': typeof PlayRoute
   '/play-ending': typeof PlayEndingRoute
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
-  '/story-card-preview': typeof StoryCardPreviewRoute
-  '/workshop': typeof WorkshopRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesByTo {
@@ -153,18 +139,16 @@ export interface FileRoutesByTo {
   '/confirm': typeof ConfirmRoute
   '/ending': typeof EndingRoute
   '/huatangchun': typeof HuatangchunRoute
-  '/hub': typeof HubRoute
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
   '/minigame': typeof MinigameRoute
   '/minigame2': typeof Minigame2Route
+  '/novel': typeof NovelRoute
   '/play': typeof PlayRoute
   '/play-ending': typeof PlayEndingRoute
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
-  '/story-card-preview': typeof StoryCardPreviewRoute
-  '/workshop': typeof WorkshopRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesById {
@@ -175,18 +159,16 @@ export interface FileRoutesById {
   '/confirm': typeof ConfirmRoute
   '/ending': typeof EndingRoute
   '/huatangchun': typeof HuatangchunRoute
-  '/hub': typeof HubRoute
   '/invite': typeof InviteRoute
   '/lobby': typeof LobbyRoute
   '/matching': typeof MatchingRoute
   '/minigame': typeof MinigameRoute
   '/minigame2': typeof Minigame2Route
+  '/novel': typeof NovelRoute
   '/play': typeof PlayRoute
   '/play-ending': typeof PlayEndingRoute
   '/report': typeof ReportRoute
   '/scene': typeof SceneRoute
-  '/story-card-preview': typeof StoryCardPreviewRoute
-  '/workshop': typeof WorkshopRoute
   '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRouteTypes {
@@ -198,18 +180,16 @@ export interface FileRouteTypes {
     | '/confirm'
     | '/ending'
     | '/huatangchun'
-    | '/hub'
     | '/invite'
     | '/lobby'
     | '/matching'
     | '/minigame'
     | '/minigame2'
+    | '/novel'
     | '/play'
     | '/play-ending'
     | '/report'
     | '/scene'
-    | '/story-card-preview'
-    | '/workshop'
     | '/character/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -219,18 +199,16 @@ export interface FileRouteTypes {
     | '/confirm'
     | '/ending'
     | '/huatangchun'
-    | '/hub'
     | '/invite'
     | '/lobby'
     | '/matching'
     | '/minigame'
     | '/minigame2'
+    | '/novel'
     | '/play'
     | '/play-ending'
     | '/report'
     | '/scene'
-    | '/story-card-preview'
-    | '/workshop'
     | '/character/$id'
   id:
     | '__root__'
@@ -240,18 +218,16 @@ export interface FileRouteTypes {
     | '/confirm'
     | '/ending'
     | '/huatangchun'
-    | '/hub'
     | '/invite'
     | '/lobby'
     | '/matching'
     | '/minigame'
     | '/minigame2'
+    | '/novel'
     | '/play'
     | '/play-ending'
     | '/report'
     | '/scene'
-    | '/story-card-preview'
-    | '/workshop'
     | '/character/$id'
   fileRoutesById: FileRoutesById
 }
@@ -262,37 +238,21 @@ export interface RootRouteChildren {
   ConfirmRoute: typeof ConfirmRoute
   EndingRoute: typeof EndingRoute
   HuatangchunRoute: typeof HuatangchunRoute
-  HubRoute: typeof HubRoute
   InviteRoute: typeof InviteRoute
   LobbyRoute: typeof LobbyRoute
   MatchingRoute: typeof MatchingRoute
   MinigameRoute: typeof MinigameRoute
   Minigame2Route: typeof Minigame2Route
+  NovelRoute: typeof NovelRoute
   PlayRoute: typeof PlayRoute
   PlayEndingRoute: typeof PlayEndingRoute
   ReportRoute: typeof ReportRoute
   SceneRoute: typeof SceneRoute
-  StoryCardPreviewRoute: typeof StoryCardPreviewRoute
-  WorkshopRoute: typeof WorkshopRoute
   CharacterIdRoute: typeof CharacterIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/workshop': {
-      id: '/workshop'
-      path: '/workshop'
-      fullPath: '/workshop'
-      preLoaderRoute: typeof WorkshopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/story-card-preview': {
-      id: '/story-card-preview'
-      path: '/story-card-preview'
-      fullPath: '/story-card-preview'
-      preLoaderRoute: typeof StoryCardPreviewRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/scene': {
       id: '/scene'
       path: '/scene'
@@ -319,6 +279,13 @@ declare module '@tanstack/react-router' {
       path: '/play'
       fullPath: '/play'
       preLoaderRoute: typeof PlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/novel': {
+      id: '/novel'
+      path: '/novel'
+      fullPath: '/novel'
+      preLoaderRoute: typeof NovelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/minigame2': {
@@ -354,13 +321,6 @@ declare module '@tanstack/react-router' {
       path: '/invite'
       fullPath: '/invite'
       preLoaderRoute: typeof InviteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hub': {
-      id: '/hub'
-      path: '/hub'
-      fullPath: '/hub'
-      preLoaderRoute: typeof HubRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/huatangchun': {
@@ -422,18 +382,16 @@ const rootRouteChildren: RootRouteChildren = {
   ConfirmRoute: ConfirmRoute,
   EndingRoute: EndingRoute,
   HuatangchunRoute: HuatangchunRoute,
-  HubRoute: HubRoute,
   InviteRoute: InviteRoute,
   LobbyRoute: LobbyRoute,
   MatchingRoute: MatchingRoute,
   MinigameRoute: MinigameRoute,
   Minigame2Route: Minigame2Route,
+  NovelRoute: NovelRoute,
   PlayRoute: PlayRoute,
   PlayEndingRoute: PlayEndingRoute,
   ReportRoute: ReportRoute,
   SceneRoute: SceneRoute,
-  StoryCardPreviewRoute: StoryCardPreviewRoute,
-  WorkshopRoute: WorkshopRoute,
   CharacterIdRoute: CharacterIdRoute,
 }
 export const routeTree = rootRouteImport

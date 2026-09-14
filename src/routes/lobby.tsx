@@ -75,7 +75,7 @@ function Lobby() {
     if (mode === "solo") {
       navigate({ to: "/play", search: { role: charId, mode: "solo" } });
     } else {
-      navigate({ to: "/play", search: { role: charId, mode: "duo", partner: charId === "wentang" ? "peirong" : "wentang" } });
+      navigate({ to: "/matching", search: { role: charId, mode: "duo", partner: charId === "wentang" ? "peirong" : "wentang" } });
     }
   };
 

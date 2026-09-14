@@ -4,11 +4,22 @@ import { PhoneMockup } from "@/components/PhoneMockup";
 import bg from "@/assets/matching-bg.png";
 import titleText from "@/assets/huatangchun-text.png";
 
+type MatchingSearch = {
+  role?: string;
+  mode?: string;
+  partner?: string;
+};
+
 export const Route = createFileRoute("/matching")({
+  validateSearch: (s: Record<string, unknown>): MatchingSearch => ({
+    role: typeof s.role === "string" ? s.role : "wentang",
+    mode: typeof s.mode === "string" ? s.mode : "duo",
+    partner: typeof s.partner === "string" ? s.partner : "peirong",
+  }),
   component: MatchingPage,
   head: () => ({
     meta: [
-      { title: "匹配中 · 画堂春" },
+      { title: "匹配中 · 重生之贵女难求" },
       { name: "description", content: "正在为你寻找入梦的旅人…" },
     ],
   }),
@@ -16,7 +27,11 @@ export const Route = createFileRoute("/matching")({
 
 function Matching() {
   const navigate = useNavigate();
+  const { role, mode, partner } = Route.useSearch();
   const [dots, setDots] = useState("");
+
+  const enterGame = () =>
+    navigate({ to: "/play", search: { role, mode, partner } });
 
   useEffect(() => {
     const i = setInterval(() => {
@@ -27,10 +42,18 @@ function Matching() {
     };
   }, [navigate]);
 
+  // 匹配动画约 2.8 秒后自动进入游戏
+  useEffect(() => {
+    const t = setTimeout(() => {
+      navigate({ to: "/play", search: { role, mode, partner } });
+    }, 2800);
+    return () => clearTimeout(t);
+  }, [navigate, role, mode, partner]);
+
   return (
     <div
       className="relative h-full overflow-hidden cursor-pointer"
-      onClick={() => navigate({ to: "/play", search: { role: "wentang", mode: "solo" } })}
+      onClick={enterGame}
     >
       {/* background image */}
       <img

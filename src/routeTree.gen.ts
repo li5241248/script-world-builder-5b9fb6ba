@@ -9,92 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SceneRouteImport } from './routes/scene'
-import { Route as ReportRouteImport } from './routes/report'
-import { Route as PlayEndingRouteImport } from './routes/play-ending'
-import { Route as PlayRouteImport } from './routes/play'
-import { Route as NovelRouteImport } from './routes/novel'
-import { Route as Minigame2RouteImport } from './routes/minigame2'
-import { Route as MinigameRouteImport } from './routes/minigame'
-import { Route as MatchingRouteImport } from './routes/matching'
-import { Route as LobbyRouteImport } from './routes/lobby'
-import { Route as InviteRouteImport } from './routes/invite'
-import { Route as HuatangchunRouteImport } from './routes/huatangchun'
-import { Route as EndingRouteImport } from './routes/ending'
-import { Route as ConfirmRouteImport } from './routes/confirm'
-import { Route as AdaptPreviewRouteImport } from './routes/adapt-preview'
-import { Route as AdaptRouteImport } from './routes/adapt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdaptRouteImport } from './routes/adapt'
+import { Route as AdaptPreviewRouteImport } from './routes/adapt-preview'
+import { Route as ConfirmRouteImport } from './routes/confirm'
+import { Route as EndingRouteImport } from './routes/ending'
+import { Route as HuatangchunRouteImport } from './routes/huatangchun'
+import { Route as InviteRouteImport } from './routes/invite'
+import { Route as LobbyRouteImport } from './routes/lobby'
+import { Route as MatchingRouteImport } from './routes/matching'
+import { Route as MinigameRouteImport } from './routes/minigame'
+import { Route as Minigame2RouteImport } from './routes/minigame2'
+import { Route as NovelRouteImport } from './routes/novel'
+import { Route as PlayRouteImport } from './routes/play'
+import { Route as PlayEndingRouteImport } from './routes/play-ending'
+import { Route as ReportRouteImport } from './routes/report'
+import { Route as SceneRouteImport } from './routes/scene'
 import { Route as CharacterIdRouteImport } from './routes/character.$id'
 
-const SceneRoute = SceneRouteImport.update({
-  id: '/scene',
-  path: '/scene',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReportRoute = ReportRouteImport.update({
-  id: '/report',
-  path: '/report',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlayEndingRoute = PlayEndingRouteImport.update({
-  id: '/play-ending',
-  path: '/play-ending',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlayRoute = PlayRouteImport.update({
-  id: '/play',
-  path: '/play',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NovelRoute = NovelRouteImport.update({
-  id: '/novel',
-  path: '/novel',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Minigame2Route = Minigame2RouteImport.update({
-  id: '/minigame2',
-  path: '/minigame2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MinigameRoute = MinigameRouteImport.update({
-  id: '/minigame',
-  path: '/minigame',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MatchingRoute = MatchingRouteImport.update({
-  id: '/matching',
-  path: '/matching',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LobbyRoute = LobbyRouteImport.update({
-  id: '/lobby',
-  path: '/lobby',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InviteRoute = InviteRouteImport.update({
-  id: '/invite',
-  path: '/invite',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HuatangchunRoute = HuatangchunRouteImport.update({
-  id: '/huatangchun',
-  path: '/huatangchun',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EndingRoute = EndingRouteImport.update({
-  id: '/ending',
-  path: '/ending',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConfirmRoute = ConfirmRouteImport.update({
-  id: '/confirm',
-  path: '/confirm',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdaptPreviewRoute = AdaptPreviewRouteImport.update({
-  id: '/adapt-preview',
-  path: '/adapt-preview',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdaptRoute = AdaptRouteImport.update({
@@ -102,9 +37,74 @@ const AdaptRoute = AdaptRouteImport.update({
   path: '/adapt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdaptPreviewRoute = AdaptPreviewRouteImport.update({
+  id: '/adapt-preview',
+  path: '/adapt-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfirmRoute = ConfirmRouteImport.update({
+  id: '/confirm',
+  path: '/confirm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EndingRoute = EndingRouteImport.update({
+  id: '/ending',
+  path: '/ending',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HuatangchunRoute = HuatangchunRouteImport.update({
+  id: '/huatangchun',
+  path: '/huatangchun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InviteRoute = InviteRouteImport.update({
+  id: '/invite',
+  path: '/invite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LobbyRoute = LobbyRouteImport.update({
+  id: '/lobby',
+  path: '/lobby',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchingRoute = MatchingRouteImport.update({
+  id: '/matching',
+  path: '/matching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MinigameRoute = MinigameRouteImport.update({
+  id: '/minigame',
+  path: '/minigame',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Minigame2Route = Minigame2RouteImport.update({
+  id: '/minigame2',
+  path: '/minigame2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NovelRoute = NovelRouteImport.update({
+  id: '/novel',
+  path: '/novel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayRoute = PlayRouteImport.update({
+  id: '/play',
+  path: '/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayEndingRoute = PlayEndingRouteImport.update({
+  id: '/play-ending',
+  path: '/play-ending',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SceneRoute = SceneRouteImport.update({
+  id: '/scene',
+  path: '/scene',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CharacterIdRoute = CharacterIdRouteImport.update({
@@ -253,102 +253,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/scene': {
-      id: '/scene'
-      path: '/scene'
-      fullPath: '/scene'
-      preLoaderRoute: typeof SceneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/report': {
-      id: '/report'
-      path: '/report'
-      fullPath: '/report'
-      preLoaderRoute: typeof ReportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/play-ending': {
-      id: '/play-ending'
-      path: '/play-ending'
-      fullPath: '/play-ending'
-      preLoaderRoute: typeof PlayEndingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/play': {
-      id: '/play'
-      path: '/play'
-      fullPath: '/play'
-      preLoaderRoute: typeof PlayRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/novel': {
-      id: '/novel'
-      path: '/novel'
-      fullPath: '/novel'
-      preLoaderRoute: typeof NovelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/minigame2': {
-      id: '/minigame2'
-      path: '/minigame2'
-      fullPath: '/minigame2'
-      preLoaderRoute: typeof Minigame2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/minigame': {
-      id: '/minigame'
-      path: '/minigame'
-      fullPath: '/minigame'
-      preLoaderRoute: typeof MinigameRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/matching': {
-      id: '/matching'
-      path: '/matching'
-      fullPath: '/matching'
-      preLoaderRoute: typeof MatchingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lobby': {
-      id: '/lobby'
-      path: '/lobby'
-      fullPath: '/lobby'
-      preLoaderRoute: typeof LobbyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/invite': {
-      id: '/invite'
-      path: '/invite'
-      fullPath: '/invite'
-      preLoaderRoute: typeof InviteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/huatangchun': {
-      id: '/huatangchun'
-      path: '/huatangchun'
-      fullPath: '/huatangchun'
-      preLoaderRoute: typeof HuatangchunRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ending': {
-      id: '/ending'
-      path: '/ending'
-      fullPath: '/ending'
-      preLoaderRoute: typeof EndingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/confirm': {
-      id: '/confirm'
-      path: '/confirm'
-      fullPath: '/confirm'
-      preLoaderRoute: typeof ConfirmRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/adapt-preview': {
-      id: '/adapt-preview'
-      path: '/adapt-preview'
-      fullPath: '/adapt-preview'
-      preLoaderRoute: typeof AdaptPreviewRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/adapt': {
@@ -358,11 +267,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdaptRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/adapt-preview': {
+      id: '/adapt-preview'
+      path: '/adapt-preview'
+      fullPath: '/adapt-preview'
+      preLoaderRoute: typeof AdaptPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confirm': {
+      id: '/confirm'
+      path: '/confirm'
+      fullPath: '/confirm'
+      preLoaderRoute: typeof ConfirmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ending': {
+      id: '/ending'
+      path: '/ending'
+      fullPath: '/ending'
+      preLoaderRoute: typeof EndingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/huatangchun': {
+      id: '/huatangchun'
+      path: '/huatangchun'
+      fullPath: '/huatangchun'
+      preLoaderRoute: typeof HuatangchunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invite': {
+      id: '/invite'
+      path: '/invite'
+      fullPath: '/invite'
+      preLoaderRoute: typeof InviteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lobby': {
+      id: '/lobby'
+      path: '/lobby'
+      fullPath: '/lobby'
+      preLoaderRoute: typeof LobbyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matching': {
+      id: '/matching'
+      path: '/matching'
+      fullPath: '/matching'
+      preLoaderRoute: typeof MatchingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/minigame': {
+      id: '/minigame'
+      path: '/minigame'
+      fullPath: '/minigame'
+      preLoaderRoute: typeof MinigameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/minigame2': {
+      id: '/minigame2'
+      path: '/minigame2'
+      fullPath: '/minigame2'
+      preLoaderRoute: typeof Minigame2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/novel': {
+      id: '/novel'
+      path: '/novel'
+      fullPath: '/novel'
+      preLoaderRoute: typeof NovelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play': {
+      id: '/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof PlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play-ending': {
+      id: '/play-ending'
+      path: '/play-ending'
+      fullPath: '/play-ending'
+      preLoaderRoute: typeof PlayEndingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scene': {
+      id: '/scene'
+      path: '/scene'
+      fullPath: '/scene'
+      preLoaderRoute: typeof SceneRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/character/$id': {

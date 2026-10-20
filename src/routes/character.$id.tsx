@@ -28,7 +28,7 @@ export const Route = createFileRoute("/character/$id")({
   errorComponent: ({ error }) => (
     <PhoneMockup>
       <div className="grid h-full place-items-center px-6 text-center text-sm text-neutral-500">
-        {error.message}
+        {error instanceof Error ? error.message : String(error)}
       </div>
     </PhoneMockup>
   ),
